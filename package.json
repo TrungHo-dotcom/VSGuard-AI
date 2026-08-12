@@ -1,0 +1,22 @@
+{
+  "name": "vexguard",
+  "version": "3.0.0",
+  "private": true,
+  "description": "VEXGuard — static + dynamic analysis engine for malicious VS Code extensions (CSN 304)",
+  "main": "VEXGuard.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "selftest": "node VEXGuard.js --selftest",
+    "smoke": "node benchmark.js --datasets all --limit 20 --concurrency 8",
+    "bench": "node benchmark.js --datasets all --concurrency 8",
+    "bench:datadog": "node benchmark.js --datasets datadog --concurrency 8",
+    "bench:vsmex": "node benchmark.js --datasets vsmex --concurrency 8 --latest-only",
+    "bench:latest": "node benchmark.js --datasets all --concurrency 8 --latest-only",
+    "report": "node benchmark.js --datasets all --report-only"
+  },
+  "dependencies": {
+    "acorn": "^8.11.3"
+  }
+}
