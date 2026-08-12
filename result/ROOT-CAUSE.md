@@ -1,0 +1,791 @@
+# VEXGuard — Root-Cause Analysis of Residual FP / FN
+
+Generated: 2026-08-06T15:06:28.599Z
+
+False positives: **0** · False negatives: **2996** · Analysis errors: **0**
+
+Every misclassification below is attributed to a named cause with the specific
+change that would address it. Causes prefixed `OUT_OF_SCOPE_` are dataset-labelling
+artefacts rather than engine defects — see METRICS.md for why VsMex is stratified.
+
+---
+
+## FALSE POSITIVES — benign flagged as MALICIOUS
+
+_None._
+
+---
+
+## FALSE NEGATIVES — malicious not flagged as MALICIOUS
+
+### OUT_OF_SCOPE_POLICY_REMOVAL  (1482)
+
+**Cause:** Microsoft removed this for "Impersonation" — brand impersonation / copyright / spam. The bundle usually contains no hostile code, so no static or behavioural engine can flag it. Requires publisher reputation + marketplace metadata.
+
+- ❌ **06a678fb-6fc1-623d-88d6-77ab9a4932cc.open-vs-embedded-browser** v3.1.0 → SUSPICIOUS _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **11011.blenderPluginDevTool11011** v0.0.6 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **11011.markdown-shortcuts-like-obsidian-merge** v0.1.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **11011.ubuntutheme11011** v0.0.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **11011.markdown-shortcuts-like-obsidian-ob** v0.1.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **11011.markdown-shortcuts-like-obsidian-ob** v0.1.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **11011.markdown-shortcuts-like-obsidian-merge** v0.1.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **128BitStudios.codex-stats-updated** v1.0.5 → BENIGN _(tier policy, "Impersonation"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **318182456.legado-reader3-vscode** v1.4.7 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **360-Geelib-Copilot-Code.geelibcopilotcode** v4.0.3 → BENIGN _(tier policy, "Impersonation"; events=4 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **64kramsystem.vscode-open-in-github-wiki-fixed** v1.19.2 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **64kramsystem.vscode-open-in-github-wiki-fixed** v1.19.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **723Studio.fta-ruleset-tools** v1.1.15 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **723Studio.fta-ruleset-tools** v1.1.14 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **723Studio.fta-ruleset-tools** v1.1.11 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **617694668.cline-cn** v3.10.2 → BENIGN _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **77qingliu.sas-syntax** v1.0.8 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **8bitZeta.Nand2Tetris-8bit** v0.1.5 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **abczyx2006.rust-coder** v0.0.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **abczyx2006.rust-coder** v0.0.2 → SUSPICIOUS _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **abhiagr.livs** v1.0.6 → BENIGN _(tier policy, "Copyright violation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **adr-org.adr-manager-vscode** v0.0.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **adr-org.adr-manager-vscode** v0.0.2 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AdamFortune.ezsqlite** v0.15.0 → SUSPICIOUS _(tier policy, "Impersonation"; events=5 net=0 exec=5 timers=0 static=BENIGN)_
+- ❌ **abstractalgo.package-json-upgrade-abstractalgo** v3.6.0 → BENIGN _(tier policy, "Impersonation"; events=2 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **agent.devdock** v0.2.0 → SUSPICIOUS _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **agent.devdock** v0.2.1 → SUSPICIOUS _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **agent.devdock** v0.1.20 → SUSPICIOUS _(tier policy, "impersonation"; events=4 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **agent.devdock** v0.2.2 → SUSPICIOUS _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **agent.devdock** v0.2.6 → SUSPICIOUS _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **agent.devdock** v0.2.5 → SUSPICIOUS _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **agility6.go-sort-imports** v1.3.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **agent.devdock** v0.2.4 → SUSPICIOUS _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **agent.devdock** v0.2.3 → SUSPICIOUS _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **agility6.gruvbox-concoctis-agility6** v2.1.0 → BENIGN _(tier policy, "Impersonation"; events=5 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **agtest.csbz** v0.1.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AirCactus500.animal-crossing-file-icon-theme-with-flutter-support** v0.0.13 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AirCactus500.animal-crossing-file-icon-theme-with-flutter-support** v0.0.12 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AIClaude.claude-code-master** v0.1.2 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **AiagentPro.pydebugpro** v1.0.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **alanguo.zed-one-theme-for-vscode** v1.0.8 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **alanguo.zed-one-theme-for-vscode** v1.0.11 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AkhilTeotia.prettier-vscode-cfml** v1.0.0 → BENIGN _(tier policy, "Impersonation"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AlesMenzel.line-utils** v1.0.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **algovscode.algoritmika-python-beta** v20250904.160503.0 → SUSPICIOUS _(tier policy, "Impersonation"; events=5 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **alexevanczuk.pks-vscode** v0.0.10 → SUSPICIOUS _(tier policy, "Impersonation"; events=33 net=0 exec=33 timers=0 static=BENIGN)_
+- ❌ **Alex-Chen.vscode-m5stack-mpy-uiflow2** v0.0.2 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Alleexxii.cfxlua-cheat-vscode** v1.10.5 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **alien-fish-person.htmltoscss** v1.3.0 → SUSPICIOUS _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=11 static=SUSPICIOUS)_
+- ❌ **AllHelperByDi.AllHelperByDi** v0.0.1 → BENIGN _(tier policy, "Spam"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **algovscode.algoritmika-python** v20250904.95201.0 → SUSPICIOUS _(tier policy, "Impersonation"; events=5 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **algovscode.algoritmika-python** v20250903.142805.0 → SUSPICIOUS _(tier policy, "Impersonation"; events=5 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **alinma.alinma-dev-studio** v3.25.9 → BENIGN _(tier policy, "Impersonation"; events=50 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **alpgul.vscode-copilot-fallback** v1.0.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AlissonKopp.clickup-extension** v1.3.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AMAARETS.hebrew-ui-translation-amaarets** v1.103.1 → SUSPICIOUS _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **AMAARETS.hebrew-ui-translation-amaarets** v1.103.2 → SUSPICIOUS _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **Always-Victorious.trailing-spaces-always-victorious-edit** v0.4.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **altynbek132.turbo-console-log-custom** v2.9.8 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AndreiMoraru.norrsken-semantic** v0.0.5 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AndreiMoraru.norrsken-semantic** v0.0.7 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AndreiMoraru.norrsken-semantic** v0.0.12 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AndreiMoraru.norrsken-semantic** v0.0.6 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AndreiMoraru.norrsken-semantic** v0.0.4 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AngelSalazar-dev.all-pixel-agents** v1.0.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AngelSalazar-dev.all-pixel-agents** v1.1.0 → BENIGN _(tier policy, "Impersonation"; events=15 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AnhNT.claude-commit-ai** v1.0.22 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AngelSalazar-dev.all-pixel-agents** v1.1.1 → BENIGN _(tier policy, "Impersonation"; events=15 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AnhNT.claude-commit-ai** v1.0.23 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AngelSalazar-dev.all-pixel-agents** v1.2.0 → BENIGN _(tier policy, "Impersonation"; events=15 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AngelSalazar-dev.all-pixel-agents** v1.2.1 → BENIGN _(tier policy, "Impersonation"; events=15 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **amkig.i18n-ally-po** v2.13.1 → BENIGN _(tier policy, "Impersonation"; events=1 net=0 exec=0 timers=2 static=BENIGN)_
+- ❌ **anovagroups.sas-data-explorer** v2.2.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ant5888.opencode-vscode-cn** v0.4.21 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **anwar.papyrus-pdf** v0.0.7 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **apzcode.apzcode-ai** v0.1.2 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AppHelix.apphelix-blog-search** v1.0.5 → BENIGN _(tier policy, "Impersonation"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **apzcode.apzcode-ai** v0.2.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ArchMedia.sp-isc-devtools** v0.0.1 → SUSPICIOUS _(tier policy, "Impersonation"; events=2 net=0 exec=1 timers=1 static=BENIGN)_
+- ❌ **ArchMedia.sp-isc-devtools** v0.1.2 → SUSPICIOUS _(tier policy, "Impersonation"; events=2 net=0 exec=1 timers=1 static=BENIGN)_
+- ❌ **ArchMedia.sp-isc-devtools** v0.1.3 → SUSPICIOUS _(tier policy, "Impersonation"; events=2 net=0 exec=1 timers=1 static=BENIGN)_
+- ❌ **ArchMedia.sp-isc-devtools** v0.1.1 → SUSPICIOUS _(tier policy, "Impersonation"; events=2 net=0 exec=1 timers=1 static=BENIGN)_
+- ❌ **ArchMedia.sp-isc-devtools** v0.1.4 → SUSPICIOUS _(tier policy, "Impersonation"; events=2 net=0 exec=1 timers=1 static=BENIGN)_
+- ❌ **ArchMedia.sp-isc-devtools** v0.1.5 → SUSPICIOUS _(tier policy, "Impersonation"; events=2 net=0 exec=1 timers=1 static=BENIGN)_
+- ❌ **ArthurNeuman.eslint-disable-typescript-snippets** v1.0.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **areynard.iceberg-theme-code-visible** v0.0.3 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ascholer.chemeketa-gitdoc** v0.2.5 → BENIGN _(tier policy, "impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atman-dev.opencode-chat-unofficial-custom** v0.1.2 → BENIGN _(tier policy, "Impersonation"; events=56 net=28 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.45.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.44.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.46.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ASUS-AICS.aics-copilot** v0.13.5 → BENIGN _(tier policy, "Impersonation"; events=4 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ASUS-AICS.xhis-copilot** v0.11.0 → BENIGN _(tier policy, "Impersonation"; events=4 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.47.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.49.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.51.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.50.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.52.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.59.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.62.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.65.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.kanban-atom8n** v1.64.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.mcp-inspector-atom8n** v1.16.0 → BENIGN _(tier policy, "Impersonation"; events=46 net=23 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.10.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.1.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.12.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.13.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.15.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.17.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.18.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.19.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.tampermonkey-atom8n** v1.62.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.20.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.tampermonkey-atom8n** v1.63.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.22.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.thor-client-atom8n** v1.57.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AtroxEGO.better-folding-plus** v0.6.1 → BENIGN _(tier policy, "impersonation"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.23.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.7.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atom8n.n8n-atom-v3** v3.8.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- … and 1362 more (see the CSV)
+
+### OUT_OF_SCOPE_UNTRUSTWORTHY  (530)
+
+**Cause:** Microsoft classified this as "Untrustworthy" — a risk judgement rather than an assertion of malicious code. Frequently no observable payload exists.
+
+- ❌ **0x141c6.auto-open-previews** v0.0.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **0x7a69.whhid** v0.1.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **0x7a69.whhid** v0.1.5 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **0x7a69.whhid** v0.1.6 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **4t-ia.4t-ia** v1.3.31 → BENIGN _(tier suspect, "Untrustworthy"; events=5 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **AbhishekChakrabartti.localghostllmclientextension** v1.0.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **adityasanwal.faa-sound** v1.1.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AmirBenShimol3111824.amir-synapse-nexus** v0.1.0 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=67 net=0 exec=67 timers=0 static=BENIGN)_
+- ❌ **AnilAlapati.pqc-beta** v0.3.4 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AnilAlapati.pqc-beta** v0.3.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Ansicht.hyperspekt** v0.7.2 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Ansicht.hyperspekt** v0.7.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **auraone.agent-studio-open** v0.1.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Aussie.FastTask** v2.8.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **auraone.rubric-studio** v0.1.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **benzoXdev.vscode-3abid-pets** v1.36.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlocWeave.blocweave** v0.2.11 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=152 static=SUSPICIOUS)_
+- ❌ **BlocWeave.blocweave** v0.2.13 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=152 static=SUSPICIOUS)_
+- ❌ **BlocWeave.blocweave** v0.2.16 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=152 static=SUSPICIOUS)_
+- ❌ **BlocWeave.blocweave** v0.2.15 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=152 static=SUSPICIOUS)_
+- ❌ **BlocWeave.blocweave** v0.2.4 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=152 static=SUSPICIOUS)_
+- ❌ **BlocWeave.blocweave** v0.2.7 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=152 static=SUSPICIOUS)_
+- ❌ **BlocWeave.blocweave** v0.2.8 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=152 static=SUSPICIOUS)_
+- ❌ **BlocWeave.blocweave** v0.4.8 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlocWeave.blocweave** v0.4.7 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlocWeave.blocweave** v0.5.1 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlocWeave.blocweave** v0.4.6 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=152 static=SUSPICIOUS)_
+- ❌ **BlocWeave.blocweave** v0.5.0 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlocWeave.blocweave** v0.4.9 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BobCAD-CAM.bobcad-post** v1.38.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.10 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.112 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.113 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.115 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.118 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.117 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.116 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.119 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.11 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.127 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.122 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.125 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.13 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.14 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.15 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.2 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.16 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.3 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.4 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.5 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.17 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.9 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.7 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **BurstCode.burstcode** v0.1.120 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BurstCode.burstcode** v0.1.6 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **ByteBarn.bytebarnhello** v0.0.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.1.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.0.7 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.0.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.0.3 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.0.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.0.5 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.0.6 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.1.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.3.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v2.0.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v2.1.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.3.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.2.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v1.3.2 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **capplicorn.plaintextplus** v2.1.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **charcoal141II.imu-view** v3.10.0 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **charcoal141II.imu-view** v3.11.0 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **charcoal141II.imu-view** v3.9.0 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **chenjianan.battle-city-for-vscode** v0.0.44 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **chery-brake-tools.chery-brake-tools** v1.0.0 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=38 net=0 exec=8 timers=1 static=SUSPICIOUS)_
+- ❌ **clint.rust-essentials-pack** v1.0.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Codivus.codivus-code** v0.0.19 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Cognicio.sftp-deployment** v0.0.1 → BENIGN _(tier suspect, "Untrustworthy"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **colan100.antigravity100** v0.0.80 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **colan100.antigravity100** v0.0.88 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **colan100.ccbrasil** v0.0.62 → BENIGN _(tier suspect, "Untrustworthy"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **colan100.antigravity100** v0.0.89 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **colan100.ccbrasil** v0.0.72 → BENIGN _(tier suspect, "Untrustworthy"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **colan100.ccbrasil** v0.0.88 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **colan100.ccbrasil** v0.0.78 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **colan100.ccbrasil** v0.0.89 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **contextflow.contextflow-vscode** v0.1.2 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=207 net=0 exec=207 timers=151 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.0.2 → BENIGN _(tier suspect, "Untrustworthy"; events=131 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.0.4 → BENIGN _(tier suspect, "Untrustworthy"; events=131 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.0.5 → BENIGN _(tier suspect, "Untrustworthy"; events=131 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.0.7 → BENIGN _(tier suspect, "Untrustworthy"; events=131 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.0.6 → BENIGN _(tier suspect, "Untrustworthy"; events=131 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.0.8 → BENIGN _(tier suspect, "Untrustworthy"; events=131 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.0.9 → BENIGN _(tier suspect, "Untrustworthy"; events=131 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.3.6 → BENIGN _(tier suspect, "Untrustworthy"; events=162 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.4.1 → BENIGN _(tier suspect, "Untrustworthy"; events=162 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **d-led.commentray-vscode** v0.4.2 → BENIGN _(tier suspect, "Untrustworthy"; events=162 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **deepsweep-ai.deepsweep** v1.0.2 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **deepsweep-ai.deepsweep** v1.0.5 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **deepsweep-ai.deepsweep** v1.0.9 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.13.2 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=6 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.14.2 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=6 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.13.7 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=6 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.14.3 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=6 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.5.2 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=455 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.5.3 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=455 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.5.5 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=455 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.5.7 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=455 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.7.1 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=456 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.7.3 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.7.5 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.7.2 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=456 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.8.0 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.8.1 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deepsweep-ai.deepsweep** v1.7.6 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=4 net=2 exec=0 timers=457 static=SUSPICIOUS)_
+- ❌ **deltalenz.deltalenz** v0.1.2 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **deltalenz.deltalenz** v0.2.1 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **DevLingo.devlingo-ia** v1.0.0 → BENIGN _(tier suspect, "Untrustworthy"; events=78 net=39 exec=0 timers=0 static=BENIGN)_
+- ❌ **DevLingo.devlingo-ia** v1.0.2 → BENIGN _(tier suspect, "Untrustworthy"; events=78 net=39 exec=0 timers=0 static=BENIGN)_
+- … and 410 more (see the CSV)
+
+### DORMANT_NO_OBSERVABLE_PAYLOAD  (429)
+
+**Cause:** The extension executed nothing observable and carries no static IOC — a clean re-publish, a first-stage placeholder awaiting a server-side trigger, or a payload gated behind a condition the simulator does not reproduce (specific workspace contents, a live C2 response, a real user credential).
+
+- ❌ **498-00.httpformat** v1.1.2 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ab-498.httpformat** v1.1.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlockchainIndustries.bitcoin-toolkit** v0.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BenjaminFriedl.lexica-img-fix** v0.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlockchainIndustries.solana-toolkit** v0.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlockchainIndustries.hardhat-toolkit** v0.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Bobronium.darcula-from-pycharm** v0.9.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **CodamaSoftware.ai-docs-and-comments** v0.0.8 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **codevsce.codelddb-vscode** v1.11.9 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **EchelonStudios.blockchain-language-support** v1.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bphpburnsus.iconesvscode** v12.15.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **csvmech.csvrainbow** v3.3.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **garytyler.darcula-pycharm** v1.0.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **flutcode.flutter-extension** v3.122.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **IconKief.icon-theme-material** v5.29.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **krabt.krabt-extension-pack** v1.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **kraftwer1.darcula-extra** v0.6.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **labfile.labfile** v0.0.5 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **embeddteam.embedded-build-analyzer** v1.1.3 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **OktayAydoan.smarty-formatter** v2.1.2 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ovixcodes.basedpyright-vscode** v1.34.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **PriyanshuMallick.clipboard-history-manager** v0.1.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Puglight.inspiredaily** v0.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **rafaelrenanpacheco.darcula-theme** v1.18.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.glm-copilot** v1.0.12 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.glm-copilot** v1.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.glm-copilot** v1.0.7 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.glm-copilot** v1.0.4 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.glm-copilot** v1.1.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.kimi-coding-copilot** v1.0.12 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.kimi-coding-copilot** v1.1.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.kimi-copilot** v1.0.12 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.kimi-copilot** v1.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.kimi-copilot** v1.0.7 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.kimi-copilot** v1.0.4 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.kimi-copilot** v1.1.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.mimo-copilot** v1.0.12 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.mimo-copilot** v1.0.7 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.mimo-copilot** v1.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.mimo-copilot** v1.0.4 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.mimo-copilot** v1.1.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.minimax-copilot** v1.0.12 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.minimax-copilot** v1.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.minimax-copilot** v1.1.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.minimax-copilot** v1.0.7 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sanchuan.minimax-copilot** v1.0.4 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **siffat-ahmed.ai-autocomplete-siffat-ahmed** v0.1.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **StefanYosif.axion-ai** v1.0.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Vsceue.volar-vscode** v3.1.6 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **wlnxingdev.free-senltig** v17.6.0 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **alberto-pilotto.code-ca65-syntax-color-outliner-symbols** v1.3.0 → BENIGN _(tier unknown; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AmsTaFFix.daemonic-lua-api** v1.3.2 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AmsTaFFix.daemonic-lua-api** v1.6.2 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AmsTaFFix.daemonic-lua-api** v1.6.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AmsTaFFix.daemonic-lua-api** v1.7.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AmsTaFFix.daemonic-lua-api** v1.6.3 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AnilAlapati.leancontext** v0.1.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AnilAlapati.leancontext** v0.2.2 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AnilAlapati.leancontext** v0.2.3 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AppCreatePLC.boardtrackapps** v1.7.3 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ANZ-BANK.vscode-sysl** v0.64.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AppLabs.boardstep** v1.7.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **arclens.arc-lens** v0.1.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **arclens.arc-lens** v0.1.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.30.6 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.30.9 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AutomationStudio.automation-studio** v0.1.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AutomationStudio.automation-studio** v0.1.5 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Barkerbg001.xaml-lineup** v0.0.9 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **benawad.vsinder** v1.19.0 → BENIGN _(tier code, "Malicious"; events=0 net=0 exec=0 timers=15 static=BENIGN)_
+- ❌ **BenjaminFriedl.lexica-img-fix** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bismarkvargas.bkcode** v1.38.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlockchainIndustries.bitcoin-toolkit** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlockchainIndustries.solana-toolkit** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlockchainIndustries.blockchain-toolkit** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlockchainIndustries.hardhat-toolkit** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bug-author.shadure** v0.0.3 → BENIGN _(tier code, "Malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.27 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.24 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.23 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ceo.Sammarco** v3.9.21 → BENIGN _(tier code, "Malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.25 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **clawdbot.clawdbot-agent** v3.0.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **cmd-studio.pua** v0.1.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **cmd-studio.pua** v0.3.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **cmd-studio.pua** v0.4.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **cosmic-themes.theme-cosmic-nebula** v1.0.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **csvmech.csvrainbow** v3.3.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **DevMatrix.devmatrix** v0.2.10 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **DevMatrix.devmatrix** v0.2.6 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **DevMatrix.devmatrix** v0.3.2 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **DevMatrix.devmatrix** v0.2.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=151 static=BENIGN)_
+- ❌ **diola.vscode-agent-tour** v0.2.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **EchelonStudios.blockchain-language-support** v1.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ETHFoundry.etherfoundrys** v0.0.2 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **EtherFoundation.vs-ranket** v0.0.3 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Extensions-Topic.bulgarian** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Extensions-Topic.coffeescript** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Extensions-Topic.korean** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Extensions-Topic.german** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Extensions-Topic.italian** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Extensions-Topic.polish** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Extensions-Topic.portugese** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **flutcode.flutter-extension** v3.122.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **GavinLamWood.vs-blanket** v0.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **guozebin.api-generator-plugin** v0.2.2 → BENIGN _(tier code, "Malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Iconkieftwo.icon-theme-materiall** v5.29.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Iconkieftwo.icon-theme-materiall** v5.29.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.45 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.47 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.48 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.49 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.53 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.58 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.59 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.54 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.56 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.60 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.61 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **imlore.jupie** v0.1.62 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- … and 309 more (see the CSV)
+
+### BELOW_MALICIOUS_THRESHOLD  (307)
+
+**Cause:** Evidence was found but scored 25, below the MALICIOUS bar. It IS caught by the TRIAGE rule. Mitigation: raise the weight of the contributing indicators, or treat SUSPICIOUS as positive.
+
+- ❌ **AutoMind.automindX** v1.0.1 → SUSPICIOUS _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **embeddteam.embedded-cortex-debug** v1.14.0 → SUSPICIOUS _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **embeddteam.embedded-cortex-debug** v1.14.1 → SUSPICIOUS _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **EthCompiler.among-eth** v1.0.2 → SUSPICIOUS _(tier code, "DataDog malicious"; events=4 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **hajoo.poisoned-extension** v1.0.3 → SUSPICIOUS _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **JohnGaffney.blankebesxstnion** v1.0.2 → SUSPICIOUS _(tier code, "DataDog malicious"; events=4 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **luater.luatide** v2.2.13 → SUSPICIOUS _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **OPENEDAI.OPENEDAI** v0.4.51 → SUSPICIOUS _(tier code, "DataDog malicious"; events=1 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **SmartContractAI.solaibot** v1.4.2 → SUSPICIOUS _(tier code, "DataDog malicious"; events=4 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **498.pythonformat** v1.0.48 → SUSPICIOUS _(tier code, "Malicious"; events=2 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **ab-498.httpformat** v1.0.56 → SUSPICIOUS _(tier code, "Malicious"; events=154 net=0 exec=151 timers=152 static=BENIGN)_
+- ❌ **AllenBarry.Solid** v1.0.2 → SUSPICIOUS _(tier code, "Malicious"; events=4 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **Ares-Agent.ares-agent** v0.1.5 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **Ares-Agent.ares-agent** v0.1.9 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **Ares-Agent.ares-agent** v0.1.7 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.30.1 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=1 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.30.4 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=1 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.31.4 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.31.6 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.31.5 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.31.7 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.0 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.31.8 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.10 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.11 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.13 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.18 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.14 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.21 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.22 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.25 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.3 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.6 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.7 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.32.9 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.33.1 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.33.3 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.33.5 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.33.8 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.34.0 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.34.1 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.34.2 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.34.4 → SUSPICIOUS _(tier code, "Malware"; events=37 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **AutomationStudio.automation-studio** v0.1.0 → SUSPICIOUS _(tier code, "Malware"; events=24 net=0 exec=24 timers=0 static=BENIGN)_
+- ❌ **AutomationStudio.automation-studio** v0.1.2 → SUSPICIOUS _(tier code, "Malware"; events=19 net=0 exec=11 timers=0 static=BENIGN)_
+- ❌ **AutomationStudio.automation-studio** v0.1.3 → SUSPICIOUS _(tier code, "Malware"; events=19 net=0 exec=11 timers=0 static=BENIGN)_
+- ❌ **AutoMind.automindX** v1.0.1 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **Aveva-Technology.forge-bridge** v0.7.0 → SUSPICIOUS _(tier code, "Malware"; events=53 net=0 exec=0 timers=303 static=SUSPICIOUS)_
+- ❌ **Aveva-Technology.forge-bridge** v0.7.2 → SUSPICIOUS _(tier code, "Malware"; events=53 net=0 exec=0 timers=303 static=SUSPICIOUS)_
+- ❌ **Aveva-Technology.forge-bridge** v0.7.3 → SUSPICIOUS _(tier code, "Malware"; events=53 net=0 exec=0 timers=303 static=SUSPICIOUS)_
+- ❌ **Aveva-Technology.forge-bridge** v0.7.4 → SUSPICIOUS _(tier code, "Malware"; events=53 net=0 exec=0 timers=303 static=SUSPICIOUS)_
+- ❌ **Aveva-Technology.forge-bridge** v0.7.5 → SUSPICIOUS _(tier code, "Malware"; events=53 net=0 exec=0 timers=303 static=SUSPICIOUS)_
+- ❌ **Aveva-Technology.forge-bridge** v0.7.6 → SUSPICIOUS _(tier code, "Malware"; events=53 net=0 exec=0 timers=303 static=SUSPICIOUS)_
+- ❌ **Aveva-Technology.forge-bridge** v0.7.8 → SUSPICIOUS _(tier code, "Malware"; events=53 net=0 exec=0 timers=303 static=SUSPICIOUS)_
+- ❌ **Aveva-Technology.forge-bridge** v0.7.7 → SUSPICIOUS _(tier code, "Malware"; events=53 net=0 exec=0 timers=303 static=SUSPICIOUS)_
+- ❌ **barakolshe.forq** v0.2.14 → SUSPICIOUS _(tier code, "Malware"; events=6 net=2 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **barakolshe.forq** v0.2.15 → SUSPICIOUS _(tier code, "Malware"; events=6 net=2 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **barakolshe.forq** v0.2.19 → SUSPICIOUS _(tier code, "Malware"; events=6 net=2 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v0.76.0 → SUSPICIOUS _(tier code, "Malware"; events=18 net=3 exec=1 timers=3 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v0.80.0 → SUSPICIOUS _(tier code, "Malware"; events=18 net=3 exec=1 timers=3 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v0.82.0 → SUSPICIOUS _(tier code, "Malware"; events=18 net=3 exec=1 timers=3 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v0.84.0 → SUSPICIOUS _(tier code, "Malware"; events=18 net=3 exec=1 timers=3 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v0.89.0 → SUSPICIOUS _(tier code, "Malware"; events=18 net=3 exec=1 timers=3 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v1.11.1 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v1.12.0 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v1.35.0 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v1.35.2 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v1.25.0 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v1.19.0 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v1.70.4 → SUSPICIOUS _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **bismarkvargas.bkcode** v1.9.0 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **Blamely.blamely** v1.0.0 → SUSPICIOUS _(tier code, "Malware"; events=63 net=0 exec=63 timers=155 static=BENIGN)_
+- ❌ **bismarkvargas.bkcode** v1.8.0 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **blackforest.blackforest-1234** v0.4.0 → SUSPICIOUS _(tier code, "Malicious"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **BlockchainWEB3.blankebestxstnion** v1.0.2 → SUSPICIOUS _(tier code, "Malicious"; events=4 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **btwiuse.vscode-remote-server** v0.0.5 → SUSPICIOUS _(tier code, "Malicious"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **ByteBarn.byte-barn-devkit** v2026.5.1 → SUSPICIOUS _(tier code, "Malware"; events=407 net=26 exec=0 timers=0 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.10 → SUSPICIOUS _(tier code, "Malware"; events=442 net=212 exec=17 timers=151 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.11 → SUSPICIOUS _(tier code, "Malware"; events=442 net=212 exec=17 timers=151 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.9 → SUSPICIOUS _(tier code, "Malware"; events=424 net=203 exec=17 timers=151 static=BENIGN)_
+- ❌ **clacla100.claudemem** v0.0.88 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clacla100.claudemem** v0.0.89 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clacla100.claudemem** v0.0.92 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **clacla100.cosave100** v0.0.85 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clacla100.cosave100** v0.0.78 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clacla100.cosave100** v0.0.88 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clacla100.cosave100** v0.0.89 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clacla100.cosave100** v0.0.92 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **clicli100.openclaw100** v0.0.88 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clicli100.openclaw100** v0.0.89 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clicli100.openclaw100** v0.0.96 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **clicli100.windsurf100** v0.0.88 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clicli100.windsurf100** v0.0.80 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **clicli100.windsurf100** v0.0.89 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cline-ai-main.cline-ai-agent** v3.1.1 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **clicli100.windsurf100** v0.0.96 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **cobot100.cosave101** v0.0.80 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.cosave101** v0.0.88 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.cosave101** v0.0.89 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.cosave101** v0.0.96 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **cobot100.cursor100** v0.0.80 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.cursor100** v0.0.88 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.cursor100** v0.0.89 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.cursor100** v0.0.96 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **cobot100.kilobrasil** v0.0.96 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **cobot100.kilochinese** v0.0.80 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.kilochinese** v0.0.88 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.kilochinese** v0.0.89 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.kilochinese** v0.0.96 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **cobot100.kilojapan** v0.0.89 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=SUSPICIOUS)_
+- ❌ **cobot100.kilojapan** v0.0.96 → SUSPICIOUS _(tier code, "Malware"; events=16 net=8 exec=0 timers=3 static=SUSPICIOUS)_
+- ❌ **CodeSecureDev.dependency-scan** v1.8.12 → SUSPICIOUS _(tier code, "Malware"; events=608 net=152 exec=0 timers=203 static=BENIGN)_
+- ❌ **CodeSecureDev.dependency-scan** v1.8.11 → SUSPICIOUS _(tier code, "Malware"; events=608 net=152 exec=0 timers=203 static=BENIGN)_
+- ❌ **darcula-theme.darcula-official** v2.4.17 → SUSPICIOUS _(tier code, "Malicious"; events=6 net=2 exec=0 timers=0 static=BENIGN)_
+- ❌ **DavidAsh.gruvbox-vs** v0.0.1 → SUSPICIOUS _(tier code, "Malware"; events=3 net=1 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **DavidAsh.tr-lang-pack** v0.0.1 → SUSPICIOUS _(tier code, "Malware"; events=3 net=1 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **DavidAsh.dcbox-vs** v0.0.3 → SUSPICIOUS _(tier code, "Malware"; events=3 net=1 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **DevelopmentInc.cfx-lua-vs** v0.0.1 → SUSPICIOUS _(tier code, "Impersonation;Malware"; events=3 net=1 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **DevCrew.devc-python-toolkit** v2026.2.10 → SUSPICIOUS _(tier code, "Malware"; events=407 net=26 exec=0 timers=0 static=BENIGN)_
+- ❌ **DevelopmentInc.kombai-vs** v0.0.1 → SUSPICIOUS _(tier code, "Impersonation;Malware"; events=3 net=1 exec=0 timers=0 static=SUSPICIOUS)_
+- … and 187 more (see the CSV)
+
+### RAN_BUT_UNRECOGNISED  (106)
+
+**Cause:** Runtime activity occurred but matched no malicious signature. Mitigation: add a rule for the observed behaviour, or route the evidence digest to an LLM verdict engine.
+
+- ❌ **ab-498.cppformat** v1.0.8 → BENIGN _(tier code, "DataDog malicious"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ab-498.pythonformat** v1.0.50 → BENIGN _(tier code, "DataDog malicious"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **eamodas.shiny-vscode** v1.3.2 → BENIGN _(tier code, "DataDog malicious"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **SFRA-FAKA.sfra-toolkit** v0.0.2 → BENIGN _(tier code, "DataDog malicious"; events=3 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **WhenSunset.chatgpt-china** v9.5.3 → BENIGN _(tier code, "DataDog malicious"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **zhukunpeng.chat-moss** v8.0.0 → BENIGN _(tier code, "DataDog malicious"; events=5 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **498-00.cppformat** v1.0.12 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **498-00.pythonformat** v1.0.51 → BENIGN _(tier code, "Malware"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ab-498.cppformat** v1.0.10 → BENIGN _(tier code, "Malicious"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **ab-498.pythonformat** v1.0.50 → BENIGN _(tier code, "Malicious"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.1.0 → BENIGN _(tier code, "Malware"; events=12 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **AugmentedValueAcceleration.ava-supernova** v0.1.2 → BENIGN _(tier code, "Malware"; events=12 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bipro.bipro-dev** v1.0.2 → BENIGN _(tier code, "Malicious"; events=26 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bismarkvargas.bkcode** v1.41.1 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bismarkvargas.bkcode** v1.69.0 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bismarkvargas.bkcode** v1.66.0 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bismarkvargas.bkcode** v1.68.0 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **bismarkvargas.bkcode** v1.69.1 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **dfadhel.vscodepython** v1.0.1 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **dfadhel.vscodepython** v1.0.2 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **eamodas.shiny-vscode** v1.3.2 → BENIGN _(tier code, "Malware"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **EladNahman.Super-Cool-Extension** v0.0.1 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hakor-plugins.modux-tooling** v1.1.7 → BENIGN _(tier code, "Malware"; events=163 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hakor-plugins.modux-tooling** v1.2.1 → BENIGN _(tier code, "Malware"; events=163 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hakor-plugins.modux-tooling** v1.2.11 → BENIGN _(tier code, "Malware"; events=163 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hakor-plugins.modux-tooling** v1.2.2 → BENIGN _(tier code, "Malware"; events=163 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hakor-plugins.modux-tooling** v1.2.6 → BENIGN _(tier code, "Malware"; events=163 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hakor-plugins.modux-tooling** v1.2.3 → BENIGN _(tier code, "Malware"; events=163 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hakor-plugins.modux-tooling** v1.2.13 → BENIGN _(tier code, "Malware"; events=163 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hunterdurbin.vscode-4d-callchain** v0.1.17 → BENIGN _(tier code, "Malware"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **hunterdurbin.vscode-4d-callchain** v0.1.16 → BENIGN _(tier code, "Malware"; events=2 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **kudsu.soberssh** v1.0.3 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **kudsu.soberssh** v1.0.1 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **kudsu.sober-ssh** v0.2.0 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **leonardomth.claudio-code** v1.0.1 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **leonardomth.claudio-code** v1.6.0 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Malkolm.Theme-ArtSchool-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Malkolm.Theme-Ascetic-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Malkolm.Theme-azure-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Malkolm.Theme-Aurora-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Malkolm.Theme-bashling-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **pandaexpress.Theme-Anarchist-plugin** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **pandaexpress.Theme-AnarchistEighties-plugin** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **pandaexpress.Theme-arstotzka-plugin** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **pandaexpress.Theme-Array-plugin** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **pandaexpress.Theme-ant-plugin** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **priskinski.Theme-Afterglow-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **priskinski.Theme-AgolaDark-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **priskinski.Theme-AllHallowsEve-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **priskinski.Theme-Amber-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **priskinski.Theme-Amy-remake** v1.0.0 → BENIGN _(tier code, "Malware"; events=6 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **probes-team.probes** v0.1.2 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **probes-team.probes** v0.1.3 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **SiFli.sifli-sdk-codekit** v1.1.4 → BENIGN _(tier code, "Malware"; events=12 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **SiFli.sifli-sdk-codekit** v1.1.990404 → BENIGN _(tier code, "Malware"; events=12 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **SiFli.sifli-sdk-codekit** v1.1.990405 → BENIGN _(tier code, "Malware"; events=12 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sparrowcodes.sparrowcodes** v1.2.20 → BENIGN _(tier code, "Malware"; events=4 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sparrowcodes.sparrowcodes** v1.2.23 → BENIGN _(tier code, "Malware"; events=4 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sparrowcodes.sparrowcodes** v1.2.8 → BENIGN _(tier code, "Malware"; events=4 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sparrowcodes.sparrowcodes** v1.2.7 → BENIGN _(tier code, "Malware"; events=4 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **sparrowcodes.sparrowcodes** v1.2.13 → BENIGN _(tier code, "Malware"; events=4 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **spinback.spinback** v0.1.1 → BENIGN _(tier code, "Malware"; events=3 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **SUNITMAL.memory-vault** v0.0.4 → BENIGN _(tier code, "Malicious"; events=8 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.26 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.28 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.24 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.27 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.29 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.30 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.35 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.38 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.34 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.33 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.36 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.32 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.31 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.39 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.42 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.40 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.45 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.41 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.44 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.43 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.46 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.48 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.51 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.49 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.47 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.52 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.50 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.53 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.62 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.59 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.63 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.56 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.57 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.58 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.64 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.70 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **v8tech.v8-code** v2.2.65 → BENIGN _(tier code, "Malware"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **VarunSindwani.explorer-exclude-global** v1.3.3 → BENIGN _(tier code, "Malicious"; events=1 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **VukRosic.openaicodexplayground** v0.0.5 → BENIGN _(tier code, "Malicious"; events=54 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **wli273088.vscode-pets-for-courses-demo** v2.1.3 → BENIGN _(tier code, "Malware"; events=82 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **YiEvan.remotetest** v1.2.6 → BENIGN _(tier code, "Malware"; events=9 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **zigbook.pilot-repl** v0.1.0 → BENIGN _(tier code, "Potentially malicious"; events=63 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **zigbook.pilot-repl** v0.1.1 → BENIGN _(tier code, "Potentially malicious"; events=63 net=0 exec=0 timers=0 static=BENIGN)_
+
+### NETWORK_ONLY_INDISTINGUISHABLE  (58)
+
+**Cause:** Contacted the network (8 request(s)) but to no known-bad destination, and no read→send taint loop closed. Behaviourally identical to a legitimate telemetry or AI-assistant extension at observation time. This is the hard residue: separating it needs endpoint reputation.
+
+- ❌ **Abhilash001.t-ex** v0.0.6 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=0 static=BENIGN)_
+- ❌ **Abhilash001.t-ex** v0.0.10 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=0 static=BENIGN)_
+- ❌ **Abhilash001.t-ex** v0.0.7 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=0 static=BENIGN)_
+- ❌ **7finney.ethcode** v0.5.1 → BENIGN _(tier code, "Malicious"; events=33 net=2 exec=0 timers=0 static=BENIGN)_
+- ❌ **AppPublishersPLC.boardlinkapp** v1.5.7 → BENIGN _(tier code, "Malware"; events=2 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **better-sollidity.sollidity-plus** v0.0.183 → BENIGN _(tier code, "Malicious"; events=24 net=8 exec=0 timers=0 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.6 → BENIGN _(tier code, "Malware"; events=338 net=169 exec=0 timers=151 static=BENIGN)_
+- ❌ **clacla100.cosave100** v0.0.62 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **clacla100.cosave100** v0.0.70 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **clacla100.cosave100** v0.0.72 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **clacla100.cosave100** v0.0.73 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **cobot100.cosave101** v0.0.62 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **cobot100.cosave101** v0.0.70 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **cobot100.cosave101** v0.0.72 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **cobot100.cosave101** v0.0.73 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **cobot100.kilochinese** v0.0.70 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **cobot100.kilochinese** v0.0.72 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **cobot100.kilochinese** v0.0.73 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **Cencurity.cencurity-connector** v0.1.8 → BENIGN _(tier code, "Malware"; events=380 net=169 exec=0 timers=151 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.10 → BENIGN _(tier code, "Malware"; events=34 net=17 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.12 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.20 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.21 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.22 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.24 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.27 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.28 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.29 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.30 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.31 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.35 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.39 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.42 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.45 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.49 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.52 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.55 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.57 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.6 → BENIGN _(tier code, "Malware"; events=34 net=17 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.58 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.7 → BENIGN _(tier code, "Malware"; events=34 net=17 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.codesleepai** v0.0.8 → BENIGN _(tier code, "Malware"; events=34 net=17 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.cosave** v0.0.60 → BENIGN _(tier code, "Malware"; events=20 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.cosave** v0.0.61 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.cosave** v0.0.62 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.cosave** v0.0.67 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.cosave** v0.0.69 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.cosave** v0.0.72 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **devokaicode.cosave** v0.0.73 → BENIGN _(tier code, "Malware"; events=16 net=8 exec=0 timers=4 static=BENIGN)_
+- ❌ **JuanFlanco.Soquidity** v1.0.9 → BENIGN _(tier code, "Malware"; events=2 net=1 exec=0 timers=1 static=BENIGN)_
+- ❌ **pablaofficeal.taskmanager-vscode** v1.4.5 → BENIGN _(tier code, "Malware"; events=94 net=47 exec=0 timers=0 static=BENIGN)_
+- ❌ **podborodok.dbtoolsforpythonv2** v0.4.51 → BENIGN _(tier code, "Malware"; events=36 net=12 exec=0 timers=0 static=BENIGN)_
+- ❌ **Puglight.shadowcore** v0.0.1 → BENIGN _(tier code, "Malware"; events=302 net=151 exec=0 timers=151 static=BENIGN)_
+- ❌ **Quant.Quantam-M** v5.0.1 → BENIGN _(tier code, "Malware"; events=3 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **stephen-riley.regexworkbench** v2.0.5 → BENIGN _(tier code, "Malicious"; events=3 net=1 exec=0 timers=0 static=BENIGN)_
+- ❌ **swarmiq-os.swarmiq-connect** v0.0.3 → BENIGN _(tier code, "Malware"; events=77 net=33 exec=0 timers=0 static=BENIGN)_
+- ❌ **swarmiq-os.swarmiq-connect** v0.0.2 → BENIGN _(tier code, "Malware"; events=33 net=11 exec=0 timers=0 static=BENIGN)_
+- ❌ **xueshufive.jrkf-console** v2.0.2 → BENIGN _(tier code, "Malicious"; events=1 net=1 exec=0 timers=0 static=BENIGN)_
+
+### TIMEOUT  (52)
+
+**Cause:** Detonation was killed by the per-sample timeout before behaviour surfaced. Mitigation: raise --timeout, or lower SANDBOX_MAX_CMDS for command-heavy samples.
+
+- ❌ **embeddteam.embeddedprojectmanager** v0.0.1 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **embeddteam.embeddedprojectmanager** v0.0.2 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **krabt.krabt-proto** v0.5.7 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **serialt.sugar-proto** v0.5.7 → BENIGN _(tier code, "DataDog malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atomgit.atomcode-vscode** v0.0.2 → BENIGN _(tier policy, "Spam"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **atomgit.atomcode-vscode** v0.0.3 → SUSPICIOUS _(tier policy, "Spam"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **chat-gimay-agent.chat-gimay-agent** v1.0.0 → BENIGN _(tier policy, "Spam"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **embedd-team.embedd-project-manager** v0.0.3 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **embeddteam.embeddedprojectmanager** v0.0.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **embeddteam.embeddedprojectmanager** v0.0.2 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **jackywjs.jacky-jest-runner** v0.0.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **johnpborgon.codecompiler** v1.0.6 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **krabt.krabt-proto** v0.5.7 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **Men3emkhaled.agent-assistant** v1.0.6 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **nourgaser.google-tasks-json-fork** v0.3.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **openbase.openbase-vscode** v10.1.9 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **openbase.openbase-vscode** v10.0.8 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **openbase.openbase-vscode** v10.2.2 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **openbase.openbase-vscode** v10.3.0 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **openbase.openbase-vscode** v10.3.2 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **openbase.openbase-vscode** v10.3.3 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **openbase.openbase-vscode** v10.3.4 → BENIGN _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **otimiza.local-agent-screen-viewer** v0.2.0 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **PapaVault.papa-vault** v1.13.0 → BENIGN _(tier policy, "Expired domain"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **pedrocmota.workspace-formatter-multiple** v1.0.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **pedrocmota.workspace-formatter-multiple** v1.0.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **pogacic.vscode-proto3-upkeep** v0.5.8 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **serialt.sugar-proto** v0.5.7 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **shellingye.jx3-emmylua-cppNative** v0.5.33 → BENIGN _(tier unknown; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **shellingye.jx3-emmylua** v0.5.25 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **siehc.vscode-proto3-rebirth** v0.5.7 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **SymbiozTechnologie.mia-assistant** v1.0.1 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **SymbiozTechnologie.mia-assistant** v1.0.2 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **SymbiozTechnologie.mia-assistant** v1.0.5 → BENIGN _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **test-ui-harry.harry-test** v0.0.1 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.harry-test** v0.0.2 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.preview-beta** v1.1.0 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.preview-beta** v1.1.1 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.preview-beta** v1.1.2 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.preview-beta** v1.1.3 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.preview-beta** v1.1.4 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.preview-beta** v1.1.5 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.preview-beta** v1.1.8 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.test-ui-beta** v2.2.16 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **test-ui-harry.test-ui-beta** v2.2.18 → SUSPICIOUS _(tier suspect, "Untrustworthy"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **TheRealGorgan.vscode-google-tasks-extension** v1.0.2 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **tylerdotrar.goodbyeworldng** v0.6.9 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **vivo-ai-code.vivo-ai-code-vscode** v1.2.2 → BENIGN _(tier code, "Malicious"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **WilliamAsaba.dev-time-tracker** v2.1.9 → SUSPICIOUS _(tier code, "Malware"; events=0 net=0 exec=0 timers=0 static=SUSPICIOUS)_
+- ❌ **worma.worma-vscode** v0.0.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **worma.worma-vscode** v0.1.0 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+- ❌ **worma.worma-vscode** v0.1.1 → BENIGN _(tier policy, "Impersonation"; events=0 net=0 exec=0 timers=0 static=BENIGN)_
+
+### UNRECOGNISED_BEHAVIOUR  (32)
+
+**Cause:** Observed 8 event(s) that no rule scored as malicious. Review the sample's execution-log.json.
+
+- ❌ **adwaitkeshari.lull** v0.1.1 → BENIGN _(tier code, "Malware"; events=8 net=0 exec=0 timers=605 static=BENIGN)_
+- ❌ **CloudianApp.CloudianCompanion-56d02aa8da72** v0.0.1 → BENIGN _(tier code, "Malware"; events=12 net=0 exec=0 timers=1 static=BENIGN)_
+- ❌ **devcodaro.codaro-pro** v3.5.2 → BENIGN _(tier code, "Malware"; events=51 net=0 exec=0 timers=302 static=BENIGN)_
+- ❌ **devcodaro.codaro-pro** v3.5.1 → BENIGN _(tier code, "Malware"; events=51 net=0 exec=0 timers=302 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.1.0 → BENIGN _(tier code, "Malware"; events=168 net=0 exec=0 timers=151 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.11 → BENIGN _(tier code, "Malware"; events=264 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.10 → BENIGN _(tier code, "Malware"; events=264 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.1 → BENIGN _(tier code, "Malware"; events=268 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.12 → BENIGN _(tier code, "Malware"; events=264 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.14 → BENIGN _(tier code, "Malware"; events=264 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.15 → BENIGN _(tier code, "Malware"; events=264 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.16 → BENIGN _(tier code, "Malware"; events=264 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.17 → BENIGN _(tier code, "Malware"; events=262 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.19 → BENIGN _(tier code, "Malware"; events=262 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.20 → BENIGN _(tier code, "Malware"; events=262 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.21 → BENIGN _(tier code, "Malware"; events=262 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.22 → BENIGN _(tier code, "Malware"; events=262 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.10.9 → BENIGN _(tier code, "Malware"; events=264 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.12.1 → BENIGN _(tier code, "Malware"; events=250 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.12.4 → BENIGN _(tier code, "Malware"; events=250 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.12.5 → BENIGN _(tier code, "Malware"; events=250 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.12.6 → BENIGN _(tier code, "Malware"; events=250 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.2.1 → BENIGN _(tier code, "Malware"; events=208 net=0 exec=0 timers=151 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.12.7 → BENIGN _(tier code, "Malware"; events=250 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.9.10 → BENIGN _(tier code, "Malware"; events=276 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.9.12 → BENIGN _(tier code, "Malware"; events=276 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.9.13 → BENIGN _(tier code, "Malware"; events=268 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.9.5 → BENIGN _(tier code, "Malware"; events=218 net=0 exec=0 timers=151 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.9.8 → BENIGN _(tier code, "Malware"; events=264 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.9.7 → BENIGN _(tier code, "Malware"; events=218 net=0 exec=0 timers=151 static=BENIGN)_
+- ❌ **OIOXO.oioxo-vscode** v0.9.9 → BENIGN _(tier code, "Malware"; events=276 net=0 exec=0 timers=198 static=BENIGN)_
+- ❌ **solderspark.spark-code** v0.49.11 → BENIGN _(tier code, "Malware"; events=125 net=0 exec=0 timers=2 static=BENIGN)_
