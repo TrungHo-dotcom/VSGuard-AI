@@ -1,0 +1,159 @@
+{
+  "generated_at": "2026-08-13T13:34:32.870Z",
+  "versions": {
+    "static": "3.0.0",
+    "sandbox": "3.0.0",
+    "orchestrator": "3.0.0"
+  },
+  "options": {
+    "concurrency": 8,
+    "limit": null,
+    "latest_only": false,
+    "static_only": false,
+    "platform": "win32"
+  },
+  "datasets": [
+    {
+      "dataset": "datadog-malicious",
+      "group": "datadog",
+      "analysed": 138,
+      "stats": {
+        "root": "C:\\Users\\Khanh\\Downloads\\VSGuard AI\\Dataset_Malicious",
+        "kind": "datadog-malicious",
+        "dataset": "datadog-malicious",
+        "vsix_found": 134,
+        "unpacked_dirs_found": 4,
+        "total_discovered": 138,
+        "selected": 138,
+        "excluded_by_tier": 0,
+        "tiers": {
+          "code": 138
+        },
+        "classifications": {
+          "DataDog malicious": 138
+        }
+      }
+    },
+    {
+      "dataset": "datadog-benign",
+      "group": "datadog",
+      "analysed": 100,
+      "stats": {
+        "root": "C:\\Users\\Khanh\\Downloads\\VSGuard AI\\Dataset_Benign",
+        "kind": "datadog-benign",
+        "dataset": "datadog-benign",
+        "vsix_found": 100,
+        "unpacked_dirs_found": 0,
+        "total_discovered": 100,
+        "selected": 100,
+        "excluded_by_tier": 0,
+        "tiers": {
+          "benign": 100
+        },
+        "classifications": {
+          "DataDog benign": 100
+        }
+      }
+    }
+  ],
+  "sections": [
+    {
+      "title": "DataDog corpus (Dataset_Malicious + Dataset_Benign)",
+      "note": "Balanced ground truth from the corpus itself: every sample under the malicious tree is a confirmed malicious package, every sample under the benign tree is a top-installed marketplace extension. This is the primary precision/recall measurement.",
+      "n": 238,
+      "positives": 138,
+      "negatives": 100,
+      "strict": {
+        "TP": 55,
+        "FP": 11,
+        "FN": 83,
+        "TN": 89,
+        "total": 238,
+        "errors": 0,
+        "precision": 0.8333333333333334,
+        "recall": 0.39855072463768115,
+        "f1": 0.5392156862745098,
+        "accuracy": 0.6050420168067226,
+        "mcc": 0.3181453069832489
+      },
+      "triage": {
+        "TP": 68,
+        "FP": 39,
+        "FN": 70,
+        "TN": 61,
+        "total": 238,
+        "errors": 0,
+        "precision": 0.6355140186915887,
+        "recall": 0.4927536231884058,
+        "f1": 0.5551020408163265,
+        "accuracy": 0.542016806722689,
+        "mcc": 0.10195514602039422
+      },
+      "tiers": {
+        "code": {
+          "n": 138,
+          "malicious": 55,
+          "flagged": 68,
+          "benign": 70,
+          "error": 0
+        },
+        "benign": {
+          "n": 100,
+          "malicious": 11,
+          "flagged": 39,
+          "benign": 61,
+          "error": 0
+        }
+      }
+    },
+    {
+      "title": "Combined (all corpora pooled)",
+      "note": "Both datasets together, every VsMex removal reason counted as malicious.",
+      "n": 238,
+      "positives": 138,
+      "negatives": 100,
+      "strict": {
+        "TP": 55,
+        "FP": 11,
+        "FN": 83,
+        "TN": 89,
+        "total": 238,
+        "errors": 0,
+        "precision": 0.8333333333333334,
+        "recall": 0.39855072463768115,
+        "f1": 0.5392156862745098,
+        "accuracy": 0.6050420168067226,
+        "mcc": 0.3181453069832489
+      },
+      "triage": {
+        "TP": 68,
+        "FP": 39,
+        "FN": 70,
+        "TN": 61,
+        "total": 238,
+        "errors": 0,
+        "precision": 0.6355140186915887,
+        "recall": 0.4927536231884058,
+        "f1": 0.5551020408163265,
+        "accuracy": 0.542016806722689,
+        "mcc": 0.10195514602039422
+      },
+      "tiers": {
+        "code": {
+          "n": 138,
+          "malicious": 55,
+          "flagged": 68,
+          "benign": 70,
+          "error": 0
+        },
+        "benign": {
+          "n": 100,
+          "malicious": 11,
+          "flagged": 39,
+          "benign": 61,
+          "error": 0
+        }
+      }
+    }
+  ]
+}

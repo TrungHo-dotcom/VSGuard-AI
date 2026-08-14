@@ -497,6 +497,46 @@ function createHttpHook(protocol) {
 //  All access is logged.
 // ─────────────────────────────────────────────────────────────────────────────
 
+/**
+ * Is this fs.open()/fs.promises.open() `flags` argument read-only?
+ * Fails CLOSED: anything not recognisably a pure-read mode (an unfamiliar
+ * shape, a numeric flag combination we can't classify) is treated as
+ * write-intent and blocked, rather than passed through to the real fs.
+ */
+function isReadOnlyFsFlags(flags) {
+  if (flags == null) return true; // Node defaults fs.open's flags to 'r'
+  if (typeof flags === 'string') return /^(r|rs|sr)$/i.test(flags);
+  if (typeof flags === 'number') {
+    const c = require('fs').constants || {};
+    const writeBits = (c.O_WRONLY || 1) | (c.O_RDWR || 2) | (c.O_CREAT || 0x40) | (c.O_TRUNC || 0x200) | (c.O_APPEND || 0x400);
+    return (flags & writeBits) === 0;
+  }
+  return false;
+}
+
+/**
+ * A fake fs.WriteStream: same shape as createWriteStream()'s return value,
+ * but as an actual class so `new (require('fs').WriteStream)(path)` — which
+ * bypasses the createWriteStream() factory hook entirely — is ALSO
+ * contained, instead of leaking the real class through Object.assign.
+ */
+class FakeWriteStream extends EventEmitter {
+  constructor(filePath) {
+    super();
+    logEvent('fs', 'WriteStream', { path: String(filePath) }, 'CRITICAL');
+    this.path = filePath; this.writable = true; this.bytesWritten = 0;
+    setImmediate(() => this.emit('open', -1));
+  }
+  write(data, enc, cb) { if (typeof enc === 'function') cb = enc; if (typeof cb === 'function') cb(); return true; }
+  end(data, enc, cb) {
+    if (typeof data === 'function') cb = data; else if (typeof enc === 'function') cb = enc;
+    if (typeof cb === 'function') cb();
+    setImmediate(() => this.emit('finish'));
+  }
+  destroy() { return this; }
+  close(cb) { if (typeof cb === 'function') cb(); }
+}
+
 function createFsHook() {
   const real = require('fs');
 
@@ -505,7 +545,49 @@ function createFsHook() {
     return str;
   }
 
-  return Object.assign({}, real, {
+  // Low-level fd write path (open+write / open+writeSync): opening a file
+  // with write/append/create/truncate intent is refused up front — a FAKE
+  // fd is handed back instead of ever touching the real file — while a
+  // genuinely read-only open still reaches the real fs (taint-source reads
+  // must keep working). write()/writeSync() are ALSO unconditionally
+  // no-op'd regardless of which fd they're called with, as defense in depth.
+  const fakeFds = new Set();
+  let fakeFdCounter = 1e9;
+
+  const hooked = Object.assign({}, real, {
+    // ── Low-level fd write path — BLOCKED for write-intent opens ──────────
+    open(filePath, flags, mode, cb) {
+      if (typeof flags === 'function') { cb = flags; flags = 'r'; mode = undefined; }
+      else if (typeof mode === 'function') { cb = mode; mode = undefined; }
+      if (isReadOnlyFsFlags(flags)) return real.open(filePath, flags, mode, cb);
+      logEvent('fs', 'open', { path: String(filePath), flags: String(flags) }, 'CRITICAL');
+      const fd = fakeFdCounter++; fakeFds.add(fd);
+      if (typeof cb === 'function') setImmediate(() => cb(null, fd));
+    },
+    openSync(filePath, flags, mode) {
+      if (isReadOnlyFsFlags(flags)) return real.openSync(filePath, flags, mode);
+      logEvent('fs', 'openSync', { path: String(filePath), flags: String(flags) }, 'CRITICAL');
+      const fd = fakeFdCounter++; fakeFds.add(fd);
+      return fd;
+    },
+    write(fd, ...args) {
+      logEvent('fs', 'write', { fd }, 'CRITICAL');
+      const cb = args.find((a) => typeof a === 'function');
+      if (cb) setImmediate(() => cb(null, 0, Buffer.alloc(0)));
+    },
+    writeSync(fd) {
+      logEvent('fs', 'writeSync', { fd }, 'CRITICAL');
+      return 0;
+    },
+    close(fd, cb) {
+      if (fakeFds.has(fd)) { fakeFds.delete(fd); if (typeof cb === 'function') setImmediate(() => cb(null)); return; }
+      return real.close(fd, cb);
+    },
+    closeSync(fd) {
+      if (fakeFds.has(fd)) { fakeFds.delete(fd); return; }
+      return real.closeSync(fd);
+    },
+    WriteStream: FakeWriteStream,
     // ── Write operations — BLOCKED ────────────────────────────────────────
     writeFile(filePath, data, opts, cb) {
       logEvent('fs', 'writeFile', { path: String(filePath), data_preview: previewData(data), bytes: Buffer.isBuffer(data) ? data.length : String(data).length }, 'CRITICAL');
@@ -547,15 +629,10 @@ function createFsHook() {
       logEvent('fs', 'mkdirSync', { path: String(dirPath) }, 'INFO');
     },
     createWriteStream(filePath, opts) {
-      logEvent('fs', 'createWriteStream', { path: String(filePath) }, 'CRITICAL');
-      // Return a fake writable stream — does not write to disk
-      const stream = new EventEmitter();
-      stream.write    = (data, enc, cb) => { if (typeof cb === 'function') cb(); return true; };
-      stream.end      = (data, enc, cb) => { if (typeof cb === 'function') cb(); setImmediate(() => stream.emit('finish')); };
-      stream.writable = true;
-      stream.destroy  = () => {};
-      stream.close    = () => {};
-      return stream;
+      // Same FakeWriteStream class as the WriteStream override above, so
+      // both entry points (factory function and `new fs.WriteStream(...)`)
+      // are contained identically instead of diverging.
+      return new FakeWriteStream(filePath);
     },
 
     // ── Read operations — ALLOWED but logged + CLASSIFIED ─────────────────
@@ -576,6 +653,15 @@ function createFsHook() {
       return data;
     },
   });
+
+  // BUG FIX: `Object.assign({}, real, {...})` above copies `real.promises`
+  // (the actual, unhooked fs.promises API) onto the hooked object verbatim,
+  // since `promises` wasn't in the override list — every write through
+  // `require('fs').promises.*` reached the real filesystem. Replace it with
+  // the same hardened promises implementation used for `require('fs/promises')`,
+  // so both entry points are contained identically (single source of truth).
+  hooked.promises = createFsPromisesHook(hooked);
+  return hooked;
 }
 
 
@@ -763,6 +849,47 @@ function createDnsHook() {
       if (typeof opts === 'function') cb = opts;
       if (typeof cb === 'function') setImmediate(() => cb(null, ['::1']));
     },
+    // BUG FIX: these were previously left un-overridden, so Object.assign
+    // copied the REAL implementations through — resolveTxt in particular is
+    // a classic DNS-exfiltration primitive (chunked data via TXT records)
+    // that reached the real network with zero interception or logging.
+    resolveTxt(hostname, cb) {
+      logEvent('dns', 'resolveTxt', { hostname: String(hostname) }, 'CRITICAL');
+      try { DI.scanExfil('dns', String(hostname), logEvent); } catch (e) {}
+      if (typeof cb === 'function') setImmediate(() => cb(null, [[]]));
+    },
+    resolveMx(hostname, cb) {
+      logEvent('dns', 'resolveMx', { hostname: String(hostname) }, 'WARN');
+      if (typeof cb === 'function') setImmediate(() => cb(null, []));
+    },
+    resolveSrv(hostname, cb) {
+      logEvent('dns', 'resolveSrv', { hostname: String(hostname) }, 'WARN');
+      if (typeof cb === 'function') setImmediate(() => cb(null, []));
+    },
+    resolveCname(hostname, cb) {
+      logEvent('dns', 'resolveCname', { hostname: String(hostname) }, 'WARN');
+      if (typeof cb === 'function') setImmediate(() => cb(null, []));
+    },
+    resolveNs(hostname, cb) {
+      logEvent('dns', 'resolveNs', { hostname: String(hostname) }, 'WARN');
+      if (typeof cb === 'function') setImmediate(() => cb(null, []));
+    },
+    resolveSoa(hostname, cb) {
+      logEvent('dns', 'resolveSoa', { hostname: String(hostname) }, 'WARN');
+      if (typeof cb === 'function') setImmediate(() => cb(null, {}));
+    },
+    resolvePtr(hostname, cb) {
+      logEvent('dns', 'resolvePtr', { hostname: String(hostname) }, 'WARN');
+      if (typeof cb === 'function') setImmediate(() => cb(null, []));
+    },
+    resolveNaptr(hostname, cb) {
+      logEvent('dns', 'resolveNaptr', { hostname: String(hostname) }, 'WARN');
+      if (typeof cb === 'function') setImmediate(() => cb(null, []));
+    },
+    reverse(ip, cb) {
+      logEvent('dns', 'reverse', { ip: String(ip) }, 'WARN');
+      if (typeof cb === 'function') setImmediate(() => cb(null, []));
+    },
     Resolver: HookedResolver,
     promises: {
       lookup:   (hostname) => { logEvent('dns', 'promises.lookup', { hostname: String(hostname) }, 'WARN'); return Promise.resolve({ address: '127.0.0.1', family: 4 }); },
@@ -771,6 +898,110 @@ function createDnsHook() {
       Resolver: HookedResolver,
     },
   });
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  SECTION 8a-2 — tls / dgram / http2 Hooks
+//  BUG FIX: these three modules weren't intercepted at all previously (not in
+//  interceptMap, not in patchRequireCache), so `require('tls').connect()`,
+//  `require('dgram').createSocket()`, and `require('http2').connect()` all
+//  reached the real network with zero mediation — genuine, unmitigated
+//  egress paths alongside the http/https/net/dns/axios hooks. Built as
+//  plain fail-closed objects (child_process hook's pattern), not
+//  Object.assign over the real module, so nothing un-overridden leaks
+//  through.
+// ─────────────────────────────────────────────────────────────────────────────
+
+function createTlsHook() {
+  function fakeTlsSocket() {
+    const sock = new EventEmitter();
+    sock.write = () => true; sock.end = () => {}; sock.destroy = () => {}; sock.setEncoding = () => {};
+    sock.setTimeout = () => sock; sock.setKeepAlive = () => sock; sock.setNoDelay = () => sock;
+    sock.authorized = true; sock.encrypted = true;
+    sock.getPeerCertificate = () => ({});
+    setImmediate(() => sock.emit('secureConnect'));
+    return sock;
+  }
+  return {
+    connect(...args) {
+      const opts = (args[0] && typeof args[0] === 'object') ? args[0] : { host: args[0], port: args[1] };
+      logEvent('net', 'tls.connect', { host: String((opts && opts.host) || ''), port: opts && opts.port }, 'CRITICAL');
+      const cb = args.find((a) => typeof a === 'function');
+      const sock = fakeTlsSocket();
+      if (cb) setImmediate(cb);
+      return sock;
+    },
+    createServer(...args) {
+      logEvent('net', 'tls.createServer', {}, 'WARN');
+      const server = new EventEmitter();
+      server.listen = () => server; server.close = (cb) => { if (typeof cb === 'function') setImmediate(cb); };
+      return server;
+    },
+    TLSSocket: function TLSSocket() { return fakeTlsSocket(); },
+    checkServerIdentity: () => undefined,
+    rootCertificates: [],
+    getCiphers: () => [],
+    DEFAULT_CIPHERS: '',
+    createSecureContext: () => ({ context: {} }),
+  };
+}
+
+function createDgramHook() {
+  function fakeUdpSocket() {
+    const sock = new EventEmitter();
+    sock.send = (msg, ...rest) => {
+      const cb = rest.find((a) => typeof a === 'function');
+      logEvent('net', 'dgram.send', { bytes: Buffer.isBuffer(msg) ? msg.length : String(msg || '').length }, 'CRITICAL');
+      if (cb) setImmediate(() => cb(null));
+    };
+    sock.bind = (...rest) => { const cb = rest.find((a) => typeof a === 'function'); if (cb) setImmediate(cb); return sock; };
+    sock.close = (cb) => { if (typeof cb === 'function') setImmediate(cb); };
+    sock.address = () => ({ address: '0.0.0.0', port: 0, family: 'IPv4' });
+    sock.setBroadcast = () => {}; sock.setTTL = () => {}; sock.setMulticastTTL = () => {};
+    sock.addMembership = () => {}; sock.dropMembership = () => {};
+    return sock;
+  }
+  return {
+    createSocket(...args) {
+      logEvent('net', 'dgram.createSocket', {}, 'WARN');
+      return fakeUdpSocket();
+    },
+    Socket: function Socket() { return fakeUdpSocket(); },
+  };
+}
+
+function createHttp2Hook() {
+  return {
+    connect(authority, options, listener) {
+      logEvent('net', 'http2.connect', { authority: String(authority) }, 'CRITICAL');
+      const session = new EventEmitter();
+      session.request = (headers) => {
+        const stream = new EventEmitter();
+        stream.end = () => {}; stream.write = () => true; stream.close = () => {};
+        setImmediate(() => { stream.emit('response', { ':status': 200 }); stream.emit('end'); });
+        return stream;
+      };
+      session.close = (cb) => { if (typeof cb === 'function') setImmediate(cb); };
+      session.destroy = () => {};
+      const cb = typeof listener === 'function' ? listener : (typeof options === 'function' ? options : null);
+      if (cb) setImmediate(cb);
+      return session;
+    },
+    createServer() {
+      logEvent('net', 'http2.createServer', {}, 'WARN');
+      const server = new EventEmitter();
+      server.listen = () => server; server.close = (cb) => { if (typeof cb === 'function') setImmediate(cb); };
+      return server;
+    },
+    createSecureServer() {
+      logEvent('net', 'http2.createSecureServer', {}, 'WARN');
+      const server = new EventEmitter();
+      server.listen = () => server; server.close = (cb) => { if (typeof cb === 'function') setImmediate(cb); };
+      return server;
+    },
+    constants: (function () { try { return require('http2').constants; } catch (e) { return {}; } })(),
+  };
 }
 
 
@@ -913,6 +1144,13 @@ function buildSandboxedRequire(mainFile, hooked) {
     // time, bypassing our require.cache patch of http/https. Hooking axios at the
     // top level is the only reliable intercept point.
     'axios':          () => hooked.axios,
+    // BUG FIX: these three were previously absent from interceptMap entirely,
+    // so require('tls')/require('dgram')/require('http2') fell through to
+    // baseRequire() — the REAL, unhooked module — a genuine unmitigated
+    // network-egress path.
+    'tls':            () => hooked.tls,
+    'dgram':          () => hooked.dgram,
+    'http2':          () => hooked.http2,
   };
 
   function sandboxedRequire(moduleName) {
@@ -967,7 +1205,67 @@ function buildSandboxedRequire(mainFile, hooked) {
 //  Assembles the full sandbox context: globals + hooked require + hooked eval
 // ─────────────────────────────────────────────────────────────────────────────
 
+/**
+ * BUG FIX: the raw `process` object injected into the vm context exposed
+ * `process.mainModule.require` (a require path that bypasses
+ * sandboxedRequire/interceptMap entirely) and `process.binding`/
+ * `_linkedBinding`/`dlopen` (native-addon loading — arbitrary native code,
+ * completely outside JS-level hook mediation). Deny-list just those
+ * specific escape hatches via a Proxy; everything else on `process` behaves
+ * exactly as before (this is deliberately NOT an allow-list, to avoid
+ * silently breaking any other property/method legitimate or malicious code
+ * currently reads).
+ */
+function buildRestrictedProcess() {
+  const DENIED = new Set([
+    'mainModule', 'binding', '_linkedBinding', 'dlopen', 'moduleLoadList',
+    '_debugProcess', '_debugEnd', '_startProfilerIdleNotifier', '_stopProfilerIdleNotifier',
+  ]);
+  return new Proxy(process, {
+    get(target, prop, receiver) {
+      if (DENIED.has(prop)) return undefined;
+      const v = Reflect.get(target, prop, target);
+      return typeof v === 'function' ? v.bind(target) : v;
+    },
+    set(target, prop, value) {
+      if (DENIED.has(prop)) return true; // silently ignore attempts to (re)install them
+      target[prop] = value;
+      return true;
+    },
+    has(target, prop) { return DENIED.has(prop) ? false : Reflect.has(target, prop); },
+  });
+}
+
+/**
+ * BUG FIX: Object.prototype / Array.prototype / Function.prototype (and a
+ * few siblings) are among the host intrinsics aliased directly into the vm
+ * context below for instanceof/type-check compatibility across the vm
+ * boundary. Because they're the SAME live objects as the host's real
+ * prototypes, `Object.prototype.polluted = 1` executed by detonated code
+ * pollutes this process's actual prototypes — corrupting VEXGuard's own
+ * subsequent code (report generation, later requires) for the rest of this
+ * run. Freezing them preserves every constructor's identity (so
+ * `x instanceof Array` etc. still works exactly as before) while making any
+ * write to the prototype itself a silent no-op (or a thrown TypeError in
+ * strict-mode code) instead of a real mutation. Existing built-in methods
+ * remain fully callable — freezing only blocks reassigning/adding/deleting
+ * properties on the prototype object, not invoking what's already there.
+ * Safe to leave frozen for the rest of this process's life: sandbox.js is a
+ * disposable, one-sample-per-process child (see runNode() in VEXGuard.js),
+ * so there is no cross-sample or orchestrator-process impact.
+ */
+let _prototypesFrozen = false;
+function freezeGlobalPrototypes() {
+  if (_prototypesFrozen) return;
+  _prototypesFrozen = true;
+  for (const ctor of [Object, Array, Function, String, Number, Boolean, RegExp, Error, Promise, Map, Set]) {
+    try { Object.freeze(ctor.prototype); } catch (e) {}
+  }
+}
+
 function buildVmContext(extensionDir, mainFile, hooked, tm) {
+  freezeGlobalPrototypes();
+
   // Pass the actual entry file so relative requires resolve from its directory
   const sandboxedRequire = buildSandboxedRequire(mainFile, hooked);
   const fakeModule       = { exports: {}, id: extensionDir, filename: extensionDir, loaded: false, parent: null, children: [], paths: [] };
@@ -985,7 +1283,7 @@ function buildVmContext(extensionDir, mainFile, hooked, tm) {
 
     // ── Standard Node.js / browser globals ─────────────────────────────────
     console,
-    process,
+    process: buildRestrictedProcess(),
     Buffer,
     URL,
     URLSearchParams,
@@ -1066,13 +1364,27 @@ function buildVmContext(extensionDir, mainFile, hooked, tm) {
     // ── Intercepted Function constructor ────────────────────────────────────
     Function: new Proxy(Function, {
       construct(target, args) {
+        const bodySrc = args.length > 0 ? String(args[args.length - 1]) : '';
         if (args.length > 0) {
           logEvent('eval', 'new Function()', {
-            body_length: String(args[args.length - 1]).length,
-            body_preview: String(args[args.length - 1]).slice(0, 600),
+            body_length: bodySrc.length,
+            body_preview: bodySrc.slice(0, 600),
           }, 'CRITICAL');
         }
-        return new target(...args);
+        // BUG FIX: `new target(...args)` invoked the HOST's real Function
+        // constructor, so the resulting function's body executed in the
+        // host V8 realm (sloppy-mode `this` resolves to the real
+        // globalThis) — a second, independent escape from the instrumented
+        // surface, alongside eval() above. Compile and run it inside the
+        // SAME vm context instead, exactly mirroring hookedEval.
+        const params = args.slice(0, -1).map(String);
+        const src = `(function anonymous(${params.join(',')}) {\n${bodySrc}\n})`;
+        try {
+          return vm.runInContext(src, context, { timeout: 5000 });
+        } catch (e) {
+          process.stderr.write(`  [SANDBOX] new Function() error: ${e.message}\n`);
+          return function () {};
+        }
       },
       apply(target, thisArg, args) { return target.apply(thisArg, args); },
     }),
@@ -1192,10 +1504,29 @@ function patchRequireCache(extensionDir, hooked) {
     'http':          hooked.http,
     'https':         hooked.https,
     'fs':            hooked.fs,
+    'fs/promises':   hooked.fsPromises,
     'os':            hooked.os,
     'net':           hooked.net,
     'dns':           hooked.dns,
     'crypto':        hooked.crypto,
+    'tls':           hooked.tls,
+    'dgram':         hooked.dgram,
+    'http2':         hooked.http2,
+    // node:-prefixed specifiers resolve to a DIFFERENT require.cache key
+    // than the bare specifier, so a nested dependency using either form
+    // must be covered separately — previously only the bare form was.
+    'node:fs':            hooked.fs,
+    'node:fs/promises':   hooked.fsPromises,
+    'node:child_process': hooked.childProcess,
+    'node:http':           hooked.http,
+    'node:https':          hooked.https,
+    'node:os':             hooked.os,
+    'node:net':            hooked.net,
+    'node:dns':            hooked.dns,
+    'node:crypto':         hooked.crypto,
+    'node:tls':            hooked.tls,
+    'node:dgram':          hooked.dgram,
+    'node:http2':          hooked.http2,
   };
 
   for (const [name, hookedMod] of Object.entries(patches)) {
@@ -1375,7 +1706,29 @@ function createFsPromisesHook(fsHook) {
     lstat:      (p, opts)         => require('fs').promises.lstat(p, opts),
     readdir:    (p, opts)         => require('fs').promises.readdir(p, opts),
     access:     (p, mode)         => require('fs').promises.access(p, mode),
-    open:       (p, flags, mode)  => require('fs').promises.open(p, flags, mode),
+    // BUG FIX: this used to unconditionally pass through to the REAL
+    // fs.promises.open(), returning a real FileHandle whose .write()/
+    // .writeFile()/.truncate() reach real disk — a genuine `fs.promises`
+    // write path was open regardless of every other hardening here. Only a
+    // read-only open still reaches the real fs; any write/append/create/
+    // truncate intent gets a fake handle whose mutating methods are no-ops.
+    open: async (p, flags, mode) => {
+      if (isReadOnlyFsFlags(flags)) return require('fs').promises.open(p, flags, mode);
+      logEvent('fs', 'promises.open', { path: String(p), flags: String(flags) }, 'CRITICAL');
+      return {
+        fd: -1,
+        write:     async () => ({ bytesWritten: 0, buffer: Buffer.alloc(0) }),
+        writeFile: async () => undefined,
+        truncate:  async () => undefined,
+        chmod:     async () => undefined,
+        chown:     async () => undefined,
+        sync:      async () => undefined,
+        close:     async () => undefined,
+        read:      async () => ({ bytesRead: 0, buffer: Buffer.alloc(0) }),
+        readFile:  async () => Buffer.alloc(0),
+        stat:      async () => ({}),
+      };
+    },
     copyFile:   (src, dst, flags) => { logEvent('fs', 'promises.copyFile', { src: String(src), dst: String(dst) }, 'WARN'); return Promise.resolve(); },
     rm:         (p, opts)         => { logEvent('fs', 'promises.rm', { path: String(p) }, 'WARN'); return Promise.resolve(); },
     rmdir:      (p, opts)         => { logEvent('fs', 'promises.rmdir', { path: String(p) }, 'WARN'); return Promise.resolve(); },
@@ -1988,6 +2341,17 @@ async function runSandbox(extensionDir, outputLogPath) {
     DECOY_PROFILE.cleanup();
   };
 
+  // BUG FIX: previously restoreEnv() was only called from four explicit
+  // return points below, not from a blanket try/finally — an uncaught
+  // exception anywhere in between (VM execution, activate(), event
+  // simulation, fast-forward, report generation) skipped cleanup entirely,
+  // leaving the decoy profile directory on disk. Wrapping the whole
+  // function body guarantees cleanup runs on every exit path. The existing
+  // explicit restoreEnv() calls below are now redundant but harmless
+  // (DECOY_PROFILE.cleanup() is idempotent — fs.rmSync with force:true) and
+  // are left in place rather than restructured, to minimise the diff.
+  try {
+
   // ── 15.1 Load extension metadata ─────────────────────────────────────────
   let pkg, mainFile;
   try {
@@ -2027,6 +2391,10 @@ async function runSandbox(extensionDir, outputLogPath) {
     dns:          createDnsHook(),
     crypto:       createCryptoHook(),
     axios:        createAxiosHook(),   // FIX (Bug 3): intercept axios network calls
+    // BUG FIX: previously unhooked entirely — real egress paths.
+    tls:          createTlsHook(),
+    dgram:        createDgramHook(),
+    http2:        createHttp2Hook(),
   };
 
   // ── 15.2b Anti-analysis cloaking + Time Machine (Tasks 1 & 2) ─────────────
@@ -2034,7 +2402,8 @@ async function runSandbox(extensionDir, outputLogPath) {
   // every other hook) reports native code. The Function.prototype.toString guard
   // installed in patchRequireCache also defeats the reflective bypass.
   for (const mod of [hooked.childProcess, hooked.http, hooked.https, hooked.fs,
-                     hooked.os, hooked.net, hooked.dns, hooked.crypto, hooked.axios]) {
+                     hooked.os, hooked.net, hooked.dns, hooked.crypto, hooked.axios,
+                     hooked.tls, hooked.dgram, hooked.http2]) {
     spoofModuleFunctions(mod);
   }
   // Instantiate the virtual-clock engine for this run. Its timer/Date globals are
@@ -2146,6 +2515,22 @@ async function runSandbox(extensionDir, outputLogPath) {
   for (const [k, v] of [['plan', 'premium'], ['tier', 'pro'], ['activated', true], ['licensed', true],
                         ['isPro', true], ['firstRun', true], ['installed', false], ['hasShownWelcome', false]]) {
     mockCtx.globalState.update(k, v);
+  }
+  // BUG FIX: only globalState was ever pre-seeded above. Real extensions
+  // inconsistently pick globalState / workspaceState / secrets for this
+  // exact kind of gating, so a payload gated on `context.secrets.get(...)`
+  // or `context.workspaceState.get(...)` previously always saw
+  // undefined/falsy and took its benign branch — silently never detonating.
+  // Mirror the same gate-opening key set into both.
+  for (const k of ['secure_code_token', 'token', 'accessToken', 'authToken', 'apiKey', 'api_key',
+                   'licenseKey', 'license', 'sessionToken', 'userId', 'auth', 'jwt']) {
+    mockCtx.workspaceState.update(k, HARNESS_TOKEN);
+    mockCtx.secrets.store(k, HARNESS_TOKEN);
+  }
+  mockCtx.workspaceState.update('secure_code_plan', 'premium');
+  for (const [k, v] of [['plan', 'premium'], ['tier', 'pro'], ['activated', true], ['licensed', true],
+                        ['isPro', true], ['firstRun', true], ['installed', false], ['hasShownWelcome', false]]) {
+    mockCtx.workspaceState.update(k, v);
   }
 
   if (typeof extensionExports.activate === 'function') {
@@ -2287,13 +2672,35 @@ async function runSandbox(extensionDir, outputLogPath) {
         ['onDidOpenTerminal',              mockTerminal],
         ['onDidChangeActiveTerminal',      mockTerminal],
         ['onDidStartDebugSession',         { id: 'decoy-debug-1', type: 'node', name: 'Launch' }],
+        ['onDidChangeActiveDebugSession',  { id: 'decoy-debug-1', type: 'node', name: 'Launch' }],
+        ['onDidReceiveDebugSessionCustomEvent', { session: { id: 'decoy-debug-1' }, event: 'output', body: {} }],
+        ['onDidChangeBreakpoints',         { added: [], removed: [], changed: [] }],
         ['onDidTerminateDebugSession',     { id: 'decoy-debug-1', type: 'node', name: 'Launch' }],
         ['onDidStartTask',                 { execution: { task: { name: 'build' } } }],
+        ['onDidStartTaskProcess',          { execution: { task: { name: 'build' } }, processId: 4242 }],
+        ['onDidEndTaskProcess',            { execution: { task: { name: 'build' } }, processId: 4242, exitCode: 0 }],
         ['onDidEndTask',                   { execution: { task: { name: 'build' } } }],
         ['onDidChangeSessions',            { provider: { id: 'github', label: 'GitHub' } }],
         ['extensionsOnDidChange',          undefined],
+        ['onWillCreateFiles',              { files: [mockUri], waitUntil: () => {} }],
         ['onDidOpenNotebookDocument',      { uri: mockUri, notebookType: 'jupyter', cellCount: 1, getCells: () => [] }],
+        ['onWillSaveNotebookDocument',     { notebook: { uri: mockUri, notebookType: 'jupyter' }, reason: 1, waitUntil: () => {} }],
+        ['onDidChangeNotebookDocument',    { notebook: { uri: mockUri, notebookType: 'jupyter' }, contentChanges: [], cellChanges: [] }],
         ['onDidSaveNotebookDocument',      { uri: mockUri, notebookType: 'jupyter', cellCount: 1, getCells: () => [] }],
+        ['onDidChangeNotebookCellExecutionState', { cell: {}, state: 2 }],
+        ['onDidChangeDiagnostics',         { uris: [mockUri] }],
+        ['onDidChangeTelemetryEnabled',    true],
+        ['onDidChangeLogLevel',            3],
+        ['onDidChangeShell',               'C:\\WINDOWS\\System32\\cmd.exe'],
+        ['onDidChangeChatModels',          undefined],
+        ['onDidChangeTabGroups',           { changed: [], opened: [], closed: [] }],
+        ['onDidChangeTabs',                { changed: [], opened: [], closed: [] }],
+        ['onDidChangeTextEditorViewColumn',    { textEditor: mockEditor, viewColumn: 1 }],
+        ['onDidChangeTextEditorVisibleRanges', { textEditor: mockEditor, visibleRanges: [] }],
+        ['onDidChangeTextEditorOptions',       { textEditor: mockEditor, options: {} }],
+        ['onWillRenameFiles',              { files: [{ oldUri: mockUri, newUri: mockUri }], waitUntil: () => {} }],
+        ['onWillDeleteFiles',              { files: [mockUri], waitUntil: () => {} }],
+        ['onDidCloseNotebookDocument',     { uri: mockUri, notebookType: 'jupyter', cellCount: 1, getCells: () => [] }],
         ['onDidCloseTextDocument',         mockDoc],
         ['onDidCloseTerminal',             mockTerminal],
       ];
@@ -2510,6 +2917,9 @@ async function runSandbox(extensionDir, outputLogPath) {
 
   // -- 15.11 Tear down the decoy profile and restore the real environment --
   restoreEnv();
+  } finally {
+    restoreEnv();
+  }
 }
 
 

@@ -1,0 +1,596 @@
+{
+  "generated_at": "2026-08-13T14:50:43.033085+00:00",
+  "sections": [
+    {
+      "name": "DataDog corpus",
+      "n": 238,
+      "rules": {
+        "STRICT": {
+          "tp": 55,
+          "fp": 11,
+          "fn": 83,
+          "tn": 89,
+          "n": 238,
+          "precision": {
+            "point": 0.8333333333333334,
+            "lo": 0.7256941288004796,
+            "hi": 0.9043041665238262,
+            "n": 66
+          },
+          "recall": {
+            "point": 0.39855072463768115,
+            "lo": 0.3206787413341301,
+            "hi": 0.4819177616009137,
+            "n": 138
+          },
+          "specificity": {
+            "point": 0.89,
+            "lo": 0.8136870349691969,
+            "hi": 0.9374580364293543,
+            "n": 100
+          },
+          "bootstrap": {
+            "f1": {
+              "mean": 0.5393719680011925,
+              "lo": 0.4555555555555555,
+              "hi": 0.6206975279483545
+            },
+            "mcc": {
+              "mean": 0.31808757796358955,
+              "lo": 0.21009195802704103,
+              "hi": 0.42561419988579524
+            },
+            "balanced_accuracy": {
+              "mean": 0.6445552353401772,
+              "lo": 0.5944090246133664,
+              "hi": 0.6962667231529627
+            }
+          }
+        },
+        "TRIAGE": {
+          "tp": 68,
+          "fp": 39,
+          "fn": 70,
+          "tn": 61,
+          "n": 238,
+          "precision": {
+            "point": 0.6355140186915887,
+            "lo": 0.5410961319079854,
+            "hi": 0.7205388222738489,
+            "n": 107
+          },
+          "recall": {
+            "point": 0.4927536231884058,
+            "lo": 0.41067407358413544,
+            "hi": 0.5752256766255107,
+            "n": 138
+          },
+          "specificity": {
+            "point": 0.61,
+            "lo": 0.5120301704584073,
+            "hi": 0.6998312599360558,
+            "n": 100
+          },
+          "bootstrap": {
+            "f1": {
+              "mean": 0.5545883055601476,
+              "lo": 0.474989406779661,
+              "hi": 0.6254944148073919
+            },
+            "mcc": {
+              "mean": 0.10134109354595527,
+              "lo": -0.026803592122556216,
+              "hi": 0.22212867503337522
+            },
+            "balanced_accuracy": {
+              "mean": 0.5510736249971743,
+              "lo": 0.4860755459173718,
+              "hi": 0.6113238884114456
+            }
+          }
+        }
+      },
+      "auc": {
+        "roc_auc": 0.6127898550724638,
+        "pr_auc": 0.7211965872654166
+      },
+      "ablation": {
+        "static_only": {
+          "tp": 47,
+          "fp": 11,
+          "fn": 91,
+          "tn": 89,
+          "precision": 0.8103448275862069,
+          "recall": 0.34057971014492755
+        },
+        "dynamic_only": {
+          "tp": 39,
+          "fp": 0,
+          "fn": 99,
+          "tn": 100,
+          "precision": 1.0,
+          "recall": 0.2826086956521739
+        },
+        "combined": {
+          "tp": 55,
+          "fp": 11,
+          "fn": 83,
+          "tn": 89,
+          "precision": 0.8333333333333334,
+          "recall": 0.39855072463768115
+        },
+        "corroboration_dependency": {
+          "strict_true_positives": 55,
+          "decided_by_corroboration": 0,
+          "fraction": 0.0
+        }
+      },
+      "family_recall": [
+        {
+          "families": "(uncategorised)",
+          "n": 91,
+          "caught": 14,
+          "recall": 0.15384615384615385
+        },
+        {
+          "families": "downloader",
+          "n": 18,
+          "caught": 18,
+          "recall": 1.0
+        },
+        {
+          "families": "c2",
+          "n": 10,
+          "caught": 9,
+          "recall": 0.9
+        },
+        {
+          "families": "stealer",
+          "n": 6,
+          "caught": 3,
+          "recall": 0.5
+        },
+        {
+          "families": "reverse_shell",
+          "n": 6,
+          "caught": 6,
+          "recall": 1.0
+        },
+        {
+          "families": "obfuscated",
+          "n": 4,
+          "caught": 2,
+          "recall": 0.5
+        },
+        {
+          "families": "dropper",
+          "n": 3,
+          "caught": 3,
+          "recall": 1.0
+        }
+      ]
+    },
+    {
+      "name": "VsMex code-level subset (primary)",
+      "n": 100,
+      "rules": {
+        "STRICT": {
+          "tp": 0,
+          "fp": 11,
+          "fn": 0,
+          "tn": 89,
+          "n": 100,
+          "precision": {
+            "point": 0.0,
+            "lo": 0.0,
+            "hi": 0.2588329669680318,
+            "n": 11
+          },
+          "recall": {
+            "point": null,
+            "lo": null,
+            "hi": null,
+            "n": 0
+          },
+          "specificity": {
+            "point": 0.89,
+            "lo": 0.8136870349691969,
+            "hi": 0.9374580364293543,
+            "n": 100
+          },
+          "bootstrap": {
+            "f1": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0
+            },
+            "mcc": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0
+            },
+            "balanced_accuracy": {
+              "mean": 0.4451175,
+              "lo": 0.414875,
+              "hi": 0.475
+            }
+          }
+        },
+        "TRIAGE": {
+          "tp": 0,
+          "fp": 39,
+          "fn": 0,
+          "tn": 61,
+          "n": 100,
+          "precision": {
+            "point": 0.0,
+            "lo": 6.938893903907228e-18,
+            "hi": 0.08966685370757144,
+            "n": 39
+          },
+          "recall": {
+            "point": null,
+            "lo": null,
+            "hi": null,
+            "n": 0
+          },
+          "specificity": {
+            "point": 0.61,
+            "lo": 0.5120301704584073,
+            "hi": 0.6998312599360558,
+            "n": 100
+          },
+          "bootstrap": {
+            "f1": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0
+            },
+            "mcc": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0
+            },
+            "balanced_accuracy": {
+              "mean": 0.3042425,
+              "lo": 0.255,
+              "hi": 0.35
+            }
+          }
+        }
+      },
+      "auc": null,
+      "ablation": {
+        "static_only": {
+          "tp": 0,
+          "fp": 11,
+          "fn": 0,
+          "tn": 89,
+          "precision": 0.0,
+          "recall": null
+        },
+        "dynamic_only": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 100,
+          "precision": null,
+          "recall": null
+        },
+        "combined": {
+          "tp": 0,
+          "fp": 11,
+          "fn": 0,
+          "tn": 89,
+          "precision": 0.0,
+          "recall": null
+        },
+        "corroboration_dependency": {
+          "strict_true_positives": 0,
+          "decided_by_corroboration": 0,
+          "fraction": null
+        }
+      },
+      "family_recall": []
+    },
+    {
+      "name": "VsMex full corpus (pessimistic bound)",
+      "n": 100,
+      "rules": {
+        "STRICT": {
+          "tp": 0,
+          "fp": 11,
+          "fn": 0,
+          "tn": 89,
+          "n": 100,
+          "precision": {
+            "point": 0.0,
+            "lo": 0.0,
+            "hi": 0.2588329669680318,
+            "n": 11
+          },
+          "recall": {
+            "point": null,
+            "lo": null,
+            "hi": null,
+            "n": 0
+          },
+          "specificity": {
+            "point": 0.89,
+            "lo": 0.8136870349691969,
+            "hi": 0.9374580364293543,
+            "n": 100
+          },
+          "bootstrap": {
+            "f1": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0
+            },
+            "mcc": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0
+            },
+            "balanced_accuracy": {
+              "mean": 0.4451175,
+              "lo": 0.414875,
+              "hi": 0.475
+            }
+          }
+        },
+        "TRIAGE": {
+          "tp": 0,
+          "fp": 39,
+          "fn": 0,
+          "tn": 61,
+          "n": 100,
+          "precision": {
+            "point": 0.0,
+            "lo": 6.938893903907228e-18,
+            "hi": 0.08966685370757144,
+            "n": 39
+          },
+          "recall": {
+            "point": null,
+            "lo": null,
+            "hi": null,
+            "n": 0
+          },
+          "specificity": {
+            "point": 0.61,
+            "lo": 0.5120301704584073,
+            "hi": 0.6998312599360558,
+            "n": 100
+          },
+          "bootstrap": {
+            "f1": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0
+            },
+            "mcc": {
+              "mean": 0.0,
+              "lo": 0.0,
+              "hi": 0.0
+            },
+            "balanced_accuracy": {
+              "mean": 0.3042425,
+              "lo": 0.255,
+              "hi": 0.35
+            }
+          }
+        }
+      },
+      "auc": null,
+      "ablation": {
+        "static_only": {
+          "tp": 0,
+          "fp": 11,
+          "fn": 0,
+          "tn": 89,
+          "precision": 0.0,
+          "recall": null
+        },
+        "dynamic_only": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "tn": 100,
+          "precision": null,
+          "recall": null
+        },
+        "combined": {
+          "tp": 0,
+          "fp": 11,
+          "fn": 0,
+          "tn": 89,
+          "precision": 0.0,
+          "recall": null
+        },
+        "corroboration_dependency": {
+          "strict_true_positives": 0,
+          "decided_by_corroboration": 0,
+          "fraction": null
+        }
+      },
+      "family_recall": []
+    },
+    {
+      "name": "Combined (all corpora pooled)",
+      "n": 238,
+      "rules": {
+        "STRICT": {
+          "tp": 55,
+          "fp": 11,
+          "fn": 83,
+          "tn": 89,
+          "n": 238,
+          "precision": {
+            "point": 0.8333333333333334,
+            "lo": 0.7256941288004796,
+            "hi": 0.9043041665238262,
+            "n": 66
+          },
+          "recall": {
+            "point": 0.39855072463768115,
+            "lo": 0.3206787413341301,
+            "hi": 0.4819177616009137,
+            "n": 138
+          },
+          "specificity": {
+            "point": 0.89,
+            "lo": 0.8136870349691969,
+            "hi": 0.9374580364293543,
+            "n": 100
+          },
+          "bootstrap": {
+            "f1": {
+              "mean": 0.5393719680011925,
+              "lo": 0.4555555555555555,
+              "hi": 0.6206975279483545
+            },
+            "mcc": {
+              "mean": 0.31808757796358955,
+              "lo": 0.21009195802704103,
+              "hi": 0.42561419988579524
+            },
+            "balanced_accuracy": {
+              "mean": 0.6445552353401772,
+              "lo": 0.5944090246133664,
+              "hi": 0.6962667231529627
+            }
+          }
+        },
+        "TRIAGE": {
+          "tp": 68,
+          "fp": 39,
+          "fn": 70,
+          "tn": 61,
+          "n": 238,
+          "precision": {
+            "point": 0.6355140186915887,
+            "lo": 0.5410961319079854,
+            "hi": 0.7205388222738489,
+            "n": 107
+          },
+          "recall": {
+            "point": 0.4927536231884058,
+            "lo": 0.41067407358413544,
+            "hi": 0.5752256766255107,
+            "n": 138
+          },
+          "specificity": {
+            "point": 0.61,
+            "lo": 0.5120301704584073,
+            "hi": 0.6998312599360558,
+            "n": 100
+          },
+          "bootstrap": {
+            "f1": {
+              "mean": 0.5545883055601476,
+              "lo": 0.474989406779661,
+              "hi": 0.6254944148073919
+            },
+            "mcc": {
+              "mean": 0.10134109354595527,
+              "lo": -0.026803592122556216,
+              "hi": 0.22212867503337522
+            },
+            "balanced_accuracy": {
+              "mean": 0.5510736249971743,
+              "lo": 0.4860755459173718,
+              "hi": 0.6113238884114456
+            }
+          }
+        }
+      },
+      "auc": {
+        "roc_auc": 0.6127898550724638,
+        "pr_auc": 0.7211965872654166
+      },
+      "ablation": {
+        "static_only": {
+          "tp": 47,
+          "fp": 11,
+          "fn": 91,
+          "tn": 89,
+          "precision": 0.8103448275862069,
+          "recall": 0.34057971014492755
+        },
+        "dynamic_only": {
+          "tp": 39,
+          "fp": 0,
+          "fn": 99,
+          "tn": 100,
+          "precision": 1.0,
+          "recall": 0.2826086956521739
+        },
+        "combined": {
+          "tp": 55,
+          "fp": 11,
+          "fn": 83,
+          "tn": 89,
+          "precision": 0.8333333333333334,
+          "recall": 0.39855072463768115
+        },
+        "corroboration_dependency": {
+          "strict_true_positives": 55,
+          "decided_by_corroboration": 0,
+          "fraction": 0.0
+        }
+      },
+      "family_recall": [
+        {
+          "families": "(uncategorised)",
+          "n": 91,
+          "caught": 14,
+          "recall": 0.15384615384615385
+        },
+        {
+          "families": "downloader",
+          "n": 18,
+          "caught": 18,
+          "recall": 1.0
+        },
+        {
+          "families": "c2",
+          "n": 10,
+          "caught": 9,
+          "recall": 0.9
+        },
+        {
+          "families": "stealer",
+          "n": 6,
+          "caught": 3,
+          "recall": 0.5
+        },
+        {
+          "families": "reverse_shell",
+          "n": 6,
+          "caught": 6,
+          "recall": 1.0
+        },
+        {
+          "families": "obfuscated",
+          "n": 4,
+          "caught": 2,
+          "recall": 0.5
+        },
+        {
+          "families": "dropper",
+          "n": 3,
+          "caught": 3,
+          "recall": 1.0
+        }
+      ]
+    }
+  ],
+  "operational": {
+    "n_with_timing": 238,
+    "median_ms": 24066.5,
+    "p95_ms": 107925.45,
+    "max_ms": 193060.0,
+    "timeout_rate": 0.008403361344537815
+  }
+}

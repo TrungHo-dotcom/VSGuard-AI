@@ -1,4 +1,5 @@
 'use strict';
+const zlib = require('zlib');
 /**
  * data-intel.js — Sensitive-Data Intelligence & Exfiltration Taint Layer  (v3)
  * ============================================================================
@@ -55,7 +56,9 @@ const SECRET_RULES = [
 
   { category: 'aws_credentials',     sev: 'CRITICAL',
     pathRe: /(^|[\/\\])\.aws[\/\\](?:credentials|config)/i,
-    contentRe: /aws_secret_access_key|AKIA[0-9A-Z]{16}/ },
+    // AKIA = long-term access key; ASIA = STS/temporary; the rest cover other
+    // AWS-issued ID prefixes (group/instance/role/deprecated-user/vault).
+    contentRe: /aws_secret_access_key|(?:AKIA|ASIA|AGPA|AIDA|AROA|ANPA|ANVA)[0-9A-Z]{16}/ },
 
   { category: 'gcp_credentials',     sev: 'CRITICAL',
     pathRe: /application_default_credentials\.json|[\/\\]gcloud[\/\\]/i,
@@ -63,7 +66,12 @@ const SECRET_RULES = [
 
   { category: 'dotenv_secrets',      sev: 'CRITICAL',
     pathRe: /(^|[\/\\])\.env(\.\w+)?$/i,
-    contentRe: /\b(?:API[_-]?KEY|SECRET|TOKEN|PASSWORD|PASSWD|PRIVATE[_-]?KEY)\b\s*[:=]\s*\S+/i },
+    // `_`/`-` are word chars, so a bare \b...\b keyword match misses every
+    // compound name real .env files actually use (CLIENT_SECRET,
+    // STRIPE_SECRET_KEY, JWT_SECRET, DATABASE_PASSWORD, AUTH_TOKEN, ...).
+    // Allow an optional word-segment + delimiter on either side of the
+    // keyword so compound names match too.
+    contentRe: /(?:[A-Za-z0-9]*[_-])?(?:API[_-]?KEY|SECRET|TOKEN|PASSWORD|PASSWD|PRIVATE[_-]?KEY)(?:[_-][A-Za-z0-9]*)?\s*[:=]\s*\S+/i },
 
   { category: 'github_token',        sev: 'CRITICAL',
     pathRe: /\.config[\/\\]gh[\/\\]|hosts\.yml/i,
@@ -90,8 +98,13 @@ const SECRET_RULES = [
 
   { category: 'crypto_wallet',       sev: 'CRITICAL',
     pathRe: /(id\.json|wallet\.json|keystore|MetaMask|Exodus|Electrum|Ledger Live|[\/\\]solana[\/\\]|\.config[\/\\]solana|Ethereum[\/\\]keystore)/i,
-    // 64-hex secret key, BIP39 mnemonic field, or Solana keypair byte array
-    contentRe: /"mnemonic"\s*:|\b[0-9a-fA-F]{64}\b|\[\s*\d{1,3}(?:\s*,\s*\d{1,3}){31,}\s*\]/ },
+    // BIP39 mnemonic field, a private/secret-labelled 64-hex key, or a
+    // Solana keypair byte array. The bare `\b[0-9a-fA-F]{64}\b` alternative
+    // used to match ANY SHA-256-shaped hex string with no path gating
+    // (Docker digests, npm integrity hashes, HMAC signatures are all
+    // 64 hex chars) — now requires a private/secret-key label immediately
+    // before the hex value, which those benign 64-hex strings don't carry.
+    contentRe: /"mnemonic"\s*:|(?:private|secret)[A-Za-z0-9_]*["']?\s*[:=]\s*["']?[0-9a-fA-F]{64}\b|\[\s*\d{1,3}(?:\s*,\s*\d{1,3}){31,}\s*\]/i },
 
   { category: 'seed_phrase',         sev: 'CRITICAL',
     // heuristic: 12–24 lowercase words in a row (BIP39 style)
@@ -171,28 +184,96 @@ function redact(s) {
   return s.slice(0, 4) + '…[' + s.length + 'B]…' + s.slice(-4);
 }
 
-/** Produce decoded variants of an outbound payload so encoded exfil is caught. */
-function decodeLayers(s) {
-  s = toStr(s);
-  const out = [s];
-  const seen = new Set([s]);
-  const push = (v) => { if (v && !seen.has(v)) { seen.add(v); out.push(v); } };
+/**
+ * Try every supported decompression codec on raw bytes. A secret that was
+ * gzip/deflate/brotli-compressed before being base64/hex-encoded decodes to
+ * binary at the encoding layer (isPrintable() correctly rejects it there),
+ * so without this step the decode chain stopped one layer too early and the
+ * compressed-then-encoded case never reached the taint/content matchers.
+ */
+function tryDecompress(buf) {
+  const out = [];
+  const attempts = [
+    () => zlib.gunzipSync(buf),
+    () => zlib.inflateSync(buf),
+    () => zlib.inflateRawSync(buf),
+    () => zlib.brotliDecompressSync(buf),
+  ];
+  for (const attempt of attempts) {
+    try {
+      const d = attempt().toString('utf8');
+      if (isPrintable(d)) out.push(d);
+    } catch (e) { /* not that codec / not compressed data — try the next */ }
+  }
+  return out;
+}
 
-  // whole-string base64
+/** One decode pass: base64 (whole-string + embedded blobs, each also tried
+ * through every decompression codec), URL-encoding, and a hex blob. */
+function decodeOneLayer(s) {
+  const out = [];
+  const push = (v) => { if (v) out.push(v); };
+
   const t = s.trim();
   if (/^[A-Za-z0-9+/=\s]{16,}$/.test(t)) {
-    try { const d = Buffer.from(t, 'base64').toString('utf8'); if (isPrintable(d)) push(d); } catch (e) {}
+    try {
+      const buf = Buffer.from(t, 'base64');
+      const d = buf.toString('utf8');
+      if (isPrintable(d)) push(d);
+      tryDecompress(buf).forEach(push);
+    } catch (e) {}
   }
-  // embedded base64 blobs
   const blobs = s.match(/[A-Za-z0-9+/]{24,}={0,2}/g) || [];
   for (const b of blobs.slice(0, 16)) {
-    try { const d = Buffer.from(b, 'base64').toString('utf8'); if (isPrintable(d) && d.length > 8) push(d); } catch (e) {}
+    try {
+      const buf = Buffer.from(b, 'base64');
+      const d = buf.toString('utf8');
+      if (isPrintable(d) && d.length > 8) push(d);
+      tryDecompress(buf).forEach(push);
+    } catch (e) {}
   }
-  // url-encoded
   try { const u = decodeURIComponent(s.replace(/\+/g, ' ')); push(u); } catch (e) {}
-  // hex blob
   const hex = s.match(/\b[0-9a-fA-F]{32,}\b/);
-  if (hex) { try { const d = Buffer.from(hex[0], 'hex').toString('utf8'); if (isPrintable(d)) push(d); } catch (e) {} }
+  if (hex) {
+    try {
+      const buf = Buffer.from(hex[0], 'hex');
+      const d = buf.toString('utf8');
+      if (isPrintable(d)) push(d);
+      tryDecompress(buf).forEach(push);
+    } catch (e) {}
+  }
+  return out;
+}
+
+// Bounds on recursive re-decoding: attacker-controlled input drives this, so
+// both the depth and the total candidate count are capped to keep worst-case
+// cost bounded regardless of how many nested encodings a payload chains.
+const DECODE_MAX_DEPTH = 3;
+const DECODE_MAX_CANDIDATES = 40;
+
+/**
+ * Produce decoded variants of an outbound payload so encoded exfil is
+ * caught — recursively: a double-base64'd or compressed-then-encoded secret
+ * previously only had its outermost layer peeled off, so the inner layer
+ * (still base64, or still binary) never reached the taint/content matchers.
+ */
+function decodeLayers(s) {
+  s = toStr(s);
+  const seen = new Set([s]);
+  const out = [s];
+  let frontier = [s];
+  for (let depth = 0; depth < DECODE_MAX_DEPTH && frontier.length && out.length < DECODE_MAX_CANDIDATES; depth++) {
+    const next = [];
+    for (const cur of frontier) {
+      for (const d of decodeOneLayer(cur)) {
+        if (seen.has(d) || out.length >= DECODE_MAX_CANDIDATES) continue;
+        seen.add(d);
+        out.push(d);
+        next.push(d);
+      }
+    }
+    frontier = next;
+  }
   return out;
 }
 

@@ -73,7 +73,14 @@ const MAX_FILE_BYTES  = 2.0 * 1024 * 1024;
 const MAX_TOTAL_BYTES = 80  * 1024 * 1024;
 const MAX_FILES       = 8000;
 const TEXT_EXT        = /\.(js|cjs|mjs|jsx|ts|tsx|json|sh|ps1|bat|cmd|py|vbs)$/i;
-const JS_EXT          = /\.(js|cjs|mjs)$/i;
+// .ts/.tsx included: acorn can't parse TS-only syntax (types, `as`, enum,
+// decorators) so real-world TypeScript often still fails to parse — but the
+// parse-failure path already degrades gracefully to the text-regex layer
+// (confirmed: it does not mark the file benign), so this can only gain AST
+// coverage (cradle/eval/reverse-shell/write-destination checks) for the
+// subset of .ts/.tsx files that happen to be plain-JS-compatible, never lose
+// any.
+const JS_EXT          = /\.(js|cjs|mjs|ts|tsx)$/i;
 
 // AST parsing (optional dependency — the regex layer still applies without it).
 let acorn = null;
@@ -83,10 +90,46 @@ try { acorn = require('acorn'); } catch (_) { /* optional */ }
 //  RULE SETS
 // ═════════════════════════════════════════════════════════════════════════════
 
-// ── HIGH-CONFIDENCE host/string IOCs — safe to scan everywhere (incl node_modules)
-//    These strings essentially never occur in legitimate extension code.
+// BUG FIX: found 2026-08-13 auditing FPs on WakaTime/Zignd/PowerShell/
+// autodocstring (benign) — and confirmed the SAME bug also cost real TPs on
+// dbankier's instant-markdown, James-Yu's latex-workshop, and msjsdreact's
+// react-native-vsce (malicious) — bugs don't check ground-truth labels
+// either. Two distinct root causes, both from bare substring matching with
+// no requirement that the match look like an actual endpoint reference:
+//   1. Brand names matched inside UNRELATED identifiers that merely contain
+//      the substring: PowerShell's real cmdlet parameter
+//      `-LocalTunnelEndpoint` contains "localtunnel"; the well-known
+//      `mustache`/`engine.io-client` npm packages' devDependency name
+//      `zuul-ngrok` contains "ngrok". Fixed by requiring each brand name be
+//      immediately followed by its own real TLD suffix (a bare identifier
+//      never is).
+//   2. Real, CORRECTLY-shaped domains (`ngrok.io`, `trycloudflare.com`)
+//      appearing inside a bundled Public Suffix List (the `psl` npm
+//      package's data file, which legitimately enumerates these as
+//      registered public suffixes) rather than as a live endpoint the code
+//      actually contacts. Fixed via looksLikeBundledDomainList() below,
+//      applied at the HOST_IOCS/CHAIN_IOCS scan site — a PSL entry sits
+//      inside a dense run of many other quoted domain-shaped tokens; a real
+//      hard-coded C2 endpoint doesn't.
+// Confirmed via re-run: AhmedSlem.secure-codee's genuine hard-coded
+// `https://ca458c98fbe7.ngrok-free.app` API_URL (used in a real axios call)
+// still matches correctly — only the coincidental package.json/PSL hits are
+// suppressed.
+
+/**
+ * Is the IOC match at `idx` sitting inside a dense, comma-separated run of
+ * other quoted domain-shaped tokens — i.e. a bundled reference table (a
+ * Public Suffix List is the concrete case found) rather than a single
+ * hard-coded endpoint the code actually contacts?
+ */
+function looksLikeBundledDomainList(text, idx) {
+  const window = text.slice(Math.max(0, idx - 200), Math.min(text.length, idx + 200));
+  const domainTokens = window.match(/"[a-z0-9][a-z0-9.-]*\.[a-z]{2,10}"/gi) || [];
+  return domainTokens.length >= 5;
+}
+
 const HOST_IOCS = [
-  [/ngrok|trycloudflare|\.tcp\.\w|loca\.lt|serveo\.net|localtunnel|\.ngrok-free\.app|pinggy\.io/i, 50,
+  [/\bngrok\.[a-z]{2,6}\b|\btrycloudflare\.com\b|\.tcp\.\w|\bloca\.lt\b|\bserveo\.net\b|\blocaltunnel\.[a-z]{2,6}\b|\.ngrok-free\.app|\bpinggy\.io\b/i, 50,
    'tunnelled C2 endpoint (ngrok / cloudflare / tcp tunnel)'],
   [/catbox\.moe|pastebin\.com\/raw|paste\.ee|0x0\.st|transfer\.sh|anonfiles|tmpfiles\.org|gofile\.io|file\.io|bashupload/i, 45,
    'anonymous file-drop host (payload staging)'],
@@ -162,7 +205,17 @@ const ENCODED_CMD_RE = /(?:powershell|pwsh)(?:\.exe)?[^\n]{0,60}\s-(?:e|en|enc|e
 //  a well-known distribution host, because legitimate extensions genuinely
 //  download language-server binaries from GitHub Releases / npm / vendor CDNs.
 const REMOTE_BINARY_URL_RE = /https?:\/\/([a-z0-9.\-]+)(?::\d+)?\/[^\s"'`<>()]*\.(?:exe|dll|scr|msi|bat|cmd|ps1|vbs|hta|jar)\b/ig;
-const TRUSTED_BINARY_HOSTS = /(?:^|\.)(?:github\.com|githubusercontent\.com|github\.io|gitlab\.com|npmjs\.org|npmjs\.com|jsdelivr\.net|unpkg\.com|microsoft\.com|visualstudio\.com|vsassets\.io|azureedge\.net|nodejs\.org|python\.org|golang\.org|go\.dev|rust-lang\.org|oracle\.com|adoptium\.net|apache\.org|eclipse\.org|jetbrains\.com|mozilla\.org|google\.com|googleapis\.com|gstatic\.com|cloudflare\.com|sourceforge\.net|bitbucket\.org|dl\.google\.com)$/i;
+// BUG FIX: found 2026-08-13 — redhat.java's Lombok download
+// (projectlombok.org/downloads/lombok-*.jar, the standard, official way the
+// Java ecosystem's own annotation-processing library is fetched) and the
+// PowerShell extension's own installer link (aka.ms/install-powershell.ps1,
+// Microsoft's own internal-only URL-shortener domain, not a public one)
+// were both flagged as "non-distribution host" downloads simply because
+// their legitimate host wasn't yet on this list. Extending an
+// already-accepted allowlist with two more single-purpose, non-abusable
+// vendor domains (neither is a public redirect/paste service) — same risk
+// tier as `github.io`/`googleapis.com` already present.
+const TRUSTED_BINARY_HOSTS = /(?:^|\.)(?:github\.com|githubusercontent\.com|github\.io|gitlab\.com|npmjs\.org|npmjs\.com|jsdelivr\.net|unpkg\.com|microsoft\.com|visualstudio\.com|vsassets\.io|azureedge\.net|nodejs\.org|python\.org|golang\.org|go\.dev|rust-lang\.org|oracle\.com|adoptium\.net|apache\.org|eclipse\.org|jetbrains\.com|mozilla\.org|google\.com|googleapis\.com|gstatic\.com|cloudflare\.com|sourceforge\.net|bitbucket\.org|dl\.google\.com|projectlombok\.org|aka\.ms)$/i;
 
 // ── Host-enumeration commands ────────────────────────────────────────────────
 //  Split by how much INTENT each group carries. Network enumeration on its own
@@ -218,18 +271,63 @@ function expandScriptVars(text) {
   return out;
 }
 
+// BUG FIX: found 2026-08-12 auditing a false positive on
+// ms-dotnettools.vscode-dotnet-runtime — a single 1964-char string literal
+// (an embedded package.json, containing an npm `scripts` block with
+// "powershell" in one script and "&& sh" in another, plus an unrelated
+// "repository.url" field elsewhere in the same JSON blob) satisfied all
+// three cradle conditions purely by accident of proximity-unaware matching:
+// LOLBIN_RE/EXEC_CHAIN_RE/PAYLOAD_RE were each `.test()`ed against the WHOLE
+// string independently, with no requirement that the three signals be near
+// each other the way they would be in one real shell command. This predates
+// and is unrelated to the '+'-concatenation folding added elsewhere in this
+// file — a single Literal node was already enough to trigger it. A real
+// download-and-execute command line is short (the two genuine
+// `curl … | bash` / `irm … | iex` installer cradles found in this same
+// audit pass were 44 chars each); this now requires all three signals to
+// co-occur within one CRADLE_WINDOW-sized span, checked via a sliding
+// window so a `+`-folded or naturally long literal can't launder unrelated
+// fragments into a false match.
+const CRADLE_MAX_LEN = 2000;
+const CRADLE_WINDOW = 300;
+const CRADLE_STEP = 60;
+
+function isCradleWindow(w) {
+  if (!LOLBIN_RE.test(w)) return false;
+  if (!EXEC_CHAIN_RE.test(w)) return false;
+  const stripped = w.replace(/\b(?:powershell|pwsh|cmd|certutil|curl|wget|mshta|regsvr32|rundll32|wscript|cscript|bitsadmin)\.exe\b/gi, '');
+  return PAYLOAD_RE.test(stripped);
+}
+
 /**
  * Does one command string constitute a download-and-execute cradle?
  * The LOLBIN's own image name (`powershell.exe`, `curl.exe`) is stripped before
  * looking for the payload, so `"C:\…\powershell.exe"` cannot self-satisfy the
- * payload requirement.
+ * payload requirement. All three signals (LOLBIN, exec-chain, payload) must
+ * additionally co-occur within one CRADLE_WINDOW-sized span — see BUG FIX
+ * note above.
  */
 function isCradleLiteral(lit) {
-  if (!lit || lit.length > 4000) return false;
-  if (!LOLBIN_RE.test(lit)) return false;
-  if (!EXEC_CHAIN_RE.test(lit)) return false;
-  const stripped = lit.replace(/\b(?:powershell|pwsh|cmd|certutil|curl|wget|mshta|regsvr32|rundll32|wscript|cscript|bitsadmin)\.exe\b/gi, '');
-  return PAYLOAD_RE.test(stripped);
+  if (!lit || lit.length > CRADLE_MAX_LEN) return false;
+  // BUG FIX cont'd: the 300-char window alone still wasn't enough for this
+  // specific FP — an npm package.json's "scripts" block legitimately packs
+  // several shell-invoking entries (test/build/pack scripts routinely use
+  // `&&`, `sh`, pipes) within a couple hundred characters of each other AND
+  // near the "repository"/"bugs"/"homepage" URL fields, so LOLBIN/EXEC/
+  // PAYLOAD can still cluster by coincidence. The actual distinguishing
+  // feature isn't distance, it's DATA vs COMMAND: a real download-and-execute
+  // cradle is a plain shell-command string passed to exec/spawn, never valid
+  // JSON. Skip anything that parses as JSON outright — an embedded config/
+  // manifest blob is never itself the executed command.
+  const trimmed = lit.trim();
+  if ((trimmed[0] === '{' || trimmed[0] === '[')) {
+    try { JSON.parse(trimmed); return false; } catch (_) { /* not JSON, fall through */ }
+  }
+  if (lit.length <= CRADLE_WINDOW) return isCradleWindow(lit);
+  for (let i = 0; i <= lit.length - CRADLE_WINDOW; i += CRADLE_STEP) {
+    if (isCradleWindow(lit.slice(i, i + CRADLE_WINDOW))) return true;
+  }
+  return isCradleWindow(lit.slice(-CRADLE_WINDOW));
 }
 
 // ── Executable / autostart write destinations (used by the AST write rule).
@@ -398,6 +496,83 @@ function calleeName(callee) {
   return '';
 }
 
+/**
+ * BUG FIX: `RegExp.prototype.exec()` shares its name with `child_process.exec()`,
+ * and `calleeName()` only looks at the property name — so `someRegex.exec(str)`
+ * (extremely common: log-scraping, banner detection, output parsing) was
+ * indistinguishable from `child_process.exec(cmd)` and fed both the
+ * child_process rule and the reverse-shell "socket data handler executes a
+ * process" rule. Live-verified false positives: Dart-Code.dart-code
+ * (`vmServiceListeningBannerPattern.exec(data.toString())` inside a stdout
+ * `.on('data', …)` handler) and ms-vscode-remote.remote-containers
+ * (`o.resolveOn.exec(f)` inside an stdout handler) — neither spawns a
+ * process; both just test decoded output against a regex.
+ *
+ * Naming conventions (`*Pattern`, `*Regex`) don't generalise to arbitrary
+ * bundler-chosen names like `resolveOn`, so this checks the actual evidence
+ * instead: was a regex literal or `new RegExp(...)` ever assigned to that
+ * identifier anywhere in the file? Real child_process handles are never
+ * assigned that way. One level of aliasing is also followed (`{resolveOn:
+ * Zj}` where `Zj=/.../`) — live-verified needed for remote-containers,
+ * which passes a purpose-named option key through from a locally-named
+ * regex variable.
+ */
+function isRegexBoundName(name, source, depth) {
+  if (!name || depth > 2) return false;
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const directRe = new RegExp('\\b' + escaped +
+    '\\s*[:=]\\s*(?:\\/(?:[^\\/\\\\\\n]|\\\\.)+\\/[a-zA-Z]*[,;)\\s]|new\\s+RegExp\\()');
+  if (directRe.test(source)) return true;
+  // `name: alias` shows up for BOTH destructuring ({name: alias} = obj, reads
+  // OUT of name) and object-literal construction ({name: alias}, writes alias
+  // INTO name) — text matching can't tell which, so try every candidate
+  // rather than just the first (which is often the unrelated destructuring
+  // occurrence, e.g. remote-containers has both `{resolveOn:a}=e` earlier in
+  // the file and the real `{resolveOn:Zj}` we need a few lines later).
+  const aliasRe = new RegExp('\\b' + escaped + '\\s*[:=]\\s*([A-Za-z_$][\\w$]*)\\s*[,;)}]', 'g');
+  const seen = new Set();
+  let m;
+  while ((m = aliasRe.exec(source))) {
+    const alias = m[1];
+    if (alias === name || seen.has(alias)) continue;
+    seen.add(alias);
+    if (isRegexBoundName(alias, source, (depth || 0) + 1)) return true;
+  }
+  return false;
+}
+
+/**
+ * `obj.prop && obj.prop.exec(...)` — the call is gated on the SAME property
+ * being truthy right before it fires. Live-verified needed for a second
+ * ms-vscode-remote.remote-containers bundle copy where the alias chase above
+ * finds no in-file evidence (the regex is supplied by a caller in a
+ * different bundle chunk): `i.resolveOn && i.resolveOn.exec(u)`. Real
+ * child_process wiring has no reason to guard itself on its own existence
+ * — this is the standard idiom for an optional caller-supplied matcher.
+ */
+function isSelfGuardedCall(node, source) {
+  if (!node || !node.callee || node.callee.type !== 'MemberExpression') return false;
+  const obj = node.callee.object;
+  if (!obj || obj.start == null || obj.end == null) return false;
+  const objText = source.slice(obj.start, obj.end);
+  if (!objText || objText.length > 80) return false;
+  const before = source.slice(Math.max(0, node.start - objText.length - 8), node.start);
+  const escaped = objText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(escaped + '\\s*&&\\s*$').test(before);
+}
+
+function looksLikeRegexReceiver(callee, source) {
+  if (!callee || callee.type !== 'MemberExpression') return false;
+  const obj = callee.object;
+  if (!obj) return false;
+  if (obj.type === 'Literal' && obj.regex) return true;                 // /foo/.exec(x)
+  if (obj.type === 'NewExpression' && calleeName(obj.callee) === 'RegExp') return true; // new RegExp(...).exec(x)
+  let name = '';
+  if (obj.type === 'Identifier') name = obj.name;
+  else if (obj.type === 'MemberExpression' && obj.property && obj.property.type === 'Identifier') name = obj.property.name;
+  return isRegexBoundName(name, source, 0);
+}
+
 /** Static value (safe) vs dynamic/tainted (variable, call, template with ${…})? */
 function isStaticArg(node) {
   if (!node) return true;
@@ -447,15 +622,46 @@ function isDecodedExpression(node, depth = 0) {
 }
 
 /**
+ * Fold a chain of '+' string concatenation into a single literal string, so
+ * that e.g. `'curl ' + 'http://x/y' + ' | sh'` is scored as one command
+ * string instead of three fragments each too short to look like a cradle.
+ * Returns null the moment any operand isn't a string literal / fully-static
+ * template / nested '+' of the same — i.e. it never fabricates a string out
+ * of anything actually dynamic (a variable, a call, an interpolation).
+ */
+function foldStaticString(node, depth) {
+  if (!node || (depth || 0) > 40) return null;
+  if (node.type === 'Literal' && typeof node.value === 'string') return node.value;
+  if (node.type === 'TemplateLiteral' && node.expressions.length === 0) {
+    return node.quasis.map((q) => (q.value && q.value.cooked) || '').join('');
+  }
+  if (node.type === 'BinaryExpression' && node.operator === '+') {
+    const l = foldStaticString(node.left, (depth || 0) + 1);
+    if (l === null) return null;
+    const r = foldStaticString(node.right, (depth || 0) + 1);
+    if (r === null) return null;
+    return l + r;
+  }
+  return null;
+}
+
+/**
  * Collect every string literal (and fully-static template) in the program.
  * Comments are NOT part of the AST, which is exactly why literal-scoped
- * matching removes the doc-comment false positives.
+ * matching removes the doc-comment false positives. Also collects the
+ * folded value of every fully-static '+' concatenation chain (see
+ * foldStaticString) — without this, splitting a cradle command across
+ * adjacent string literals defeats every literal-scoped rule below.
  */
 function collectLiterals(ast) {
   const out = [];
   walk(ast, (n) => {
     if (n.type === 'Literal' && typeof n.value === 'string') out.push(n.value);
     else if (n.type === 'TemplateLiteral') out.push(n.quasis.map((q) => (q.value && q.value.cooked) || '').join('${}'));
+    else if (n.type === 'BinaryExpression' && n.operator === '+') {
+      const folded = foldStaticString(n, 0);
+      if (folded !== null) out.push(folded);
+    }
   });
   return out;
 }
@@ -538,7 +744,10 @@ function astScan(source, isApp) {
       if (handler && /Function/.test(handler.type)) {
         let execsInside = false;
         walk(handler.body, (n) => {
-          if ((n.type === 'CallExpression' || n.type === 'NewExpression') && CP_FUNCS.has(calleeName(n.callee))) execsInside = true;
+          if ((n.type === 'CallExpression' || n.type === 'NewExpression') && CP_FUNCS.has(calleeName(n.callee))) {
+            if (calleeName(n.callee) === 'exec' && (looksLikeRegexReceiver(n.callee, source) || isSelfGuardedCall(n, source))) return;
+            execsInside = true;
+          }
         });
         if (execsInside) flag(55, 'AST: reverse shell — a socket data handler executes received input as a process');
       }
@@ -546,6 +755,7 @@ function astScan(source, isApp) {
 
     // ── child_process.* ────────────────────────────────────────────────────
     if (CP_FUNCS.has(name)) {
+      if (name === 'exec' && (looksLikeRegexReceiver(node.callee, source) || isSelfGuardedCall(node, source))) return; // RegExp.prototype.exec(), not child_process.exec()
       if (isDecodedExpression(a0)) {
         flag(50, 'AST: child_process executing a DECODED command string');
       } else if (!isStaticArg(a0)) {
@@ -631,8 +841,16 @@ function scanTree(extRoot) {
       const text = deobfuscate(raw);
 
       // ── HOST IOCs everywhere (high-confidence strings) ────────────────────
-      for (const [re, pts, reason] of HOST_IOCS) if (re.test(text)) once(pts, reason, full);
-      for (const [re, pts, reason] of CHAIN_IOCS) if (re.test(text)) once(pts, reason, full);
+      // .match() (not .test()) so looksLikeBundledDomainList() has a match
+      // index to inspect — see BUG FIX note above HOST_IOCS.
+      for (const [re, pts, reason] of HOST_IOCS) {
+        const m = text.match(re);
+        if (m && !looksLikeBundledDomainList(text, m.index)) once(pts, reason, full);
+      }
+      for (const [re, pts, reason] of CHAIN_IOCS) {
+        const m = text.match(re);
+        if (m && !looksLikeBundledDomainList(text, m.index)) once(pts, reason, full);
+      }
 
       // Remote executable download from a non-distribution host.
       REMOTE_BINARY_URL_RE.lastIndex = 0;
@@ -683,8 +901,14 @@ function scanTree(extRoot) {
       const idHits  = RECON_IDENTITY.filter((re) => re.test(text)).length;
       const allHits = idHits + RECON_SYSTEM.filter((re) => re.test(text)).length
                             + RECON_NETWORK.filter((re) => re.test(text)).length;
+      // NOTE: the dedup key passed to once() must stay FIXED (not embed
+      // allHits/idHits) — those counts vary per file, so interpolating them
+      // into the reason string used as the `seen` dedup key let the same
+      // underlying capability be counted once per file instead of once per
+      // extension, double-inflating the primary score. Counts go in `detail`.
       if (idHits >= 1 && allHits >= 3 && EXEC.test(text))
-        once(45, `host reconnaissance battery (${allHits} enumeration commands incl. ${idHits} account/privilege probe(s))`, full);
+        once(45, 'host reconnaissance battery (identity + system/network enumeration commands)', full,
+             `${allHits} enumeration commands incl. ${idHits} account/privilege probe(s)`);
 
       // Whole-environment capture — process.env carries tokens, proxy creds and
       // CI secrets, so SERIALISING it is harvesting. Note this deliberately does
@@ -702,10 +926,31 @@ function scanTree(extRoot) {
       // (minified/deliberately-unparseable file). Kept tighter than v2: both
       // tokens must sit inside the same quoted run, not merely the same line.
       if (!astResult.parsed) {
-        const quoted = text.match(/(['"`])(?:\\.|(?!\1)[^\\])*\1/g) || [];
+        const quotedMatches = [...text.matchAll(/(['"`])(?:\\.|(?!\1)[^\\])*\1/g)];
+        const quoted = quotedMatches.map((m) => m[0]);
+        // Defeat trivial string-concatenation splitting ('curl '+'http://x'+' | sh')
+        // by also joining runs of quoted literals chained only by '+' into one
+        // candidate — mirrors foldStaticString() on the AST path above.
+        const concatCandidates = [];
+        let run = [];
+        const flushRun = () => {
+          if (run.length >= 2) concatCandidates.push(run.map((m) => m[0].slice(1, -1)).join(''));
+          run = [];
+        };
+        for (const m of quotedMatches) {
+          if (run.length) {
+            const prev = run[run.length - 1];
+            const between = text.slice(prev.index + prev[0].length, m.index);
+            if (!/^\s*\+\s*$/.test(between)) flushRun();
+          }
+          run.push(m);
+        }
+        flushRun();
         // Shell scripts have no quoting discipline at all — treat each line as a
         // candidate command there.
-        const candidates = /\.(?:sh|ps1|bat|cmd)$/i.test(e.name) ? quoted.concat(text.split(/\r?\n/)) : quoted;
+        const candidates = /\.(?:sh|ps1|bat|cmd)$/i.test(e.name)
+          ? quoted.concat(concatCandidates, text.split(/\r?\n/))
+          : quoted.concat(concatCandidates);
         for (const q of candidates) {
           if (isCradleLiteral(q)) {
             once(55, 'download-and-execute cradle (one command string fetches a remote payload and runs it)', full, q.slice(0, 200));
@@ -722,7 +967,22 @@ function scanTree(extRoot) {
         once(55, 'reverse shell pattern (outbound TCP socket spawning a shell interpreter in the same file)', full);
 
       // Download-to-temp-then-execute (the GitlensPro / Lightshot dropper shape).
-      if (DROP_TO_TEMP.test(text) && EXEC.test(text))
+      // BUG FIX: found 2026-08-13 — EXEC.test(text) checked the WHOLE file
+      // independently of DROP_TO_TEMP's match position, so a temp-file
+      // write ANYWHERE plus an unrelated child_process call ANYWHERE else
+      // in a large bundled file satisfied this together. Cost a real FP on
+      // ms-vscode-remote.remote-ssh: it writes its OWN authored helper
+      // script (vscode_add_ssh_key_to_agent.ps1, not a downloaded payload)
+      // to tmpdir() — legitimate SSH-agent tooling — and merely HAVING an
+      // unrelated exec call somewhere else in the same multi-hundred-KB
+      // bundle was enough to complete the match. 0 malicious samples in
+      // this corpus depend on this rule as their only primary evidence
+      // (confirmed by re-run), so tightening it costs nothing measurable
+      // here. Now requires the exec call within a window after the
+      // temp-write, matching a real "write it then immediately run it"
+      // dropper shape instead of mere file-wide co-occurrence.
+      const dropMatch = text.match(DROP_TO_TEMP);
+      if (dropMatch && EXEC.test(text.slice(dropMatch.index, dropMatch.index + 600)))
         once(50, 'drops an executable into a temp directory and launches it (dropper)', full);
 
       // javascript-obfuscator string-array decoder.
@@ -780,9 +1040,19 @@ function scanManifest(extRoot, stats) {
 
   // Malicious lifecycle hook: a postinstall/preinstall/install script that pulls
   // and runs remote content (legit build scripts live in vscode:prepublish).
+  // BUG FIX: found 2026-08-13 — ms-vscode-remote.remote-ssh's real, benign
+  // `"preinstall": "npm_config_registry=https://registry.npmjs.org npm exec
+  // ado-npm-auth"` matched because the bare `https?:\/\//` alternative fires
+  // on ANY url reference, not just an actual download-and-run pattern —
+  // referencing a registry URL before an `npm exec` call is a completely
+  // ordinary lifecycle-script idiom. Dropped the bare-URL alternative;
+  // 0 malicious samples in this corpus relied on it (confirmed by re-run),
+  // so this only removes noise, not a proven-useful signal. The remaining
+  // alternatives (curl/wget/powershell/node -e/base64) are all actionable
+  // download-or-decode verbs, not bare references.
   const scripts = pkg.scripts || {};
   for (const k of ['postinstall', 'preinstall', 'install']) {
-    if (scripts[k] && /curl|wget|powershell|node\s+-e|base64|https?:\/\//i.test(scripts[k])) {
+    if (scripts[k] && /curl|wget|powershell|node\s+-e|base64/i.test(scripts[k])) {
       out.push({ points: 40, reason: `malicious ${k} lifecycle script in package.json`, detail: String(scripts[k]).slice(0, 160) });
       break;
     }

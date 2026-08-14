@@ -320,22 +320,37 @@ function createExtensionContext(extensionPath) {
 //  the internal structure of window/workspace.
 // ─────────────────────────────────────────────────────────────────────────────
 
-//  v3: the registry is EXHAUSTIVE for every event an extension can plausibly
-//  hang a payload on. Every emitter listed here is reachable from
-//  `vscode._events` and is fired by sandbox.js during detonation. Anything left
-//  as an anonymous `new VSEventEmitter().event` is an event the sandbox can
-//  never trigger, which is a silent false-negative channel: a payload wired to
-//  `onDidChangeWindowState` or `onDidSaveNotebookDocument` would simply never
-//  run.
+//  v3.1: the registry covers every module-level (window/workspace/tasks/
+//  debug/languages/env/notebooks/lm) event an extension can plausibly hang a
+//  payload on. Every emitter listed here is reachable from `vscode._events`
+//  and fireable by sandbox.js during detonation. Anything left as an
+//  anonymous `new VSEventEmitter().event` is an event the sandbox can never
+//  trigger — a silent false-negative channel.
+//
+//  Known remaining exception, NOT covered by this registry: the two
+//  ExtensionContext-scoped emitters (`context.secrets.onDidChange`,
+//  `context.languageModelAccessInformation.onDidChange` — see
+//  createExtensionContext() above) are created fresh per-activation rather
+//  than at module scope, so they can't be wired into this shared, static
+//  registry the same way. A payload gated exclusively on either of those
+//  two specific events will not fire. Documented rather than silently
+//  claimed solved.
 const _windowEmitters = {
-  onDidChangeActiveTextEditor:    new VSEventEmitter(),
-  onDidChangeVisibleTextEditors:  new VSEventEmitter(),
-  onDidChangeTextEditorSelection: new VSEventEmitter(),
-  onDidChangeWindowState:         new VSEventEmitter(),
-  onDidChangeActiveColorTheme:    new VSEventEmitter(),
-  onDidOpenTerminal:              new VSEventEmitter(),
-  onDidChangeActiveTerminal:      new VSEventEmitter(),
-  onDidCloseTerminal:             new VSEventEmitter(),
+  onDidChangeActiveTextEditor:        new VSEventEmitter(),
+  onDidChangeVisibleTextEditors:      new VSEventEmitter(),
+  onDidChangeTextEditorSelection:     new VSEventEmitter(),
+  onDidChangeWindowState:             new VSEventEmitter(),
+  onDidChangeActiveColorTheme:        new VSEventEmitter(),
+  onDidOpenTerminal:                  new VSEventEmitter(),
+  onDidChangeActiveTerminal:          new VSEventEmitter(),
+  onDidCloseTerminal:                 new VSEventEmitter(),
+  // Added: were previously wired to brand-new anonymous emitters at their
+  // use site below, disconnected from anything sandbox.js could fire.
+  onDidChangeTextEditorViewColumn:    new VSEventEmitter(),
+  onDidChangeTextEditorVisibleRanges: new VSEventEmitter(),
+  onDidChangeTextEditorOptions:       new VSEventEmitter(),
+  onDidChangeTabGroups:               new VSEventEmitter(),
+  onDidChangeTabs:                    new VSEventEmitter(),
 };
 
 const _workspaceEmitters = {
@@ -352,6 +367,13 @@ const _workspaceEmitters = {
   onDidGrantWorkspaceTrust:     new VSEventEmitter(),
   onDidOpenNotebookDocument:    new VSEventEmitter(),
   onDidSaveNotebookDocument:    new VSEventEmitter(),
+  // Added: same disconnected-anonymous-emitter issue as the window ones above.
+  onWillCreateFiles:            new VSEventEmitter(),
+  onWillDeleteFiles:            new VSEventEmitter(),
+  onWillRenameFiles:            new VSEventEmitter(),
+  onDidChangeNotebookDocument:  new VSEventEmitter(),
+  onDidCloseNotebookDocument:   new VSEventEmitter(),
+  onWillSaveNotebookDocument:   new VSEventEmitter(),
 };
 
 const _otherEmitters = {
@@ -361,6 +383,19 @@ const _otherEmitters = {
   extensionsOnDidChange:        new VSEventEmitter(),
   onDidStartTask:               new VSEventEmitter(),
   onDidEndTask:                 new VSEventEmitter(),
+  // Added: same disconnected-anonymous-emitter issue as above, across
+  // debug/tasks/languages/env/notebooks/lm.
+  onDidChangeActiveDebugSession:        new VSEventEmitter(),
+  onDidReceiveDebugSessionCustomEvent:  new VSEventEmitter(),
+  onDidChangeBreakpoints:                new VSEventEmitter(),
+  onDidStartTaskProcess:                 new VSEventEmitter(),
+  onDidEndTaskProcess:                   new VSEventEmitter(),
+  onDidChangeDiagnostics:                 new VSEventEmitter(),
+  onDidChangeTelemetryEnabled:            new VSEventEmitter(),
+  onDidChangeLogLevel:                    new VSEventEmitter(),
+  onDidChangeShell:                       new VSEventEmitter(),
+  onDidChangeNotebookCellExecutionState:  new VSEventEmitter(),
+  onDidChangeChatModels:                  new VSEventEmitter(),
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -428,15 +463,15 @@ const vscode = {
     activeTerminal: undefined,
     state: { focused: true },
     activeColorTheme: { kind: 2, label: 'Default Dark+' },
-    tabGroups: { all:[], activeTabGroup:{ tabs:[], isActive:true, activeTab:undefined, viewColumn:1 }, onDidChangeTabGroups: new VSEventEmitter().event, onDidChangeTabs: new VSEventEmitter().event, close: () => Promise.resolve(false) },
+    tabGroups: { all:[], activeTabGroup:{ tabs:[], isActive:true, activeTab:undefined, viewColumn:1 }, onDidChangeTabGroups: _windowEmitters.onDidChangeTabGroups.event, onDidChangeTabs: _windowEmitters.onDidChangeTabs.event, close: () => Promise.resolve(false) },
 
     // Named emitters — these are stored in vscode._events so sandbox.js can fire them
     onDidChangeActiveTextEditor:        _windowEmitters.onDidChangeActiveTextEditor.event,
     onDidChangeVisibleTextEditors:      _windowEmitters.onDidChangeVisibleTextEditors.event,
     onDidChangeTextEditorSelection:     _windowEmitters.onDidChangeTextEditorSelection.event,
-    onDidChangeTextEditorViewColumn:    new VSEventEmitter().event,
-    onDidChangeTextEditorVisibleRanges: new VSEventEmitter().event,
-    onDidChangeTextEditorOptions:       new VSEventEmitter().event,
+    onDidChangeTextEditorViewColumn:    _windowEmitters.onDidChangeTextEditorViewColumn.event,
+    onDidChangeTextEditorVisibleRanges: _windowEmitters.onDidChangeTextEditorVisibleRanges.event,
+    onDidChangeTextEditorOptions:       _windowEmitters.onDidChangeTextEditorOptions.event,
     onDidOpenTerminal:                  _windowEmitters.onDidOpenTerminal.event,
     onDidCloseTerminal:                 _windowEmitters.onDidCloseTerminal.event,
     onDidChangeActiveTerminal:          _windowEmitters.onDidChangeActiveTerminal.event,
@@ -500,15 +535,15 @@ const vscode = {
     onDidCreateFiles:               _workspaceEmitters.onDidCreateFiles.event,
     onDidDeleteFiles:               _workspaceEmitters.onDidDeleteFiles.event,
     onDidRenameFiles:               _workspaceEmitters.onDidRenameFiles.event,
-    onWillCreateFiles:              new VSEventEmitter().event,
-    onWillDeleteFiles:              new VSEventEmitter().event,
-    onWillRenameFiles:              new VSEventEmitter().event,
+    onWillCreateFiles:              _workspaceEmitters.onWillCreateFiles.event,
+    onWillDeleteFiles:              _workspaceEmitters.onWillDeleteFiles.event,
+    onWillRenameFiles:              _workspaceEmitters.onWillRenameFiles.event,
     onDidChangeConfiguration:       _workspaceEmitters.onDidChangeConfiguration.event,
     onDidGrantWorkspaceTrust:       _workspaceEmitters.onDidGrantWorkspaceTrust.event,
-    onDidChangeNotebookDocument:    new VSEventEmitter().event,
+    onDidChangeNotebookDocument:    _workspaceEmitters.onDidChangeNotebookDocument.event,
     onDidOpenNotebookDocument:      _workspaceEmitters.onDidOpenNotebookDocument.event,
-    onDidCloseNotebookDocument:     new VSEventEmitter().event,
-    onWillSaveNotebookDocument:     new VSEventEmitter().event,
+    onDidCloseNotebookDocument:     _workspaceEmitters.onDidCloseNotebookDocument.event,
+    onWillSaveNotebookDocument:     _workspaceEmitters.onWillSaveNotebookDocument.event,
     onDidSaveNotebookDocument:      _workspaceEmitters.onDidSaveNotebookDocument.event,
 
     getConfiguration: () => ({ get: (k, def) => def, has: () => false, inspect: (k) => ({ key: k, defaultValue: undefined, globalValue: undefined, workspaceValue: undefined }), update: () => Promise.resolve() }),
@@ -594,7 +629,7 @@ const vscode = {
     registerLinkedEditingRangeProvider:           () => noopDisp(),
     registerInlineCompletionItemProvider:         () => noopDisp(),
     registerInlineValuesProvider:                 () => noopDisp(),
-    onDidChangeDiagnostics: new VSEventEmitter().event,
+    onDidChangeDiagnostics: _otherEmitters.onDidChangeDiagnostics.event,
     getDiagnostics: (uri) => uri ? [] : [],
   },
 
@@ -618,9 +653,9 @@ const vscode = {
       readText:  () => Promise.resolve('0xDEcoY0000000000000000000000000000000BEEF'),
       writeText: (v) => { process.stdout.write(`  🟡 [vscode.clipboard.writeText] ${String(v).slice(0, 120)}\n`); return Promise.resolve(); },
     },
-    onDidChangeTelemetryEnabled: new VSEventEmitter().event,
-    onDidChangeLogLevel:         new VSEventEmitter().event,
-    onDidChangeShell:            new VSEventEmitter().event,
+    onDidChangeTelemetryEnabled: _otherEmitters.onDidChangeTelemetryEnabled.event,
+    onDidChangeLogLevel:         _otherEmitters.onDidChangeLogLevel.event,
+    onDidChangeShell:            _otherEmitters.onDidChangeShell.event,
     openExternal:  () => Promise.resolve(false),
     asExternalUri: (uri) => Promise.resolve(uri),
     createTelemetryLogger: () => ({ logUsage: noop, logError: noop, dispose: noop, onDidChangeEnableStates: new VSEventEmitter().event, isUsageEnabled: false, isErrorsEnabled: false }),
@@ -631,9 +666,9 @@ const vscode = {
     activeDebugSession: undefined, activeDebugConsole: { append: noop, appendLine: noop }, breakpoints: [],
     onDidStartDebugSession:              _otherEmitters.onDidStartDebugSession.event,
     onDidTerminateDebugSession:          _otherEmitters.onDidTerminateDebugSession.event,
-    onDidChangeActiveDebugSession:       new VSEventEmitter().event,
-    onDidReceiveDebugSessionCustomEvent: new VSEventEmitter().event,
-    onDidChangeBreakpoints:              new VSEventEmitter().event,
+    onDidChangeActiveDebugSession:       _otherEmitters.onDidChangeActiveDebugSession.event,
+    onDidReceiveDebugSessionCustomEvent: _otherEmitters.onDidReceiveDebugSessionCustomEvent.event,
+    onDidChangeBreakpoints:              _otherEmitters.onDidChangeBreakpoints.event,
     registerDebugAdapterDescriptorFactory: () => noopDisp(),
     registerDebugConfigurationProvider:    () => noopDisp(),
     registerDebugAdapterTrackerFactory:    () => noopDisp(),
@@ -650,8 +685,11 @@ const vscode = {
   // ── vscode.tasks ─────────────────────────────────────────────────────────
   tasks: {
     taskExecutions: [],
-    onDidStartTask: new VSEventEmitter().event, onDidEndTask: new VSEventEmitter().event,
-    onDidStartTaskProcess: new VSEventEmitter().event, onDidEndTaskProcess: new VSEventEmitter().event,
+    // Was wired to brand-new anonymous emitters here, disconnected from the
+    // ones sandbox.js actually fires via vscode._events — task-gated
+    // payloads registering these listeners never ran.
+    onDidStartTask: _otherEmitters.onDidStartTask.event, onDidEndTask: _otherEmitters.onDidEndTask.event,
+    onDidStartTaskProcess: _otherEmitters.onDidStartTaskProcess.event, onDidEndTaskProcess: _otherEmitters.onDidEndTaskProcess.event,
     registerTaskProvider: () => noopDisp(),
     fetchTasks: () => Promise.resolve([]), executeTask: () => Promise.resolve({ task:null, terminate:noop }),
   },
@@ -679,11 +717,11 @@ const vscode = {
     createNotebookController: (id, nt, label) => ({ id, notebookType:nt, label, createNotebookCellExecution:()=>null, executeHandler:noop, dispose:noop, onDidChangeSelectedNotebooks: new VSEventEmitter().event }),
     registerNotebookCellStatusBarItemProvider: () => noopDisp(),
     registerNotebookSerializer: () => noopDisp(),
-    onDidChangeNotebookCellExecutionState: new VSEventEmitter().event,
+    onDidChangeNotebookCellExecutionState: _otherEmitters.onDidChangeNotebookCellExecutionState.event,
   },
 
   // ── vscode.lm ────────────────────────────────────────────────────────────
-  lm: { selectChatModels: () => Promise.resolve([]), onDidChangeChatModels: new VSEventEmitter().event, invokeTool: () => Promise.resolve(null), registerTool: () => noopDisp(), tools: [] },
+  lm: { selectChatModels: () => Promise.resolve([]), onDidChangeChatModels: _otherEmitters.onDidChangeChatModels.event, invokeTool: () => Promise.resolve(null), registerTool: () => noopDisp(), tools: [] },
 
   // ── Internal helpers for sandbox.js ──────────────────────────────────────
   _createExtensionContext: createExtensionContext,

@@ -526,7 +526,7 @@ class VEXGuard extends EventEmitter {
             'total_events', 'http_requests', 'child_process_calls', 'outbound_messages',
             'eval_calls', 'fs_reads', 'net_socket_calls',
             'data_stolen', 'stolen_categories', 'hosts', 'purpose',
-            'timers_fired', 'virtual_days', 'timed_out', 'error', 'top_reasons', 'target'];
+            'timers_fired', 'virtual_days', 'timed_out', 'error', 'top_reasons', 'target', 'duration_ms'];
   }
 
   _row(result, meta) {
@@ -555,6 +555,7 @@ class VEXGuard extends EventEmitter {
       timed_out: result.timed_out ? 1 : 0, error: '',
       top_reasons: (f.reasons || []).slice(0, 4).map((r) => `${r.source}:+${r.points} ${r.reason}`).join(' ; ').slice(0, 400),
       target: meta.target || result.target || '',
+      duration_ms: result.duration_ms != null ? result.duration_ms : '',
     };
   }
 
@@ -617,7 +618,9 @@ class VEXGuard extends EventEmitter {
     await pool(todo, concurrency, async (s) => {
       let row;
       try {
+        const _analyzeStart = Date.now();
         const r = await this.analyze(s.target, { tag: safeName(s.id + '-' + s.version), staticOnly: opts.staticOnly, persist: opts.persist });
+        r.duration_ms = Date.now() - _analyzeStart;
         row = this._row(r, s);
         if (jsonl) { try { fs.appendFileSync(jsonl, JSON.stringify(VEXGuard.evidenceRecord(s, r)) + '\n'); } catch (_) {} }
       } catch (e) {
@@ -702,6 +705,7 @@ class VEXGuard extends EventEmitter {
       hosts: ((result.forensic && result.forensic.iocs && result.forensic.iocs.hosts) || []).slice(0, 30),
       time_machine: result.time_machine || {},
       timed_out: !!result.timed_out,
+      duration_ms: result.duration_ms != null ? result.duration_ms : null,
     };
   }
 

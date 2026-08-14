@@ -82,9 +82,13 @@ function parseArgs(argv) {
 function matrix(rows, predKey) {
   let TP = 0, FP = 0, FN = 0, TN = 0, errors = 0;
   for (const r of rows) {
-    const y = Number(r.label);
-    if (y !== 0 && y !== 1) continue;
-    if (r.final_verdict === 'ERROR') errors++;
+    // Guard against empty/malformed labels: String(0)/'0' pass, '' ('' !== '0')
+    // and undefined/null are correctly rejected instead of Number()-coercing
+    // an empty string to 0 and silently admitting it as a real benign label.
+    const labelStr = String(r.label);
+    if (labelStr !== '0' && labelStr !== '1') continue;
+    const y = Number(labelStr);
+    if (r.final_verdict === 'ERROR') { errors++; continue; }
     const p = Number(r[predKey]) ? 1 : 0;
     if (y === 1 && p === 1) TP++;
     else if (y === 0 && p === 1) FP++;
@@ -114,7 +118,8 @@ function mdMatrix(m) {
     `| **Actual MALICIOUS** | TP = ${m.TP} | FN = ${m.FN} |`,
     `| **Actual BENIGN**    | FP = ${m.FP} | TN = ${m.TN} |`,
     '',
-    `Precision **${pct(m.precision)}** · Recall **${pct(m.recall)}** · F1 **${pct(m.f1)}** · Accuracy **${pct(m.accuracy)}** · MCC **${m.mcc.toFixed(3)}** · n = ${m.total}`,
+    `Precision **${pct(m.precision)}** · Recall **${pct(m.recall)}** · F1 **${pct(m.f1)}** · Accuracy **${pct(m.accuracy)}** · MCC **${m.mcc.toFixed(3)}** · n = ${m.total}` +
+    (m.errors ? ` · ${m.errors} analysis error(s) excluded from this matrix` : ''),
   ].join('\n');
 }
 
@@ -168,8 +173,22 @@ function diagnoseFP(r) {
               'The download-and-execute rule matched a command string that is not a cradle. Tighten isCradleLiteral(): the LOLBIN, the remote payload and the execution verb must all be present in one command.')
       || pick(/reverse shell/i, 'REVERSE_SHELL_OVERMATCH',
               'Socket + child_process co-occurrence matched a language-server/debug-adapter client. Require the structural wiring (a socket data handler that executes its input) rather than co-occurrence.')
-      || pick(/exfiltrat/i, 'TAINT_OVERMATCH',
+      // NOTE: a single /exfiltrat/i test used to match FIVE structurally
+      // distinct rules (taint-confirmed, host-fingerprint, chat-webhook,
+      // Telegram, tunnel-endpoint — see their exact reason strings in
+      // sandbox.js), all routed to TAINT_OVERMATCH with a data-intel.js fix
+      // pointer that's only correct for the first one. Match each rule's
+      // own reason text so the fix pointer names the right file/mechanism.
+      || pick(/exfiltrates sensitive data \(proven read/i, 'TAINT_OVERMATCH',
               'The taint layer confirmed a flow that is legitimate (an AI assistant uploading the open document). Downgrade the category to weakOnly in data-intel.js so a line-level match cannot confirm it.')
+      || pick(/exfiltrates a host fingerprint/i, 'FINGERPRINT_OVERMATCH',
+              'The host-fingerprint rule matched a legitimate telemetry/analytics payload. Tighten the fingerprint-body regex in sandbox.js (search for "host fingerprint") to require more of machineId+MAC+hostname+username together, not any one alone.')
+      || pick(/webhook used for exfiltration/i, 'CHAT_WEBHOOK_OVERMATCH',
+              'The Discord/Slack webhook rule matched a legitimate CI/notification integration. Tighten the webhook-URL check in sandbox.js to also require it carry data read from a sensitive source, not just be present.')
+      || pick(/Telegram bot API used as/i, 'TELEGRAM_OVERMATCH',
+              'The Telegram bot-API rule matched a legitimate Telegram-integration extension. Tighten the check in sandbox.js the same way as CHAT_WEBHOOK_OVERMATCH.')
+      || pick(/suspicious\/tunnelled endpoint/i, 'TUNNEL_ENDPOINT_OVERMATCH',
+              'The tunnelled-endpoint rule matched a legitimate use of an ngrok/cloud-tunnel-style host. Review the endpoint classification in sandbox.js.')
       || pick(/recon/i, 'RECON_OVERMATCH',
               'The reconnaissance battery matched a telemetry library (e.g. systeminformation). Require at least one account/privilege-level probe, not only network enumeration.')
       || pick(/eval/i, 'EVAL_OVERMATCH',

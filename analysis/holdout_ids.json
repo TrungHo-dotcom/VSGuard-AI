@@ -1,0 +1,6945 @@
+{
+  "generated_at_seed": 20260811,
+  "fraction": 0.25,
+  "policy": "This partition must never be used to tune detection rules or thresholds. It is the only population future rule changes may cite as evidence of generalization. See docs/EVALUATION-METHODOLOGY.md.",
+  "n_total": 991,
+  "samples": [
+    {
+      "dataset": "datadog-benign",
+      "id": "oderwat.indent-rainbow",
+      "version": "8.3.1",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "redhat.vscode-yaml",
+      "version": "1.24.2026062009",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "dbaeumer.vscode-eslint",
+      "version": "3.0.29",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "esbenp.prettier-vscode",
+      "version": "12.4.0",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "PKief.material-icon-theme",
+      "version": "5.35.0",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "rust-lang.rust-analyzer",
+      "version": "0.4.2944",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "shd101wyy.markdown-preview-enhanced",
+      "version": "0.8.30",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "hediet.vscode-drawio",
+      "version": "1.9.260618014",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "christian-kohler.npm-intellisense",
+      "version": "1.4.5",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "eamodio.gitlens",
+      "version": "2026.6.200604",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "Gruntfuggly.todo-tree",
+      "version": "0.0.226",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-benign",
+      "id": "GitHub.github-vscode-theme",
+      "version": "6.3.5",
+      "label": "0",
+      "tier": "benign"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "ab-498.cppplayground",
+      "version": "1.0.42",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "codevsce.codelddb-vscode",
+      "version": "1.11.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "ahmedsleem.secure-code",
+      "version": "1.0.31",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "sanchuan.kimi-copilot",
+      "version": "1.0.12",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "498-00.httpformat",
+      "version": "1.1.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "QuantumCodeLabs.ayu-theme",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "cosmic-themes.sql-formatter",
+      "version": "4.2.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "JuanRiseETH.solidit",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "JacobETH.solidi",
+      "version": "1.0.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "msjsdreact.react-native-vsce",
+      "version": "1.13.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "SFRA-FAKA.sfra-toolkit",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "Ethereum.SoliditySupport",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "JosephDembele95.email-grabber",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "siffat-ahmed.ai-autocomplete-siffat-ahmed",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "CSF-RED.CSF-RED",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "embeddteam.embeddedprojectmanager",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "csvmech.csvrainbow",
+      "version": "3.3.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "VSAnalysistest.code-ai-assistant",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "GitlensPro.aicode-companion",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "flutcode.flutter-extension",
+      "version": "3.122.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "lavender-studio.theme-lavender-dreams",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "GitlensPro.codebeauty-formatter",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "7finney.ETHCode",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "embeddteam.embedded-cortex-debug",
+      "version": "1.14.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "krabt.krabt-extension-pack",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "wlnxingdev.free-senltig",
+      "version": "17.6.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "BlockchainIndustries.bitcoin-toolkit",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "sanchuan.mimo-copilot",
+      "version": "1.0.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "sanchuan.glm-copilot",
+      "version": "1.0.12",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "hajoo.poisoned-extension",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "datadog-malicious",
+      "id": "GavinLamWood.vs-blanket",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "otimiza.local-agent-screen-viewer",
+      "version": "0.2.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.38",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.7.11",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.8.74",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "PixelLabs.boardflow",
+      "version": "1.6.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Aveva-Technology.forge-bridge",
+      "version": "0.7.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.9.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "minlabs.quiet-code",
+      "version": "0.0.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BlockchainIndustries.hardhat-toolkit",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AutomationStudio.automation-studio",
+      "version": "0.1.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.53.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Aveva-Technology.forge-bridge",
+      "version": "0.7.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "clawdbot.clawdbot-agent",
+      "version": "3.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "FEYeh.ssc-ibs",
+      "version": "1.0.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Extensions-Topic.italian",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "EfferSmart.qoodo-ai",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.8.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.1.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AnilAlapati.leancontext",
+      "version": "0.2.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DorianN612.remote-text-fetcher",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yujiitadori.demon-slayer-infinity-castle",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "MarkH.discord-rich-presence-vs",
+      "version": "0.0.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SiFli.sifli-sdk-codekit",
+      "version": "1.1.990705",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Cencurity.cencurity-connector",
+      "version": "0.1.27",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "IoliteLabs.solidity-linux",
+      "version": "0.1.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "richardgubangxa.sf-buddy",
+      "version": "0.7.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "swarmiq-os.swarmiq-connect",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cosmic-themes.theme-cosmic-nebula",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.85.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.clade",
+      "version": "0.1.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.4.27",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "FEYeh.ssc-ibs",
+      "version": "1.0.21",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "levicarlsson.shelly",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "arclens.arc-lens",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.11.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "worldline.wlpfo-toolkit",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.31",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bug-author.shadure",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AmsTaFFix.daemonic-lua-api",
+      "version": "1.6.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cobot100.cursor100",
+      "version": "0.0.80",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ethanielliu.audit-helper",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "flutcode.flutter-extension",
+      "version": "3.122.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.8.33",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "stephen-riley.regexworkbench",
+      "version": "2.0.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "VSCodeExtensionDevelopment.project-restructure-typescript",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bismarkvargas.bkcode",
+      "version": "0.76.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "VSAnalysistest.global-state-test",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DevelopmentInc.torizon-vs",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "poccccc.Download-Openal32dll-File-For-Dirt-2-Crack-kadiysy",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "CryptoFoundation.BlehBleh",
+      "version": "0.6.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cosmic-themes.theme-cosmic-nebula",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OIOXO.oioxo-vscode",
+      "version": "0.10.14",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.jupie",
+      "version": "0.1.56",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OIOXO.oioxo-vscode",
+      "version": "0.12.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "clacla100.cosave100",
+      "version": "0.0.88",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bismarkvargas.bkcode",
+      "version": "1.8.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Dart-vsc.code-dart",
+      "version": "3.123.20251129",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AhmedCrypto.ahmedcrypto1",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.jupie",
+      "version": "0.1.41",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sparrowcodes.sparrowcodes",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.4.13",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.19.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.18.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "16.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OzzyDev777.csharp-editor-pro",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.43.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sparrowcodes.sparrowcodes",
+      "version": "1.2.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "EthereumFoundation.Solidity-Language-for-Ethereum",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.2.32",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.8.110",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "JaydenM.dracula-theme-pro",
+      "version": "7.4.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DevMatrix.devmatrix",
+      "version": "0.2.10",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.23.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vims-vsce.vscode-vim",
+      "version": "1.32.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "midjourney.midjourney",
+      "version": "3.0.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ShopifySTORES.builderliquid",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bipro.bipro-dev",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.2.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.8.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "13.1.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "QuantumCodeLabs.ai-test-generator",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "WilliamAsaba.dev-time-tracker",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.32.18",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OIOXO.oioxo-vscode",
+      "version": "0.10.17",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.17.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DevelopmentInc.cfx-lua-vs",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.8.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.23",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.cosave",
+      "version": "0.0.61",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.jupie",
+      "version": "0.1.60",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.32.21",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AppCreatePLC.boardtrackapps",
+      "version": "1.7.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.8.65",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "WilliamAsaba.dev-time-tracker",
+      "version": "1.5.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "FlydCode.codelinter",
+      "version": "2.8.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.73.63",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.84.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "VoiceMod.VoiceMod",
+      "version": "0.2.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Extensions-Topic.coffeescript",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "WilliamAsaba.dev-time-tracker",
+      "version": "1.5.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bismarkvargas.bkcode",
+      "version": "1.19.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.codesleepai",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "johnpborgon.codecompiler",
+      "version": "0.0.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.clade",
+      "version": "0.1.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "k3s0externobyes.k3s0externobyes",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "StudioBoard.studioboard",
+      "version": "4.7.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sanchuan.kimi-copilot",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.70.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.8.35",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.27.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.12",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ab-498.cppplayground",
+      "version": "1.0.42",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.5.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "barakolshe.forq",
+      "version": "0.2.29",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BlockchainIndustries.solana-toolkit",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "GPTOnce.codepilot-vscode",
+      "version": "0.0.16",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Floriani.mcp-hub",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.0.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "adwaitkeshari.lull",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.32.14",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yamlcode.yaml-vscode-extension",
+      "version": "1.20.2025111908",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "StefanYosif.axion-ai",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.codesleepai",
+      "version": "0.0.39",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OryonTechnology.oryon",
+      "version": "0.5.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.jupie",
+      "version": "0.1.71",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.48",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SiFli.sifli-sdk-codekit",
+      "version": "1.2.990301",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.30",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "clicli100.windsurf100",
+      "version": "0.0.89",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uladluch.cursor-mobile-connector",
+      "version": "1.0.70",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OryonTechnology.oryon",
+      "version": "0.1.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.20.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.4.19",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.10.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "HTMLLanguage.html-css-support",
+      "version": "0.0.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "worldline.aicodefix",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.34",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "EVM.Blockchain-Toolkit",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "VarunSindwani.explorer-exclude-global",
+      "version": "1.3.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sparrowcodes.sparrowcodes",
+      "version": "1.4.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.91.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ahban.shiba",
+      "version": "0.0.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AppLabs.boardstep",
+      "version": "1.7.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.8.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.jupie",
+      "version": "0.1.49",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "barakolshe.forq",
+      "version": "0.2.14",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "VitalyButerin.hardhatjs",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.8.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.60.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "QuantumCodeLabs.dracula-pro-theme",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.49",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "lwleen.vs-blue-theme",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "smooth-soft.assessme-flow",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.39",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.5.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.22.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.5.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ETHFoundry.etherfoundrys",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "clicli100.openclaw100",
+      "version": "0.0.89",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Trustworthy.mevscode",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.21.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OryonTechnology.oryon",
+      "version": "0.4.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.2.30",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoTracker.rotracker",
+      "version": "4.7.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Aveva-Technology.forge-bridge",
+      "version": "0.7.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Extensions-Genre.bold-start",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OIOXO.oioxo-vscode",
+      "version": "0.12.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NFoundation.terraform-ai",
+      "version": "0.2.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "discord-inc.discord-rich-presence-rpc",
+      "version": "0.0.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cobot100.cursor100",
+      "version": "0.0.89",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ethereumorg.Solidity-Language-for-Ethereum",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.15",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "VukRosic.openaicodexplayground",
+      "version": "0.0.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.58.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ab-498.httpformat",
+      "version": "1.0.56",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "clacla100.cosave100",
+      "version": "0.0.85",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cobot100.kilojapan",
+      "version": "0.0.96",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.51",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sparrowcodes.sparrowcodes",
+      "version": "1.0.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OIOXO.oioxo-vscode",
+      "version": "0.10.22",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cline-ai-main.cline-ai-agent",
+      "version": "3.1.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.26",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "GavinWoodETH.solid-eth",
+      "version": "1.4.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "QuantumCodeLabs.qoodo-ai-assistant",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.2.14",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Extensions-A.wow1language",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.23.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.44.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.68.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.46",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.73.122",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.16.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "FEYeh.ssc-ibs",
+      "version": "1.0.16",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OryonTechnology.oryon",
+      "version": "0.1.11",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "CSF-RED.CSF-RED",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "msjsdreact.react-native-vsce",
+      "version": "1.13.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "state-diagram-yass-kpit.state-diagram-editor-yassinebougacha",
+      "version": "1.0.13",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.cosave",
+      "version": "0.0.60",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.0.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.5.10",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.codesleepai",
+      "version": "0.0.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Quantam.quantam",
+      "version": "5.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.80.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Malkolm.Theme-Aurora-remake",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Cryptocurrency.asbaquin",
+      "version": "0.0.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.2.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SolidityFoundation.Solidity-Ethereum",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.jupie",
+      "version": "0.1.62",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "imlore.jupie",
+      "version": "0.1.53",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uladluch.antigravity-mobile-connector",
+      "version": "1.14.29",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.5.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.29",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.31.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dafsfsdsfdfsdf11.randomic-slaying-pog",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.codesleepai",
+      "version": "0.0.12",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OryonTechnology.oryon",
+      "version": "0.4.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "soIidity.cryptoovertheweekend4",
+      "version": "1.4.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.27",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.31.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "3.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.42.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BenjaminFriedl.lexica-img-fix",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.30.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vivo-ai-code.vivo-ai-code-vscode",
+      "version": "1.2.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "priskinski.Theme-AllHallowsEve-remake",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.codesleepai",
+      "version": "0.0.35",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DevFlowHub.devflowhub",
+      "version": "1.2.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.20.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.codesleepai",
+      "version": "0.0.52",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.7.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jianbe-03.pesto-roblox-project-explorer",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.5.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.36",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.15.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.6.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.32.22",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.codesleepai",
+      "version": "0.0.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sanchuan.glm-copilot",
+      "version": "1.0.12",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.19",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OIOXO.oioxo-vscode",
+      "version": "0.2.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Quant.Quantam-M",
+      "version": "5.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "FEYeh.ssc-ibs",
+      "version": "1.0.23",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "VSAnalysistest.codegpt-helper",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.8.36",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.5.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.20.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "WilliamAsaba.dev-time-tracker",
+      "version": "2.0.10",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.6.4",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.7.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.8.46",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LuaShield.lua-shield",
+      "version": "1.2.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "mkd-corp.keural-vscode",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoDesk.rodesk",
+      "version": "4.7.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devokaicode.codesleepai",
+      "version": "0.0.10",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.17.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "15.73.133",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.98.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SiFli.sifli-sdk-codekit",
+      "version": "1.2.990606",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "1.75.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.2.25",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devcodaro.codaro-pro",
+      "version": "3.5.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sparrowcodes.sparrowcodes",
+      "version": "1.1.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DevelopmentInc.kombai-vs",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoamAI.roam-crew",
+      "version": "0.8.95",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "podborodok.dbtoolsforpythonv2",
+      "version": "0.4.51",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.6.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "CodeSecureDev.dependency-scan",
+      "version": "1.8.12",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pandaexpress.Theme-ant-plugin",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.1.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Iconkieftwo.icon-theme-materiall",
+      "version": "5.29.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cobot100.cursor100",
+      "version": "0.0.96",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vtkn.amazon-bedrock-copilot-chat",
+      "version": "0.3.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dontdownloadthis.dontdownloadthis",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Extensions-Topic.korean",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "EchelonStudios.blockchain-language-support",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "seolmuah.jupyter-live-share",
+      "version": "2.2.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.24",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "clacla100.claudemem",
+      "version": "0.0.88",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AutomationStudio.automation-studio",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pablaofficeal.taskmanager-vscode",
+      "version": "1.4.5",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "swarmiq-os.swarmiq-connect",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555.qqq",
+      "version": "16.0.3",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TaskRblx.taskrblx",
+      "version": "4.7.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Barkerbg001.xaml-lineup",
+      "version": "0.0.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.4.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OryonTechnology.oryon",
+      "version": "0.1.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.23.6",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uladluch.cursor-mobile-connector",
+      "version": "1.0.139",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "GavinWood.SolidityLang",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "CMSbrand.liquidfred",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "JuanFranBlanco.solidit-vscode",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jianbe-03.pesto-roblox-project-explorer",
+      "version": "0.1.8",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AhmedSlem.secure-codee",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Price.automatic-recording-code",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cweijamysq.sync-settings-vscode",
+      "version": "0.18.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sparrowcodes.sparrowcodes",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.9",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NordicMidnight.codesilence",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.0.10",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bismarkvargas.bkcode",
+      "version": "1.69.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "MarcusHoffkin.mannequin",
+      "version": "0.0.7",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "EricWrite.dsafsadas",
+      "version": "0.2.1",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AugmentedValueAcceleration.ava-supernova",
+      "version": "0.34.2",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "v8tech.v8-code",
+      "version": "2.2.27",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "YicoFighting.line-lens",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "code"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "hkalyane.csv-advanced-editor",
+      "version": "1.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-http-status",
+      "version": "10.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "leon-qiu.hexo-auto-updated",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-fahh",
+      "version": "10.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SupporterREditor.r-vscode",
+      "version": "2.8.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "leonardomjq.goblin-mode",
+      "version": "0.3.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.one-dark-pro-magenta",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "lukasfull.protheus-app-generator",
+      "version": "0.0.14",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-script-tools",
+      "version": "0.1.35",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cryptninjaswap.cryptoninja-prompt-pack",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "funkyproject.vscode-phpunit-funky-fork",
+      "version": "3.7.11",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.65.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Realtek.ameba",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vfd.vs2017-light-theme",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "plugin-manager.vscode-notes-manager",
+      "version": "2.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Remotebase.snapdev",
+      "version": "1.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RogDeved.Night-moonlight-theme",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DoroKPNC.dart-flutter-exports-local",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "shaokun.cangjie-code",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "KMSLV.c-ai-chan",
+      "version": "3.43.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-case-converter",
+      "version": "10.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "doctorliang-continue.local-continue",
+      "version": "0.9.266",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LinJun.oracle-support",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "PapaVault.papa-vault",
+      "version": "1.13.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Benachile-studio.protobuf-pro",
+      "version": "1.4.26",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fq.markdown-checkbox-with-timestamp-at-creation",
+      "version": "10.80.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OrqentAi.orqentai-code",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio",
+      "version": "1.0.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "funovus.dceilua",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "liumeng1201.android-helper",
+      "version": "0.0.11",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bazantici.dapsy",
+      "version": "0.9.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jianguoyun.cline",
+      "version": "3.26.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wuyifeng.vscode-database-client",
+      "version": "4.0.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "iblea.vscode-paste-image-iblea",
+      "version": "1.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.video-qqq",
+      "version": "16.1.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.File-Explorer-qqq",
+      "version": "16.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Senforsce.tndr",
+      "version": "0.0.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "namhhitvn.gitlens-support-symbolic-link",
+      "version": "15.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "continueautocommand.continue-auto-command",
+      "version": "1.3.42",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SoumyadeepDas.gemini-code-converter",
+      "version": "0.0.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "responsivewebio.vscode-sftp-2026",
+      "version": "1.16.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vox-studio.vox-language",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "chrp.vscode-auto-restart-typescript-and-eslint",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LinJun.databricks-support",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gtfish1988.gtfish18-instant-md-table",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "justybase.justybase-mysql",
+      "version": "3.16.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "agent.devdock",
+      "version": "0.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jinshi-news.jinshi-news",
+      "version": "1.0.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "mpw.ccbscf-snippets",
+      "version": "0.4.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "mtc2000.vscode-pdf-viewer",
+      "version": "5.6.205",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "theChrisKent.spfx-local-workbench",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RPinkau.al-object-id-samurai",
+      "version": "3.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "S4mu31.command-runner-v2",
+      "version": "0.5.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "littleCareless.dish-base-development-extensions-pack",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cancline.cancline-dev",
+      "version": "3.16.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "whoami730.cython-enhanced",
+      "version": "1.0.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Damilola.azure-devops-pipelines",
+      "version": "0.5.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tapl-lang.material-icon-theme-tapl",
+      "version": "5.34.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "continueautocommand.continue-auto-command",
+      "version": "1.3.41",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "leon-qiu.hexo-auto-updated",
+      "version": "0.1.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-random-data-generator",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "rgcode.rgcode",
+      "version": "0.9.164",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "justybase.justybase-postgresql",
+      "version": "3.16.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "JohnAaronNelson.visualforce",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fsiovn.ai-autocomplete",
+      "version": "0.0.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fsiovn.ai-autocomplete",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cot-eis-team.cot-eis-team-extension-pack",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-script-tools",
+      "version": "0.1.25",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gea-embedded.vscode-clangd-gea-embedded",
+      "version": "0.1.31",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "thirst.cfxlua-types-intellisense",
+      "version": "1.10.21",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AngelSalazar-dev.all-pixel-agents",
+      "version": "1.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.104",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio",
+      "version": "0.6.29",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "xikey.minimax-vscode-m27",
+      "version": "1.0.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "mikeljl.continue-ljl-fork",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.n8n-atom-v3",
+      "version": "3.22.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "consistem-sistemas.consistem-language-server",
+      "version": "2.8.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.presentation-resources",
+      "version": "16.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-tab-killer",
+      "version": "10.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bl-vc-java.bl-tomcat",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "alien-fish-person.htmltoscss",
+      "version": "1.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Dream-Radio",
+      "version": "16.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Realtek.ameba",
+      "version": "1.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "northisup.comment-divider-updated",
+      "version": "0.5.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.direct-cmds",
+      "version": "0.3.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "rzkyagngngr.kylo",
+      "version": "1.0.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pvjagtap.arxml-workbench",
+      "version": "0.4.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-script-tools",
+      "version": "0.1.30",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "day253.system-information-status-bar",
+      "version": "1.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "kide.kide-csharp",
+      "version": "26.2.58",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.vscode-breaklines-highlight",
+      "version": "1.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "FRONT-END-AI.front-end-ai",
+      "version": "2.3.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Navigator-qqq",
+      "version": "16.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AirCactus500.animal-crossing-file-icon-theme-with-flutter-support",
+      "version": "0.0.13",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Tone.wolfram-prettier-vscode",
+      "version": "0.5.10",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "illusions-x.yeleee-faaaah",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "JackHerry.gitlens-turbocharged",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.n8n-atom-v3",
+      "version": "3.8.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-uuid",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AngelSalazar-dev.all-pixel-agents",
+      "version": "1.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Kanari-Network.kari-move",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Eyaa.vue-swift-i18n-plus",
+      "version": "0.1.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "hanan.hanan-code",
+      "version": "0.8.51",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "veryl-lang.veryl-vscode",
+      "version": "0.19.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.File-Explorer-qqq",
+      "version": "16.1.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "worma.worma-vscode",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "quantix.quantix-pro",
+      "version": "3.83.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NPC1.unify-chat-provider-ui",
+      "version": "4.6.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Murilo.headwind-haml-fork",
+      "version": "2.1.18",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "kevin12314.svn-scm-ai-next",
+      "version": "3.5.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "shaokun.cangjie-code",
+      "version": "1.0.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.61.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "rzkyagngngr.kylo",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.119",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "JaviGuarin.prompt-registry-ado-beta",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ebdonato.donato-ariake-dark",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Dream-Radio",
+      "version": "16.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "IamTheKaaZZ.valgrind-debug",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SoulFriends.html-tag-wrap-vscode",
+      "version": "0.0.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Export-Doc",
+      "version": "16.4.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "WuZhiguo.callviz",
+      "version": "1.3.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Paste-Image-qqq",
+      "version": "16.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SoulFriends.html-tag-wrap-vscode",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Roger-Han.mimo-code-ai",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "valentinbeaumont.youtrack-vscode",
+      "version": "0.7.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Jial.claude-paper-theme",
+      "version": "0.0.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "suyb.v-sci-roo",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "8bitZeta.Nand2Tetris-8bit",
+      "version": "0.1.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "S4mu31.command-runner-v2",
+      "version": "0.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Trent-Tompkins.claude-codex-black-edition",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "xwildeyes.vercel-vscode-by-xwildeyes",
+      "version": "2.0.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "publishingsofficial.prettier-vscode-plus",
+      "version": "11.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.html-qqq",
+      "version": "16.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NikiTester.claude-commit-generator",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LinJun.trino-support",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "shaokun.cangjie-code",
+      "version": "1.0.12",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LinJun.ibm-db2-support",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AirCactus500.animal-crossing-file-icon-theme-with-flutter-support",
+      "version": "0.0.12",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "illusions-x.yeleee-faaaah",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "abczyx2006.rust-coder",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-hash-generator",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "drzorm.vscode-fast-folder-structure-custom",
+      "version": "3.12.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Paste-everything",
+      "version": "16.1.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OPENEDAI.OPENEDAI",
+      "version": "0.4.51",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.60.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "linlinzhao.turbo-console-log-enhance",
+      "version": "3.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cn00.sqltools-duckdb",
+      "version": "1.4.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "mtglitch.claude-usage-bars",
+      "version": "0.3.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "justybase.justybase-netezza",
+      "version": "3.16.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TuyaOpen.TuyaOpenIDE",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ghlandy.LiveServer-2",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wuyifeng.vscode-database-client",
+      "version": "4.0.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.vscode-ristretto-icons",
+      "version": "1.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Paste-everything",
+      "version": "16.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ravaelles.search-anywhere",
+      "version": "1.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ChristopherCRobinson.browser-tools-for-testcafe",
+      "version": "2.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "FlowIndex.flowindex-cadence",
+      "version": "3.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "HarshAgarwal1012.openclaude-vscode",
+      "version": "0.2.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wenwj.luaforqc",
+      "version": "0.2.41",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "agility6.gruvbox-concoctis-agility6",
+      "version": "2.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Taro-Native.taro-native-language-support",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "consistem-sistemas.consistem-vscode-objectscript",
+      "version": "3.8.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "songyanglin.office-viewer-vditor",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio-fe",
+      "version": "1.0.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "smooth-cat.bobe-cat",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AIClaude.claude-code-master",
+      "version": "0.1.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.simple-icons-plus",
+      "version": "1.0.13",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "PCODE-pl.F5",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.github-shortcuts",
+      "version": "0.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "agent.devdock",
+      "version": "0.2.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.ristretto-file-icons",
+      "version": "1.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gisonyeung.pika-svelte-vscode",
+      "version": "0.5.16",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ihyajb.cfxlua-intellisense",
+      "version": "1.11.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Itchino.robloxlsp-for-exploit",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMarkHub.global-notes-snippets-by-slashmark",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Remotebase.snapdev",
+      "version": "1.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "hzcheng.project-steward",
+      "version": "1.0.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Image-preview-qqq",
+      "version": "16.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.91",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zijinshanren.vscode-clangd-modules",
+      "version": "0.7.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fab1can.docker-compose-fixed",
+      "version": "0.5.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TailwindCSSIntelliSenseplus.vscode-tailwindcss-plus",
+      "version": "0.14.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zenplusplus.sonaita",
+      "version": "1.1.72",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ZAMBAR.riscv-venus-cs110",
+      "version": "1.9.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "liuhui.shadow-reader-pro",
+      "version": "0.8.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "MMitsuha.vscode-docker-registry-explorer-rev",
+      "version": "0.2.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.html-qqq",
+      "version": "16.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "remimarsal.prettier-now",
+      "version": "1.4.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "akirakudo911.kudosflow2",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.52.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "abstractalgo.package-json-upgrade-abstractalgo",
+      "version": "3.6.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-copilot",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tria-technologies.simpleswitch-vscode-tools",
+      "version": "3.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-explorer",
+      "version": "0.6.19",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "schardosin.cline-for-sap-ai-core",
+      "version": "3.17.12",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wenwj.luaforqc",
+      "version": "0.2.40",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "electropol-fr.vscode-drawio-VFS",
+      "version": "1.9.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "qiyefazhan.super-agent",
+      "version": "3.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bazantici.suse-valey-styleguide",
+      "version": "0.6.28",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "FlyingsMarmot.vscode-clangd-ucpp",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "siffat-ahmed.ai-autocomplete-siffat-ahmed",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "YasenDimitrov.lazygit-vscode-v2",
+      "version": "0.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ivanstepanovftwgaynottaken.camelhumps",
+      "version": "1.3.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-explorer",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "hoOJluGun.ho-ojlugun-ai",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "11011.blenderPluginDevTool11011",
+      "version": "0.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.57.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AiagentPro.pydebugpro",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yishifuhua.local-history-chinese",
+      "version": "1.8.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bysabi.prettier-vscode-standard",
+      "version": "0.22.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jianguoyun.cline",
+      "version": "3.35.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "qiyefazhan.super-agent",
+      "version": "3.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "momomomowei.element-plus-mo",
+      "version": "0.0.10",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fsiovn.autocomplete-copilot",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "smarty1337.nixware-snippets",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.vscode-ristretto-icons",
+      "version": "1.0.15",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fadizant.terminal-commands-2026",
+      "version": "1.0.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dengfy3.dengfy3",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Dream-Radio",
+      "version": "16.4.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wuyifeng.vscode-database-client",
+      "version": "4.0.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bazantici.suse-valey-styleguide",
+      "version": "0.6.26",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Vikang.vscode-acnh-icon-theme",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sunamo-cz.specstory-autosave",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SeoDoktoru.minimax-god-mode",
+      "version": "0.2.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "shaokun.cangjie-code",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "CCD-Studios.ccd-sftp",
+      "version": "1.17.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Ktoon.mt-eden",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.121",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.WYSIWYG-qqq",
+      "version": "16.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "saltand.fork-forked",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cn00.duckdb-lab",
+      "version": "0.5.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "nilaykd.arborist-notes",
+      "version": "0.133.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ClockZinc.vscode-copilot-chat-cn",
+      "version": "0.44.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AngelSalazar-dev.all-pixel-agents",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "copilot-multi-provider.copilot-multi-provider",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "kast789.vs-2019-theme",
+      "version": "0.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.File-Explorer-qqq",
+      "version": "16.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "diamond.diamond",
+      "version": "2.3.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.51.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bryanlo22.vscode-rufo-fix",
+      "version": "0.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SoulFriends.eslint-rules-zh-with-pretty",
+      "version": "0.0.17",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Hakai.functional-purple-modified",
+      "version": "1.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.WYSIWYG-qqq",
+      "version": "16.1.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dloux.i18n-ally-skip-duplicate",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio-fe",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "harrisonLin.fcbox-ai-code",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "nkurasawa.vscode-ignore-prettier",
+      "version": "2.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "lujstn.synthwave-fluoromachine-cursor",
+      "version": "0.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "samuanv.turbo-console-log-single-quotes",
+      "version": "1.2.11",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "huangshiyu.sftp-uploader",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tkafka.markdown-mermaid-updated",
+      "version": "1.32.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.notebook-qqq",
+      "version": "16.1.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "leon-qiu.hexo-auto-updated",
+      "version": "0.1.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "nilaykd.arborist-notes",
+      "version": "0.125.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "CCD-Studios.ccd-sftp",
+      "version": "1.18.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "whatnick.acp-client-whatnick",
+      "version": "0.1.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-copilot",
+      "version": "0.0.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.103",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "stunning-yunwu.code-debugger-plus",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Shunqian.prettier-plus",
+      "version": "3.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.49.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TheRealGorgan.vscode-google-tasks-extension",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "codevsce.codelddb-vscode",
+      "version": "1.11.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-explorer",
+      "version": "1.0.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AMAARETS.hebrew-ui-translation-amaarets",
+      "version": "1.103.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Ktoon.recce-ai",
+      "version": "0.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "rizort.laravel-pack-109",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Paste-everything",
+      "version": "16.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cfeltz.taskpanel",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Murilo.headwind-haml-fork",
+      "version": "2.1.20",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "kzhoa.sftp-x",
+      "version": "1.17.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weimh.opencode-conn",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gtfish1988.gtfish15-split-join-text",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "contextia.contextia-cline",
+      "version": "3.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Tone.wolfram-prettier-vscode",
+      "version": "0.5.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NikiTester.claude-commit-generator",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Frankie.vscodium-change-case",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "apzcode.apzcode-ai",
+      "version": "0.1.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.global-linter",
+      "version": "0.4.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Trent-Tompkins.claude-codex-black-edition",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TobiasHochguertel.catalog-lens",
+      "version": "0.6.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "trlanfeng.turbo-console-log",
+      "version": "1.5.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LinJun.dbeaver-support",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "KevinYouu.tailwind-raw-reorder-tw4",
+      "version": "3.5.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "agtest.csbz",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-password-generator",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.cursors-view-focus",
+      "version": "1.1.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bobqianic.imperial-llm-dev",
+      "version": "3.3.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ihyajb.cfxlua-intellisense",
+      "version": "1.11.10",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Vikang.acnh-vscode-theme",
+      "version": "0.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "GustavoMaia.gruber-adapted",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.95",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "WuZhiguo.callviz",
+      "version": "1.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tylerdotrar.goodbyeworldng",
+      "version": "0.6.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "spmeesseman.vscode-vslauncher",
+      "version": "1.0.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cognivision.cogni-dev",
+      "version": "3.72.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "metagogo.metagogo",
+      "version": "2.12.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.89",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.whitespace-counter",
+      "version": "1.4.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "codelogix.catppuccin-darker-vsc",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LesMiserablesMod.hoi4modutilities-maintained",
+      "version": "0.12.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio-fe",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "EXyang.cpp-project-config-ch",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pk4uDMD.vscode-containers-forked",
+      "version": "2.4.42",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "nicovy.symbolsnicovy",
+      "version": "0.0.23",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bazantici.suse-valey-styleguide",
+      "version": "0.6.25",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zqchen.vscode-dashboard-fork",
+      "version": "2.7.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ArthurNeuman.eslint-disable-typescript-snippets",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wenwj.qc-lua",
+      "version": "0.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "shaokun.cangjie-code",
+      "version": "1.0.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Alex-Chen.vscode-m5stack-mpy-uiflow2",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio",
+      "version": "0.6.32",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "stan-stani.autolaunch-plus",
+      "version": "2.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "taillaaa.codilore-ai",
+      "version": "1.20.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cot-eis-dev.cot-eis-dev-solution-development-studio",
+      "version": "1.1.11",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.presentation-resources",
+      "version": "16.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fecet.vscode-neovim-fecet",
+      "version": "1.18.20",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "qiyefazhan.super-agent",
+      "version": "3.3.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "serialt.sugar-proto",
+      "version": "0.5.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.html-qqq",
+      "version": "16.1.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Export-Zip",
+      "version": "16.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jsayol.firebase-explorer",
+      "version": "0.3.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ZaqueuRodrigues.vscode-eclipse-keymap-complete",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "EXyang.cpp-project-config-ch",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "stx-emma.git-e-graph",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "hyoban.file-icons-continue",
+      "version": "1.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.n8n-atom-v3",
+      "version": "3.18.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "itv3.kilo-code-plus",
+      "version": "7.3.5401",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio",
+      "version": "0.6.35",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LinJun.clickhouse-support",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.tampermonkey-atom8n",
+      "version": "1.63.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Noe.noe-tokyo-night-horizon",
+      "version": "1.0.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devnazir.gosh-interpreter",
+      "version": "0.44.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RahulSinha.bracketeer-personal",
+      "version": "1.3.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.110",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "betterthanalltime.calva-vscode",
+      "version": "2.0.540",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wuyifeng.vscode-database-client",
+      "version": "4.1.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "nilaykd.arborist-notes",
+      "version": "0.133.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SoulFriends.eslint-rules-zh-with-pretty",
+      "version": "0.0.18",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-lorem-generator",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "guojun.code-keeper",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-remove-empty-lines",
+      "version": "10.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "CyrusRune.codearts-cli-launcher",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tohuw.focus-lines",
+      "version": "3.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devCharles5277.git-commit-plugin-with-gitmoji",
+      "version": "1.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio",
+      "version": "0.6.47",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jonxmack.liquid-snippets",
+      "version": "2.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.n8n-atom-v3",
+      "version": "3.23.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-remove-trailing-spaces",
+      "version": "10.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zjt.zjt-onedark-modern",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zhoulufeng.blf-viewer-canfd",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "CCD-Studios.ccd-sftp",
+      "version": "1.18.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Ritchie.cursor-dark-plus",
+      "version": "0.1.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zqchen.vscode-dashboard-fork",
+      "version": "2.7.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Export-Docx",
+      "version": "16.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gtfish1988.gtfish08",
+      "version": "0.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Eradani.eradani-assist",
+      "version": "1.7.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Azir-11.azir-vscode-theme",
+      "version": "1.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vbtheory.gitlab-pipeline-monitor-advanced",
+      "version": "3.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Frankie.vscodium-change-case",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "xuhuanzy.emmylua-luals",
+      "version": "0.9.30",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio-fe",
+      "version": "1.0.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gtfish1988.gtfish14",
+      "version": "0.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.50.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "weiboplat.wecoder",
+      "version": "1.0.109",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "day253.data-scientist-development-pack",
+      "version": "1.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "justybase.justybase-duckdb",
+      "version": "3.16.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AkhilTeotia.prettier-vscode-cfml",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Navigator-qqq",
+      "version": "16.1.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Eradani.eradani-assist",
+      "version": "1.6.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bazantici.dapsy",
+      "version": "0.9.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "littleCareless.svn-scm-ai",
+      "version": "2.18.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SoulFriends.eslint-rules-zh-with-pretty",
+      "version": "0.0.14",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "chenjingqing.yuque-editor",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ArchMedia.sp-isc-devtools",
+      "version": "0.1.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "atom8n.kanban-atom8n",
+      "version": "1.64.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cryptninjaswap.cryptoninja-shuriken-dojo",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BeyondR34CH.theme-br-monokai",
+      "version": "0.0.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-copilot",
+      "version": "0.0.10",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "phantomgz.vscode-theme-onedark-c",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "smonteros.pixel-agents-opencode",
+      "version": "1.4.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yds-copilot",
+      "version": "0.0.17",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "lujstn.synthwave-fluoromachine-cursor",
+      "version": "0.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zstings.claude-code-zh-cn",
+      "version": "1.1.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DevCatppuccinpro.catppuccin-pro-vsc",
+      "version": "3.18.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "rizort.phpstorm-pack-109",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "chat-gimay-agent.chat-gimay-agent",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "unique123.continue-plus",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "agility6.go-sort-imports",
+      "version": "1.3.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tria-technologies.simpleswitch-vscode",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vox-studio.vox-language",
+      "version": "1.2.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.q3",
+      "version": "16.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TobiasHochguertel.catalog-lens",
+      "version": "0.6.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "longguanghui.baiteda-vscode-i18n",
+      "version": "1.0.20",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Cognitrace3.cognitrace3",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Export-Doc",
+      "version": "16.2.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fsiovn.coper-copilot",
+      "version": "0.1.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "teakovva.overpy-bastion",
+      "version": "9.4.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-text-sorter",
+      "version": "10.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "cloorc.vscefiles",
+      "version": "0.8.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-duplicate-line-highlighter",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SpecStoryInc.specstory-vscode-pro",
+      "version": "0.26.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yonbip.yonbip-development-studio",
+      "version": "0.6.302",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "InnuendoPi.vscode-espfs",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Gabeseltzer.behave-vsc-gs",
+      "version": "0.9.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "camork.fonted-plus",
+      "version": "2.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Ilham-ahmedow.sftp20",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Autolexia.testwise",
+      "version": "1.1.24",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "fsiovn.ai-autocomplete",
+      "version": "0.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "PhungXuanAnh.auto-run-command-with-condition",
+      "version": "1.6.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Primer4128.polykai-pro",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AMAARETS.hebrew-ui-translation-amaarets",
+      "version": "1.103.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gtfish1988.gtfish12",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SVO.continue-svo-test",
+      "version": "1.1.24",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wuyifeng.vscode-database-client",
+      "version": "4.0.11",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "iceeedR.amxx-pawn-language-editor",
+      "version": "1.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "pit00.global-regex",
+      "version": "0.4.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SlashMark.slashmark-password-generator",
+      "version": "10.1.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OxfordAbstracts.ide-purescript-oa-hybrid",
+      "version": "0.26.13",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jishutuan.prettier-vscode",
+      "version": "1.8.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dotatong.wt-prettier-vscode",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "mlhiter.sline",
+      "version": "0.10.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Roger-Han.mimo-code-ai",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Roger-Han.mimo-code-ai",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zstings.claude-code-zh-cn",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ZeroGAIzerog-ai.zerog-vscode-bridge",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "rgeraskin.vscode-commitizen-rg",
+      "version": "1.2.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "MohammadWaliduddin.codexeconpixel",
+      "version": "1.4.0",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "frunoob.ankimini",
+      "version": "1.1.5",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ebextensions.clang-format-2025",
+      "version": "2.0.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "jRichardeau.vscode-vsproj",
+      "version": "1.2.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zyk-zhang.zyk-microapp-plugin",
+      "version": "1.1.7",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TheMysteryPanda.discodemulti",
+      "version": "0.1.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vox-studio.vox-language",
+      "version": "1.3.2",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "songyanglin.vscode-office-plus",
+      "version": "3.5.8",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tmp-primes.wtinymist",
+      "version": "0.14.12",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Paste-everything",
+      "version": "16.1.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "nourgaser.google-tasks-json-fork",
+      "version": "0.3.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deciosfernandes.git-auto-set-config",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tria-technologies.simpleswitch-vscode",
+      "version": "1.7.1",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "justybase.justybase-oracle",
+      "version": "3.16.6",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "gh555com.Paste-Image-Directly",
+      "version": "16.1.9",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "juanmaguitar.cursor-rules-downloader",
+      "version": "1.0.10",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Damilola.azure-devops-pipelines",
+      "version": "0.5.4",
+      "label": "1",
+      "tier": "policy"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yhx6071.nc",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BurstCode.burstcode",
+      "version": "0.1.110",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AnujLabs.sound-on-file-event",
+      "version": "0.1.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SafeBreach.safebreach-visual-attack-studio",
+      "version": "0.6.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Cognicio.sftp-deployment",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "test-ui-harry.preview-beta",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.2.5",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "d-led.commentray-vscode",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "0.0.8",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "3.14.16",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devsessioncanvas.dev-session-canvas-notifier",
+      "version": "0.7.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SafeBreach.safebreach-visual-attack-studio",
+      "version": "0.1.16",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Tier2Paladin-waterfall.waterfall2",
+      "version": "1.1.15",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "sla-guardian.static-sla-guardian",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uai-systems.uai-extension",
+      "version": "3.10.193",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "capplicorn.plaintextplus",
+      "version": "1.0.5",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.1.19",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.43",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devsessioncanvas.dev-session-canvas-notifier",
+      "version": "0.9.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BurstCode.burstcode",
+      "version": "0.1.125",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NexusCode.nexus-code",
+      "version": "1.0.8",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.28",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ironplc.ironplc",
+      "version": "0.129.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "test-ui-harry.test-ui-beta",
+      "version": "2.2.16",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "openbase.openbase-vscode",
+      "version": "10.2.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SecretTea.project-tea",
+      "version": "0.0.9",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "n3tw4lk3r.tomorrow-night-rusty",
+      "version": "1.3.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dongtran.cds-debug",
+      "version": "0.2.32",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Embedder.embedder-infineon",
+      "version": "0.3.66",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uai-systems.uai-extension",
+      "version": "3.10.204",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yassinebougacha.state-diagram-editor-yassine-V10-exe",
+      "version": "1.0.11",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Sajjad19397.baburao-sound-track",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "keeptrack.keeptrack-notes-manager",
+      "version": "1.4.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "test-ui-harry.harry-test",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "openbase.openbase-vscode",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "0x7a69.whhid",
+      "version": "0.1.6",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "0.0.12",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BlocWeave.blocweave",
+      "version": "0.2.13",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devsessioncanvas.dev-session-canvas-notifier",
+      "version": "0.9.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yasosubin.yasosubin-vscode",
+      "version": "1.0.4",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "capplicorn.plaintextplus",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "samkj.orchestrai",
+      "version": "0.1.17",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Involute.bs5-kit",
+      "version": "1.4.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Anujlabsv2.sound-on-file-event-v2",
+      "version": "0.1.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BlocWeave.blocweave",
+      "version": "0.2.9",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TONCoreLabs.func-syntax-tool",
+      "version": "0.2.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "laurence06363.laurence-hello-world-5",
+      "version": "0.0.14",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "JumboCore.Jumbos",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "IteoluwakiishiDedeke.ite-agent",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "okystudio.sude-pets",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SafeBreach.safebreach-visual-attack-studio",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BloxTask.bloxtask",
+      "version": "4.7.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.19",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uai-systems.uai-extension",
+      "version": "3.10.277",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "test-ui-harry.preview-beta",
+      "version": "1.1.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Tier2Paladin-waterfall.waterfall2",
+      "version": "1.1.29",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "samkj.orchestrai",
+      "version": "0.1.7",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "samkj.orchestrai",
+      "version": "0.1.19",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vextlabs.theron-vext",
+      "version": "0.4.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Zubair.chicken-on-tree-screaming",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Embedder.embedder-infineon",
+      "version": "0.3.50",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yhx6071.nc",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SafeBreach.safebreach-visual-attack-studio",
+      "version": "0.1.30",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deepsweep-ai.deepsweep",
+      "version": "1.0.9",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Zubair.aaahhhhhh-sound-error",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "n3tw4lk3r.tomorrow-night-rusty",
+      "version": "2.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Sajjad19397.faah-error-sound",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Ship-lab.markpad",
+      "version": "0.2.10",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "KeeleyLednergznl.ri7",
+      "version": "1.1.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BlocWeave.blocweave",
+      "version": "0.5.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Sawalhaa.sawalhaa",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "3.14.15",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NEVSTOP-LAB.vsc-open-in-integrated-browser",
+      "version": "2026.5.8",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "solidhelium.codeforces-submitter",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Anujlabsv2.sound-on-error-v2",
+      "version": "0.1.7",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deepsweep-ai.deepsweep",
+      "version": "1.5.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "IONDev.iondev",
+      "version": "1.0.4",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dongtran.cds-debug",
+      "version": "0.5.12",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "capplicorn.plaintextplus",
+      "version": "2.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "KeeleyLednergznl.ri7",
+      "version": "16.4.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.12",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wenox.wenox",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.41",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "wenox.wenox",
+      "version": "0.1.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.42",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "KoltinSmith.project-restructure-nodejs",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "txtx20.sunrise-greeter-demo",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "n3tw4lk3r.tomorrow-night-rusty",
+      "version": "1.3.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uai-systems.uai-extension",
+      "version": "3.10.199",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.27",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "colan100.ccbrasil",
+      "version": "0.0.89",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "3.14.13",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.8",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Tier2Paladin-waterfall.waterfall2",
+      "version": "1.1.20",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Embedder.embedder-infineon",
+      "version": "0.3.75",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "openbase.openbase-vscode",
+      "version": "10.0.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dongtran.cds-debug",
+      "version": "0.5.8",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DevLingo.devlingo-ia",
+      "version": "1.1.4",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Embedder.embedder-infineon",
+      "version": "0.3.80",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BurstCode.burstcode",
+      "version": "0.1.9",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deepsweep-ai.deepsweep",
+      "version": "1.14.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "d-led.commentray-vscode",
+      "version": "0.0.9",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uai-systems.uai-extension",
+      "version": "3.10.303",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "DorianN612.wordcountertool",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "vextlabs.theron-vext",
+      "version": "0.6.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "n3tw4lk3r.tomorrow-night-rusty",
+      "version": "2.0.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SafeBreach.safebreach-visual-attack-studio",
+      "version": "0.1.24",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Zubair.siuuuuu-error",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BlocWeave.blocweave",
+      "version": "0.4.7",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Ship-lab.markpad",
+      "version": "0.2.9",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "RoyHtml.meta-lang",
+      "version": "1.0.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "adityasanwal.faa-sound",
+      "version": "1.2.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "2.0.17",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LeiaBalan.luaulink",
+      "version": "3.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TONCoreLabs.func-syntax-tool",
+      "version": "0.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "everyapi-ai.everyapi-vscode",
+      "version": "0.1.9",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "OxCamlEnhanced.oxcaml-enhanced",
+      "version": "0.3.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deepsweep-ai.deepsweep",
+      "version": "1.5.5",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NexusCode.nexus-code",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "openbase.openbase-vscode",
+      "version": "10.0.8",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "colan100.antigravity100",
+      "version": "0.0.80",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "capplicorn.plaintextplus",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.32",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "tanmoy-debnath.faaaaaahhh",
+      "version": "0.2.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devsessioncanvas.dev-session-canvas-notifier",
+      "version": "0.5.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dongtran.cds-debug",
+      "version": "0.2.34",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Drake90.library-roblox-api",
+      "version": "2.0.6",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "laurence06363.laurence-hello-world-5",
+      "version": "0.0.20",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "capplicorn.plaintextplus",
+      "version": "1.3.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uai-systems.uai-extension",
+      "version": "3.10.326",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dongtran.cds-debug",
+      "version": "0.5.4",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deltalenz.deltalenz",
+      "version": "0.2.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "capplicorn.plaintextplus",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "d-led.commentray-vscode",
+      "version": "0.3.6",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "yhx6071.nc",
+      "version": "0.0.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "2.0.13",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Ship-lab.markpad",
+      "version": "0.2.12",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SchlafferBenjamin.terminal-compiler",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NexusCode.nexus-code",
+      "version": "1.0.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ironplc.ironplc",
+      "version": "0.130.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "2.1.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ScrambleCloudUG.lurus-code-vscode",
+      "version": "1.9.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zhukunpeng.vscode-tinypng-pro",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deepsweep-ai.deepsweep",
+      "version": "1.8.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "claudecodeassist.claudecodeassist",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SafeBreach.safebreach-visual-attack-studio",
+      "version": "0.1.15",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "quartz.quartz-markdown-editor",
+      "version": "0.3.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.1.20",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "3.15.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dhakshnamoorthi.nexus-code-agent",
+      "version": "0.0.5",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Zubair.cat-laugh-error",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deepsweep-ai.deepsweep",
+      "version": "1.7.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LeiaBalan.luaulink",
+      "version": "2.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "POCreations.worklane",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Sajjad19397.faah-error-sound",
+      "version": "0.0.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "2.2.4",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "zhukunpeng.codemoss",
+      "version": "1.1.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deepsweep-ai.deepsweep",
+      "version": "1.7.2",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.25",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SecretTea.project-tea",
+      "version": "0.0.5",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "chery-brake-tools.chery-brake-tools",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Zubair.shah-rukh-khan-error",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SchlafferBenjamin.tridev-development-hub",
+      "version": "1.1.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "ByteBarn.bytebarnhello",
+      "version": "0.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "AnujLabs.sound-on-error",
+      "version": "0.1.4",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "openbase.openbase-theme",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "NexusCode.nexus-code",
+      "version": "1.0.6",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "SafeBreach.safebreach-visual-attack-studio",
+      "version": "0.1.4",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "BurstCode.burstcode",
+      "version": "0.1.7",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "uai-systems.uai-extension",
+      "version": "3.10.343",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "test-ui-harry.preview-beta",
+      "version": "1.1.3",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "2.2.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "samkj.orchestrai",
+      "version": "0.1.28",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devsessioncanvas.dev-session-canvas-notifier",
+      "version": "0.5.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "bortolabs.claude-code-usage-bar",
+      "version": "0.21.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Drake90.library-roblox-api",
+      "version": "2.0.5",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "TCDev.entire-vscode",
+      "version": "0.1.4",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "shoaibkorai.faaah",
+      "version": "0.0.6",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "LeiaBalan.romanager",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "carrycodeai.carrycode-vscode",
+      "version": "0.6.11",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "1.0.5",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "Embedder.embedder-infineon",
+      "version": "0.3.52",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "capplicorn.plaintextplus",
+      "version": "2.1.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "deepsweep-ai.deepsweep",
+      "version": "1.7.5",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "hakor-plugins.tsmap-vscode",
+      "version": "1.0.1",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "krzysztof-d.justybaselite-netezza",
+      "version": "0.0.7",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "devsessioncanvas.dev-session-canvas-notifier",
+      "version": "0.7.0",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "dongtran.cds-debug",
+      "version": "0.0.24",
+      "label": "1",
+      "tier": "suspect"
+    },
+    {
+      "dataset": "vsmex",
+      "id": "alberto-pilotto.code-ca65-syntax-color-outliner-symbols",
+      "version": "1.3.0",
+      "label": "1",
+      "tier": "unknown"
+    }
+  ]
+}

